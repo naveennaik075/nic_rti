@@ -1,0 +1,327 @@
+﻿//ekta kushwah
+//nov-2016
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Data;
+using System.Data.SqlClient;
+using System.Configuration;
+using System.IO;
+using System.Transactions;
+using System.Text;
+public partial class user_notice_entry : System.Web.UI.Page
+{
+    bl_Notice bl = new bl_Notice();
+    dl_Notice dl = new dl_Notice();
+    ReturnClass.ReturnBool rb = new ReturnClass.ReturnBool();
+    ReturnClass.ReturnDataTable rd = new ReturnClass.ReturnDataTable();
+    Utilities ul = new Utilities();
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        //   literal.Text = "<span id='myId'></span>";
+        try
+        {
+            if (Session["username"] == null)
+            {
+                Response.Redirect("~/Default.aspx");
+            }
+            else
+            {
+
+                if (!Page.IsPostBack)
+                {
+                    CalendarExtender1.StartDate = DateTime.Now;
+                    CalendarExtender2.StartDate = DateTime.Now;
+                    CalendarExtender3.StartDate = DateTime.Now;
+                    Session["CheckRefresh"] = Server.UrlDecode(System.DateTime.Now.ToString());
+                    bind_district();
+                    BaseDepartmentBind();
+                    OfficeBind();
+                    //   show();
+                }
+            }
+        }
+        catch { }
+    }
+
+
+    public void bind_district()        // user district
+    {
+        bl_empMap bl = new bl_empMap();
+        dl_empMap dl = new dl_empMap();
+        ReturnClass.ReturnDataTable rd = new ReturnClass.ReturnDataTable();
+        ddl_district.Items.Clear();
+        bl.State = "22";//DDL_State.SelectedValue; //22 for Chhattisgarh
+        rd = dl.BindDistrict(bl);
+        ddl_district.DataSource = rd.table;
+        ddl_district.DataTextField = "District_Name";
+        ddl_district.DataValueField = "District_ID";
+        ddl_district.DataBind();
+
+        ddl_district.Items.Insert(0, new ListItem("--Select District--", "0"));
+
+    }
+    public void BaseDepartmentBind()
+    {
+        bl_empMap bl = new bl_empMap();
+        dl_empMap dl = new dl_empMap();
+
+        ReturnClass.ReturnDataTable dt = dl.Get_BaseDepartment(bl);// ("SELECT dept_id, dept_name FROM basedepartment order by dept_name ");
+        ddl_department.DataSource = dt.table;
+        ddl_department.DataTextField = "dept_name";
+        ddl_department.DataValueField = "dept_id";
+        ddl_department.DataBind();
+        ddl_department.Items.Insert(0, new ListItem("--Select Department--", "0"));
+    }
+
+    public void OfficeBind()
+    {
+        bl_Notice bl = new bl_Notice();
+        dl_Notice dl = new dl_Notice();
+        bl.Base_department_id = ddl_department.SelectedItem.Value;
+        bl.District_id = ddl_district.SelectedItem.Value;
+        ReturnClass.ReturnDataTable dt = dl.Get_Office_For_Notice(bl);
+        ddl_office.DataSource = dt.table;
+        ddl_office.DataTextField = "OfficeName";
+        ddl_office.DataValueField = "NewOfficeCode";
+        ddl_office.DataBind();
+        ddl_office.Items.Insert(0, new ListItem("--Select Office--", "0"));
+    }
+
+    protected void ddl_department_SelectedIndexChanged(object sender, EventArgs e)
+    {
+   
+        OfficeBind();
+        
+    }
+    protected void ddlDistrict_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        OfficeBind();
+    }
+    protected override void InitializeCulture()
+    {
+        Culture = "en-GB";
+        System.Threading.Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.CreateSpecificCulture("en-GB") ;
+        
+        base.InitializeCulture();
+    }
+
+    protected void Page_PreInit(object sender, EventArgs e)
+    {
+        try
+        {
+        }
+        catch { }
+    }
+    protected void Page_PreRender(object sender, EventArgs e)
+    {
+        ViewState["CheckRefresh"] = Session["CheckRefresh"];
+    }
+    protected void btnSubmit_Click(object sender, EventArgs e)
+    {
+        if (Session["CheckRefresh"].ToString() == ViewState["CheckRefresh"].ToString())
+        {
+            Session["CheckRefresh"] = Server.UrlDecode(System.DateTime.Now.ToString());
+           
+            if (Page.IsValid)
+            {
+                if (btnSubmit.Text == "Submit")
+                {
+                    bl.Office_id = ddl_office.SelectedValue;
+                    bl.Notice_id = dl.Get_unique_notice_id(bl.Office_id);
+                    bl.Notice_file_id = dl.max_file_id(bl.Notice_id);
+                    bl.Ip_address = ul.GetClientIpAddress(this.Page);
+                    bl.Operating_system = Utilities.System_Info(this.Page);
+                    bl.UserSystem = Utilities.System_Info(this.Page);
+                    bl.Useragent = Request.UserAgent.ToString();
+                    HttpBrowserCapabilities browse = Request.Browser;
+                    bl.Browser = browse.Browser;
+                    bl.Enable_status = "Y"; // where should it be get ,Need to see the value 
+                    bl.Is_file_upload = ddl_fileup.SelectedValue;
+                    bl.Subject = txtHeader.Text;
+                    bl.Publish_status = ddl_publish_status.SelectedValue;
+                    if (ddlPermanent.SelectedValue == "N")
+                    {
+                        DateTime datefrom = DateTime.ParseExact(txtDateFrom.Text, "dd/MM/yyyy", null);
+                        bl.Start_date = datefrom.ToString("yyyy/MM/dd HH:mm:ss");
+                        DateTime dateto = DateTime.ParseExact(txtDateTo.Text, "dd/MM/yyyy", null);
+                        bl.End_date = dateto.ToString("yyyy/MM/dd HH:mm:ss");
+
+
+                        //string datefrom = Convert.ToDateTime(txtDateFrom.Text.Trim()).ToString("yyyy/MM/dd HH:mm:ss");
+                        //string dateto = Convert.ToDateTime(txtDateTo.Text.Trim()).ToString("yyyy/MM/dd HH:mm:ss");
+                        //bl.Start_date = datefrom.ToString();
+                        //bl.End_date = dateto.ToString();
+                    }
+                    else if (ddlPermanent.SelectedValue == "Y")
+                    {
+                        DateTime datefrom = DateTime.ParseExact(txtPublishDate.Text, "dd/MM/yyyy", null);
+                        bl.Start_date = datefrom.ToString("yyyy/MM/dd HH:mm:ss");
+
+                        //string datefrom = Convert.ToDateTime(txtPublishDate.Text.Trim()).ToString("yyyy/MM/dd HH:mm:ss");
+                        //bl.Start_date = datefrom.ToString();
+                        bl.End_date = null;     // End date null mean permanent
+                    }
+                    bl.Base_department_id = ddl_department.SelectedValue;
+                    bl.District_id = ddl_district.SelectedValue;
+                    
+                    bl.Priority = ddlpriority.SelectedValue;
+                    bl.User_id = Session["username"].ToString();
+                    bl.Notice_year = DateTime.Now.Year.ToString();
+
+
+                    #region Notice file upload
+                   
+                    if (ddl_fileup.SelectedValue == "Y")
+                    {
+                        if (fu_Notice.HasFile)
+                        {
+                            if (txt_file_desc.Text != "")
+                            {
+                                HttpPostedFile file = fu_Notice.PostedFile;
+                                if (file.ContentLength < 10000000)
+                                {
+                                    if (file.ContentType == "application/pdf" || file.ContentType == "application/x-pdf"
+                                        || file.ContentType == "image/jpg" || file.ContentType == "image/jpeg")
+                                    {
+                                        
+                                        Stream fs = file.InputStream;
+                                        BinaryReader br = new BinaryReader(fs);
+                                        byte[] bytes = br.ReadBytes((Int32)fs.Length);
+                                        bl.File_name = file.FileName;
+                                        bl.Content_type = file.ContentType;
+                                        bl.FileData = bytes;
+                                        bl.File_description = txt_file_desc.Text;
+
+                                    }
+                                    else
+                                    {
+                                        Utilities.MessageBox_UpdatePanel(lol, "Only PDF/Image type File will be accepted");
+                                        return;
+                                    }
+
+                                }
+                                else
+                                {
+                                    Utilities.MessageBox_UpdatePanel(lol, "Your file size is greater than 10 MB  ");
+                                    return;
+                                }
+                            }
+                            else
+                            {
+                                Utilities.MessageBox_UpdatePanel(lol, "File Description Is Required");
+                                return;
+                            }
+                        }
+                        else
+                        {
+                            Utilities.MessageBox_UpdatePanel(lol, "PDF/Image File required");
+                            return;
+                        }
+
+                    }
+                    #endregion
+
+
+
+                    rb = dl.Insert_Notice(bl);
+                    if (rb.status == true)
+                    {
+                        Utilities.MessageBox_UpdatePanel(lol, "Notice Creation Successsful");
+
+                        Clear();
+                        //bind_GridView();
+
+                    }
+                    else
+                    {
+                        Utilities.MessageBox_UpdatePanel(lol, "Notice Creation Failed");
+
+                    }
+                }
+            }
+        }
+
+     
+    }
+
+    public void Clear()
+    {
+        txtHeader.Text = null;
+        // ddlPermanent.SelectedIndex = -1;
+        ddlPermanent.SelectedValue = "N";
+        txtPublishDate.Text = null;
+        txtDateFrom.Text = null;
+        txtDateTo.Text = null;
+        ddl_department.SelectedValue = "0";
+        ddl_district.SelectedValue = "0";
+        ddl_office.SelectedValue = "0";
+        ddl_fileup.SelectedValue = "0";
+        rfv_fil_up.Enabled = true;
+    }
+    protected void ddl_fileup_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        if (ddl_fileup.SelectedValue == "Y")
+        {
+            div_file_upload.Visible = true;
+            rfv_fu.Enabled = true;
+            rfv_file_desc.Enabled = true;
+            rfv_fil_up.Enabled = true;
+        }
+        else if (ddl_fileup.SelectedValue == "N")
+        {
+            div_file_upload.Visible = false;
+            rfv_fu.Enabled = false;
+            rfv_file_desc.Enabled = false;
+            rfv_fil_up.Enabled = false;
+
+        }
+        else
+        {
+            div_file_upload.Visible = false;
+            rfv_fu.Enabled = false;
+            rfv_file_desc.Enabled = false;
+            rfv_fil_up.Enabled = true;
+        
+        
+        }
+    }
+
+    protected void ddl_permanent_Display(object sender, EventArgs e)
+    {
+
+        if (ddlPermanent.SelectedValue == "Y")
+        {
+            divPublishDate.Visible = true;
+            rfv_txtPublishDate.Enabled = true;
+            rev_txtPublishDate.Enabled = true;
+
+            divFrom.Visible = false;
+            divTo.Visible = false;
+            rfv_txtDateFrom.Enabled = false;
+            rfv_txtDateTo.Enabled = false;
+            rev_txtDateFrom.Enabled = false;
+            rev_txtDateTo.Enabled = false;
+            cv_txtDateTo.Enabled = false;
+        }
+        else {
+            divPublishDate.Visible = false;
+            rfv_txtPublishDate.Enabled = false;
+            rev_txtPublishDate.Enabled = false;
+
+            divFrom.Visible = true;
+            divTo.Visible = true;
+            rfv_txtDateFrom.Enabled = true;
+            rfv_txtDateTo.Enabled = true;
+            rev_txtDateFrom.Enabled = true;
+            rev_txtDateTo.Enabled = true;
+            cv_txtDateTo.Enabled = true;
+        
+        
+        }
+    }
+
+}//end of class

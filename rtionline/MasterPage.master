@@ -1,0 +1,576 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage"  %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="author" content="SemiColonWeb" />
+    <style type="text/css">
+        body {
+            font-family: Arial;
+            font-size: 18px;
+        }
+
+        .font-button {
+            /*background-color: #0090CB;
+            height: 30px;
+            width: 45px;
+            display: inline-block;*/
+            color: #fff;
+            text-align: center;
+            line-height: 50px;
+            font-size: 12pt;
+            cursor: pointer;
+        }
+        .font_color >li >a {
+          color: #ffd800 !important;
+        }
+
+        /*@media screen and (max-width: 1000px) and (min-width: 700px) {*/
+         @media screen and (max-width: 1023px) and (min-width: 768px) {
+            .scn {
+                position: absolute;
+                top: 30%;
+                left: 125%;
+            }
+        }
+       @media screen and (max-width: 1900px) and (min-width: 1024px) {
+        /*This is for normal screen*/
+            .scn {
+                position: absolute;
+                top: 30%;
+                left: 175%;
+            }
+        }
+
+        @media screen and (min-width: 1901px) {
+             /*This is for wide screen*/
+             .scn {
+                position: absolute;
+                top: 30%;
+                left: 250%;
+            }
+        }
+
+      /*.picture {
+       width: 50%;
+       position: relative;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+       background-size: cover;
+      -o-background-size: cover;
+       }*/
+
+    </style>
+    <!-- Stylesheets
+	============================================= -->
+    <link href="http://fonts.googleapis.com/css?family=Lato:300,400,400italic,600,700|Raleway:300,400,500,600,700|Crete+Round:400italic" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="css/bootstrap.css" type="text/css" />
+    <link rel="stylesheet" href="style.css" type="text/css" />
+    <link rel="stylesheet" href="css/swiper.css" type="text/css" />
+    <link rel="stylesheet" href="css/dark.css" type="text/css" />
+    <link rel="stylesheet" href="css/font-icons.css" type="text/css" />
+    <link rel="stylesheet" href="css/animate.css" type="text/css" />
+    <link rel="stylesheet" href="css/magnific-popup.css" type="text/css" />
+
+    <link rel="stylesheet" href="css/responsive.css" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--[if lt IE 9]>
+		<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+	<![endif]-->
+
+    <!-- Document Title
+	============================================= -->
+    <title>RTI Portal</title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body class="stretched device-lg">
+    <script type="text/javascript">
+        //$(function () {
+        //    $(".font-button").bind("click", function () {
+        //        var size = parseInt($('body').css("font-size"));
+        //        if ($(this).hasClass("plus")) {
+        //            size = size + 2;
+        //        } else {
+        //            size = size - 2;
+        //            if (size <= 10) {
+        //                size = 10;
+        //            }
+        //        }
+        //        $('body').css("font-size", size);
+        //    });
+        //});
+        $(function () {
+            $(".font-button").bind("click", function () {
+                var size = parseInt($('body').css("font-size"));
+                if ($(this).hasClass("plus")) {
+                    size = size + 2;
+                } else if ($(this).hasClass("minus")) {
+                    size = size - 2;
+                    if (size <= 10) {
+                        size = 10;
+                    }
+
+                }
+                else {
+                    size = 14;
+                }
+                $('body').css("font-size", size);
+            });
+        });
+
+    </script>
+
+    <!-- Document Wrapper
+	============================================= -->
+    <div id="wrapper" class="clearfix">
+
+        <%-- added by naveen on 23-07-2017           --%>
+        <form id="form1" runat="server">
+
+            <div id="top-bar" style="background-color: black; color: yellow;">
+
+                <div class="container-fluid clearfix">
+
+                    <div class="col_half nobottommargin ">
+
+                        <!-- Top Links
+					============================================= -->
+
+                        <!-- .top-links end -->
+
+                    </div>
+
+                    <div class="col_half fright col_last nobottommargin">
+
+                        <!-- Top Social
+					============================================= -->
+                       <%-- <div id="top-social">--%>
+                         <div id="top-social1">
+                            <div class="top-links ">
+                                <ul class="sf-js-enabled clearfix font_color " style="touch-action: pan-y;">
+
+                                    <%-- <li><a href="index.html">Home</a></li>--%>
+                                    <%--<asp:DropDownList ID="ddlLanguages" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlLanguages_SelectedIndexChanged">
+                                    <asp:ListItem Text="English" Value="en-GB" />
+                                    <asp:ListItem Text="हिन्दी" Value="hi-IN" />
+                                 </asp:DropDownList>--%>
+                                    <li>
+                                        <asp:LinkButton CssClass="co " ID="eng" runat="server" OnClick="eng_Click" Visible="false" Text="English"></asp:LinkButton></li>
+                                    <li>
+                                        <asp:LinkButton CssClass="co" ID="hin" runat="server" OnClick="hin_Click" Text="हिन्दी"></asp:LinkButton></li>
+                                    <li><a class="font-button plus ">A+</a> </li>
+                                    <li><a class="font-button ">A</a> </li>
+                                    <li><a class="font-button minus ">A-</a></li>
+                                </ul>
+
+                            </div>
+
+                            <%-- <ul>
+                                <li><a href="#" class="si-facebook" style="width: 40px;" data-hover-width="109"><span class="ts-icon"><i class="icon-facebook"></i></span><span class="ts-text">Facebook</span></a></li>
+                                <li><a href="#" class="si-twitter" style="width: 40px;" data-hover-width="95"><span class="ts-icon"><i class="icon-twitter"></i></span><span class="ts-text">Twitter</span></a></li>
+                                <li><a href="#" class="si-dribbble" style="width: 40px;" data-hover-width="103"><span class="ts-icon"><i class="icon-dribbble"></i></span><span class="ts-text">Dribbble</span></a></li>
+                                <li><a href="#" class="si-github" style="width: 40px;" data-hover-width="92"><span class="ts-icon"><i class="icon-github-circled"></i></span><span class="ts-text">Github</span></a></li>
+                                <li><a href="#" class="si-pinterest" style="width: 40px;" data-hover-width="106"><span class="ts-icon"><i class="icon-pinterest"></i></span><span class="ts-text">Pinterest</span></a></li>
+                                <li><a href="#" class="si-instagram" style="width: 40px;" data-hover-width="111"><span class="ts-icon"><i class="icon-instagram2"></i></span><span class="ts-text">Instagram</span></a></li>
+                                <li><a href="tel:+91.11.85412542" class="si-call" style="width: 40px;" data-hover-width="156"><span class="ts-icon"><i class="icon-call"></i></span><span class="ts-text">+91.11.85412542</span></a></li>
+                                <li><a href="mailto:info@canvas.com" class="si-email3" style="width: 40px;" data-hover-width="153"><span class="ts-icon"><i class="icon-email3"></i></span><span class="ts-text">info@canvas.com</span></a></li>
+                            </ul>--%>
+                        </div>
+                        <!-- #top-social end -->
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <%--  <div class="col_half fright col_last nobottommargin">
+                <div class="top-links">
+                    <ul class="pull-right">
+                        <li>
+                           
+                        </li>
+                        <li>
+                           
+                        </li>
+                    </ul>
+                </div>
+
+            </div>--%>
+
+            <%-- end naveen 23-07-2017 --%>
+
+            <!-- Header
+		============================================= -->
+            <header id="header" class="full-header">
+
+                <div id="header-wrap">
+
+                    <div class="container clearfix">
+
+                        <div id="primary-menu-trigger"><i class="icon-reorder"></i></div>
+
+                        <!-- Logo
+					============================================= -->
+                        <div id="logo">
+
+                            <a href="#" class="standard-logo"  >
+                               
+                                <img src="images/rtilogo_hin.png" alt="RTI Logo" id="logo_img"  />
+                                
+                            </a>
+                            <img src="images/rtilogo_h.png" alt="RTI Logo" id="logo_img1" class="scn" height="70" width="450" />
+                            <%-- <div class="head-title text-center">
+                            <span class="h-t">RTI PORTAL</span>
+
+                            <span class="f-t">Government of Chhattisgarh</span>
+                        </div>--%>
+                        </div>
+                        <!-- #logo end -->
+
+                        <!-- Primary Navigation
+					============================================= -->
+                        <nav id="primary-menu">
+
+                            <ul>
+                                <li><a href="Default.aspx">
+                                    <div><%=Resources.Resource.Home %> </div>
+                                </a>
+
+                                </li>
+
+
+                                <li><a href="RTI UserManual.pdf" target="_blank">
+                                    <div>
+                                        <%=Resources.Resource.UserManual %>
+                                    </div>
+                                </a>
+
+                                </li>
+
+                                <li><a href="#">
+                                    <div>
+                                        <%=Resources.Resource.FAQ %>
+                                    </div>
+                                </a>
+
+                                </li>
+
+                               <%-- <li><a href="user/feedback.aspx" >
+                                    <div>
+                                        <%=Resources.Resource.FeedBack %>
+                                    </div>
+                                </a>
+
+                                </li>--%>
+                                <li><a href="DeptUserManual.aspx" target="_blank" >
+                                    <div>
+                                       <%=Resources.Resource.DeptManual %>
+                                    </div>
+                                </a>
+
+                                </li>
+
+                            </ul>
+
+
+
+                        </nav>
+                        <!-- #primary-menu end -->
+
+                    </div>
+
+                </div>
+
+            </header>
+            <%--<form id="form1" runat="server">      commented by naveen on 23-07-2017--%>
+
+            <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
+            </asp:ContentPlaceHolder>
+            <!-- #header end -->
+
+            <!-- Content
+		============================================= -->
+            <section id="content">
+
+                <div class="content-wrap">
+
+                    <div>
+                        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                        </asp:ContentPlaceHolder>
+                    </div>
+
+                </div>
+            </section>
+            <%--</form>  commented by naveen on 23-07-2017--%>
+
+            <footer id="footer" class="dark notopborder">
+
+                <%--            <div class="container">
+
+                <!-- Footer Widgets
+				============================================= -->
+                <div class="footer-widgets-wrap clearfix">
+
+                    <div class="row clearfix">
+
+                        <div class="col-md-6">
+
+                            <div class="widget clearfix">
+                                <div class="row">
+
+                                    <div class="col-xs-4 widget_links">
+                                        <ul>
+                                            <li><a href="#">Home</a></li>
+                                            <li><a href="#">About</a></li>
+                                            <li><a href="#">FAQs</a></li>
+                                            <li><a href="#">Support</a></li>
+                                            <li><a href="#">Contact</a></li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="col-xs-4 widget_links">
+                                        <ul>
+                                            <li><a href="#">Shop</a></li>
+                                            <li><a href="#">Portfolio</a></li>
+                                            <li><a href="#">Blog</a></li>
+                                            <li><a href="#">Events</a></li>
+                                            <li><a href="#">Forums</a></li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="col-xs-4 widget_links">
+                                        <ul>
+                                            <li><a href="#">Corporate</a></li>
+                                            <li><a href="#">Agency</a></li>
+                                            <li><a href="#">eCommerce</a></li>
+                                            <li><a href="#">Personal</a></li>
+                                            <li><a href="#">OnePage</a></li>
+                                        </ul>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="visible-sm bottommargin-sm"></div>
+
+                        </div>
+
+                        <div class="visible-sm visible-xs line"></div>
+
+                        <div class="col-md-6">
+
+                            <div class="widget subscribe-widget clearfix">
+                                <h4>Subscribe to Our Newsletter</h4>
+                                <p>Get Important Offers and Deals directly to your Email Inbox. <em>We never send spam!</em></p>
+                                <div class="widget-subscribe-form-result"></div>
+                                <form id="widget-subscribe-form" action="include/subscribe.php" role="form" method="post" class="nobottommargin" novalidate="novalidate">
+                                    <div style="margin-bottom: -10px;">
+                                        <div class="row">
+                                            <div class="col-sm-9" style="margin-bottom: 10px;">
+                                                <input id="widget-subscribe-form-email" name="widget-subscribe-form-email" class="form-control not-dark required email" placeholder="Enter your Email" aria-required="true" type="email">
+                                            </div>
+                                            <div class="col-sm-3" style="margin-bottom: 10px;">
+                                                <button class="btn btn-block btn-success" type="submit">Subscribe</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="line"></div>
+
+                    <div class="row clearfix">
+
+                        <div class="col-md-7 col-sm-6">
+                            <div class="widget clearfix">
+                                <div class="clear-bottommargin-sm">
+                                    <div class="row clearfix">
+
+                                        <div class="col-md-6">
+                                            <div class="footer-big-contacts">
+                                                <span>Call Us:</span>
+                                                (91) 22 55412474
+										
+                                            </div>
+                                            <div class="visible-sm visible-xs bottommargin-sm"></div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="footer-big-contacts">
+                                                <span>Send an Email:</span>
+                                                info@canvas.com
+										
+                                            </div>
+                                            <div class="visible-xs bottommargin-sm"></div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="visible-sm visible-xs bottommargin-sm"></div>
+                        </div>
+
+                        <div class="col-md-5 col-sm-6">
+
+                            <div class="clearfix fright" data-class-lg="fright" data-class-md="fright" data-class-sm="fright" data-class-xs="" data-class-xxs="">
+                                <a href="#" class="social-icon si-rounded si-small si-colored si-facebook">
+                                    <i class="icon-facebook"></i>
+                                    <i class="icon-facebook"></i>
+                                </a>
+
+                                <a href="#" class="social-icon si-rounded si-small si-colored si-twitter">
+                                    <i class="icon-twitter"></i>
+                                    <i class="icon-twitter"></i>
+                                </a>
+
+                                <a href="#" class="social-icon si-rounded si-small si-colored si-gplus">
+                                    <i class="icon-gplus"></i>
+                                    <i class="icon-gplus"></i>
+                                </a>
+
+                                <a href="#" class="social-icon si-rounded si-small si-colored si-pinterest">
+                                    <i class="icon-pinterest"></i>
+                                    <i class="icon-pinterest"></i>
+                                </a>
+
+                                <a href="#" class="social-icon si-rounded si-small si-colored si-vimeo">
+                                    <i class="icon-vimeo"></i>
+                                    <i class="icon-vimeo"></i>
+                                </a>
+
+                                <a href="#" class="social-icon si-rounded si-small si-colored si-github">
+                                    <i class="icon-github"></i>
+                                    <i class="icon-github"></i>
+                                </a>
+
+                                <a href="#" class="social-icon si-rounded si-small si-colored si-yahoo">
+                                    <i class="icon-yahoo"></i>
+                                    <i class="icon-yahoo"></i>
+                                </a>
+
+                                <a href="#" class="social-icon si-rounded si-small si-colored si-linkedin">
+                                    <i class="icon-linkedin"></i>
+                                    <i class="icon-linkedin"></i>
+                                </a>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+                <!-- .footer-widgets-wrap end -->
+
+            </div>--%>
+
+                <!-- Copyrights
+			============================================= -->
+                <div id="copyrights">
+
+                    <div class="container clearfix">
+
+
+                        <div class="col-sm-12 text-center">
+                            <span>&copy; Content Owned by Department of Information and Technology, Government of Chhattisgarh.</span>
+                        </div>
+
+
+
+
+                        <div class="col-sm-12">
+                            <div class="col-sm-10">
+
+                                <p style="font-size: 12px;">All efforts have been made to make the information as accurate as possible. Departments of General Administration or NIC, will not be responsible for any damage caused by inaccuracy in the information available on this Website. Site Designed, Developed &amp; Hosted By : <a href="http://cg.nic.in/home/home.php" target="_blank">National Informatics Center </a>, Chhattisgarh </p>
+                            </div>
+                            <div class="col-sm-2">
+                                <img src="images/logo_nicg.png" />
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+                <!-- #copyrights end -->
+
+            </footer>
+            
+        </form>
+        <%-- added by Naveen on 23-07-2017--%>
+    </div>
+
+
+    <!-- Go To Top
+	============================================= -->
+    <div id="gotoTop" class="icon-angle-up"></div>
+
+    <!-- External JavaScripts
+	============================================= -->
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/plugins.js"></script>
+
+    <!-- Footer Scripts
+	============================================= -->
+    <script type="text/javascript" src="js/functions.js"></script>
+
+    <script type="text/javascript">
+
+        function set_img() {
+            var Session = '<%=Session["language"]%>';
+
+            if (Session == "en-GB") {
+                $("#logo_img").attr('src', "images/rtilogo_eng.png");
+                $("#logo_img1").attr('src', "images/rtilogo_e.png");
+                return false;
+            }
+            else {
+                $("#logo_img").attr('src', "images/rtilogo_hin.png");
+                $("#logo_img1").attr('src', "images/rtilogo_h.png");
+                return false;
+            }
+
+        }
+        $(document).ready(function () {
+            //set_logo();
+           <%-- jQuery('#hin').click(function () {
+                '<%Session["language"] = "hi-IN"; %>';
+
+           });
+            jQuery('#eng').click(function () {
+                '<%Session["language"] = "en-GB"; %>';
+
+            });
+            --%>
+            set_img();
+         });
+
+         // attach the event binding function to every partial update
+        <%-- Sys.WebForms.PageRequestManager.getInstance().add_endRequest(function (evt, args) {
+             // set_logo();
+             jQuery('#hin').click(function () {
+
+                 '<%Session["language"] = "hi-IN"; %>';
+
+
+           });
+            jQuery('#eng').click(function () {
+
+                '<%Session["language"] = "en-GB"; %>';
+
+            });
+            
+             set_img();
+        });--%>
+    </script>
+
+
+</body>
+</html>

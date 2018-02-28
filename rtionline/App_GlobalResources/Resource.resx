@@ -1,0 +1,1041 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ForgotPassword" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LoginToAccount" xml:space="preserve">
+    <value />
+  </data>
+  <data name="NoticeBoard" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Registration" xml:space="preserve">
+    <value />
+  </data>
+  <data name="RTIDescription" xml:space="preserve">
+    <value />
+  </data>
+  <data name="SecurityCode" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ShowAllNotices" xml:space="preserve">
+    <value />
+  </data>
+  <data name="UserName" xml:space="preserve">
+    <value />
+  </data>
+  <data name="FAQ" xml:space="preserve">
+    <value />
+  </data>
+  <data name="FeedBack" xml:space="preserve">
+    <value />
+  </data>
+  <data name="UserManual" xml:space="preserve">
+    <value />
+  </data>
+  <data name="your_submitted_rti" xml:space="preserve">
+    <value />
+  </data>
+  <data name="MandatoryField" xml:space="preserve">
+    <value />
+  </data>
+  <data name="PasswordPolicy" xml:space="preserve">
+    <value />
+  </data>
+  <data name="UserDetails" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Ex_Name" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Gender" xml:space="preserve">
+    <value />
+  </data>
+  <data name="logo" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value />
+  </data>
+  <data name="RTIDescription_P" xml:space="preserve">
+    <value />
+  </data>
+  <data name="MobileNo" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Address" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ConfirmPassword" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Country" xml:space="preserve">
+    <value />
+  </data>
+  <data name="CreatePassword" xml:space="preserve">
+    <value />
+  </data>
+  <data name="CreateUserID" xml:space="preserve">
+    <value />
+  </data>
+  <data name="District" xml:space="preserve">
+    <value />
+  </data>
+  <data name="EmailID" xml:space="preserve">
+    <value />
+  </data>
+  <data name="EnterSecurityCode" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Pincode" xml:space="preserve">
+    <value />
+  </data>
+  <data name="State" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Submit" xml:space="preserve">
+    <value />
+  </data>
+  <data name="UserType" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ApplicantInformation" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ApplicantType" xml:space="preserve">
+    <value />
+  </data>
+  <data name="AttachSupportingDocument" xml:space="preserve">
+    <value />
+  </data>
+  <data name="BaseDepartmentName" xml:space="preserve">
+    <value />
+  </data>
+  <data name="BPLCardNo" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ChangePassword" xml:space="preserve">
+    <value />
+  </data>
+  <data name="DetailsofRTIRequestapplication" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Isbpl" xml:space="preserve">
+    <value />
+  </data>
+  <data name="IssuingAuthority" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LogOut" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Office" xml:space="preserve">
+    <value />
+  </data>
+  <data name="OfficeCategory" xml:space="preserve">
+    <value />
+  </data>
+  <data name="OfficeLevel" xml:space="preserve">
+    <value />
+  </data>
+  <data name="OnlineRTIRequestForm" xml:space="preserve">
+    <value />
+  </data>
+  <data name="PayRTIFees" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Profile" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Reset" xml:space="preserve">
+    <value />
+  </data>
+  <data name="RTIAdditionalDocument" xml:space="preserve">
+    <value />
+  </data>
+  <data name="RTIDepartmentDetail" xml:space="preserve">
+    <value />
+  </data>
+  <data name="RTIDetails" xml:space="preserve">
+    <value />
+  </data>
+  <data name="RTIOfficer" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Subject" xml:space="preserve">
+    <value />
+  </data>
+  <data name="SubmitRTI" xml:space="preserve">
+    <value />
+  </data>
+  <data name="welcome" xml:space="preserve">
+    <value />
+  </data>
+  <data name="YearofIssue" xml:space="preserve">
+    <value />
+  </data>
+  <data name="YourIPAddress" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ContinueApplyforRTI" xml:space="preserve">
+    <value />
+  </data>
+  <data name="RTIRequestInformation" xml:space="preserve">
+    <value />
+  </data>
+  <data name="AddAction" xml:space="preserve">
+    <value />
+  </data>
+  <data name="AddOffice" xml:space="preserve">
+    <value />
+  </data>
+  <data name="AddRole" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ApprovePendingNotice" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Completed" xml:space="preserve">
+    <value />
+  </data>
+  <data name="CreateUserIdPassword" xml:space="preserve">
+    <value />
+  </data>
+  <data name="EditNoticeEntry" xml:space="preserve">
+    <value />
+  </data>
+  <data name="EmployeeOfficeMapping" xml:space="preserve">
+    <value />
+  </data>
+  <data name="MappingAllocated" xml:space="preserve">
+    <value />
+  </data>
+  <data name="MappingUnallocated" xml:space="preserve">
+    <value />
+  </data>
+  <data name="MasterAdding" xml:space="preserve">
+    <value />
+  </data>
+  <data name="MasterEntry" xml:space="preserve">
+    <value />
+  </data>
+  <data name="NewEmployee" xml:space="preserve">
+    <value />
+  </data>
+  <data name="NoticeEntry" xml:space="preserve">
+    <value />
+  </data>
+  <data name="NoticeImageEntry" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Pending" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Report" xml:space="preserve">
+    <value />
+  </data>
+  <data name="RTI" xml:space="preserve">
+    <value />
+  </data>
+  <data name="RtiSubmited" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ShowActionDetails" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Total" xml:space="preserve">
+    <value />
+  </data>
+  <data name="TotalDepartment" xml:space="preserve">
+    <value />
+  </data>
+  <data name="TotalEmployee" xml:space="preserve">
+    <value />
+  </data>
+  <data name="TotalMappedEmployee" xml:space="preserve">
+    <value />
+  </data>
+  <data name="TotalOffice" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ActionDetails" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ContactNumber" xml:space="preserve">
+    <value />
+  </data>
+  <data name="CreateNewPassword" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Department" xml:space="preserve">
+    <value />
+  </data>
+  <data name="DesignationName" xml:space="preserve">
+    <value />
+  </data>
+  <data name="FaxNumber" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ForAddNewOffice" xml:space="preserve">
+    <value />
+  </data>
+  <data name="OfficeAddress" xml:space="preserve">
+    <value />
+  </data>
+  <data name="OfficeEmail" xml:space="preserve">
+    <value />
+  </data>
+  <data name="OfficeName" xml:space="preserve">
+    <value />
+  </data>
+  <data name="OfficeURL" xml:space="preserve">
+    <value />
+  </data>
+  <data name="RepeatNewPassword" xml:space="preserve">
+    <value />
+  </data>
+  <data name="RTI_ID" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LastSuccessfulLogin" xml:space="preserve">
+    <value />
+  </data>
+  <data name="YourProfile" xml:space="preserve">
+    <value />
+  </data>
+  <data name="CharRemain" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="DetailOfApplicant" xml:space="preserve">
+    <value />
+  </data>
+  <data name="FeedBackText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="FileDescription" xml:space="preserve">
+    <value />
+  </data>
+  <data name="FormFilling" xml:space="preserve">
+    <value />
+  </data>
+  <data name="MessagePlaceHolder" xml:space="preserve">
+    <value />
+  </data>
+  <data name="NavigationInWebsite" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Other" xml:space="preserve">
+    <value />
+  </data>
+  <data name="RTIStatus" xml:space="preserve">
+    <value />
+  </data>
+  <data name="SelectSubject" xml:space="preserve">
+    <value />
+  </data>
+  <data name="SubjectOfFeedback" xml:space="preserve">
+    <value />
+  </data>
+  <data name="SupportingFile" xml:space="preserve">
+    <value />
+  </data>
+  <data name="WebSiteContent" xml:space="preserve">
+    <value />
+  </data>
+  <data name="YourValuableFeedback" xml:space="preserve">
+    <value />
+  </data>
+  <data name="FileProvided" xml:space="preserve">
+    <value />
+  </data>
+  <data name="MeetingDate" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Open" xml:space="preserve">
+    <value />
+  </data>
+  <data name="PayFees" xml:space="preserve">
+    <value />
+  </data>
+  <data name="RequiredFees" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ResultDescription" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ResultOfRTI" xml:space="preserve">
+    <value />
+  </data>
+  <data name="SelectMeetingDate" xml:space="preserve">
+    <value />
+  </data>
+  <data name="YourRtiUnderProcess" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ClickToAddFiles" xml:space="preserve">
+    <value />
+  </data>
+  <data name="eChallanLink" xml:space="preserve">
+    <value />
+  </data>
+  <data name="MobileMessage" xml:space="preserve">
+    <value />
+  </data>
+  <data name="MobileVarification" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Send" xml:space="preserve">
+    <value />
+  </data>
+  <data name="YourMobileNumber" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Account_date" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Amount" xml:space="preserve">
+    <value />
+  </data>
+  <data name="eChallanDetails" xml:space="preserve">
+    <value />
+  </data>
+  <data name="e_challan_date" xml:space="preserve">
+    <value />
+  </data>
+  <data name="GetData" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Major_head" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Minor_head" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Proceed" xml:space="preserve">
+    <value />
+  </data>
+  <data name="purpose" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Sub_head" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Sub_Major" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Tin_cin" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ActionId" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ActionName" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Active" xml:space="preserve">
+    <value />
+  </data>
+  <data name="AddNewAction" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ChargeType" xml:space="preserve">
+    <value />
+  </data>
+  <data name="CreateNewUserIdandPassword" xml:space="preserve">
+    <value />
+  </data>
+  <data name="DepartmentName" xml:space="preserve">
+    <value />
+  </data>
+  <data name="DisplayOrder" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Employee" xml:space="preserve">
+    <value />
+  </data>
+  <data name="EmployeeEntryForm" xml:space="preserve">
+    <value />
+  </data>
+  <data name="EmployeeName" xml:space="preserve">
+    <value />
+  </data>
+  <data name="EmployeeOfficeMappingAllocated" xml:space="preserve">
+    <value />
+  </data>
+  <data name="EmployeeOfficeMappingNotAllocated" xml:space="preserve">
+    <value />
+  </data>
+  <data name="MapEmployee" xml:space="preserve">
+    <value />
+  </data>
+  <data name="OfficeAddingForm" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Remark" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Role" xml:space="preserve">
+    <value />
+  </data>
+  <data name="RoleName" xml:space="preserve">
+    <value />
+  </data>
+  <data name="RollAddingForm" xml:space="preserve">
+    <value />
+  </data>
+  <data name="SelectEmployee" xml:space="preserve">
+    <value />
+  </data>
+  <data name="SelectPermissions" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Update" xml:space="preserve">
+    <value />
+  </data>
+  <data name="UserID" xml:space="preserve">
+    <value />
+  </data>
+  <data name="WelcomePage" xml:space="preserve">
+    <value />
+  </data>
+  <data name="AdvanceSearch" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Approve" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Bold" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Color" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ContentOfNoticeBoard" xml:space="preserve">
+    <value />
+  </data>
+  <data name="DisplayFrom" xml:space="preserve">
+    <value />
+  </data>
+  <data name="DisplayPermanently" xml:space="preserve">
+    <value />
+  </data>
+  <data name="DisplayTo" xml:space="preserve">
+    <value />
+  </data>
+  <data name="DurationofNoticeBoard" xml:space="preserve">
+    <value />
+  </data>
+  <data name="EnterURL" xml:space="preserve">
+    <value />
+  </data>
+  <data name="FileUpload" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Hyperlink" xml:space="preserve">
+    <value />
+  </data>
+  <data name="HyperlinkType" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ImageBlink" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Keyword" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LayoutofNoticeBoard" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Maximumsizeallowed" xml:space="preserve">
+    <value />
+  </data>
+  <data name="NoticeBoardImageEntryForm" xml:space="preserve">
+    <value />
+  </data>
+  <data name="NoticeEntryForm" xml:space="preserve">
+    <value />
+  </data>
+  <data name="NoticeFrom" xml:space="preserve">
+    <value />
+  </data>
+  <data name="NoticeID" xml:space="preserve">
+    <value />
+  </data>
+  <data name="NoticeTo" xml:space="preserve">
+    <value />
+  </data>
+  <data name="NoticeUpdateForm" xml:space="preserve">
+    <value />
+  </data>
+  <data name="OnlyPDFandJPGfilesareAllowed" xml:space="preserve">
+    <value />
+  </data>
+  <data name="PendingList" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Priority" xml:space="preserve">
+    <value />
+  </data>
+  <data name="PublishDate" xml:space="preserve">
+    <value />
+  </data>
+  <data name="SelectImage" xml:space="preserve">
+    <value />
+  </data>
+  <data name="UploadImage" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ActionDescription" xml:space="preserve">
+    <value />
+  </data>
+  <data name="DoYouWantMeetingWithApplicant" xml:space="preserve">
+    <value />
+  </data>
+  <data name="DoYouWantToUploadFile" xml:space="preserve">
+    <value />
+  </data>
+  <data name="FeesAmount" xml:space="preserve">
+    <value />
+  </data>
+  <data name="InsertFile" xml:space="preserve">
+    <value />
+  </data>
+  <data name="OnlyPdf_WordIsAcceptable" xml:space="preserve">
+    <value />
+  </data>
+  <data name="PayAdditionalFees" xml:space="preserve">
+    <value />
+  </data>
+  <data name="RTIDataforApplicant" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ActionDate" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ActionDetail" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ActionRemarks" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ApplicantAddress" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ApplicantName" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ApplicationDetail" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ApplicationNo" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ApplicationStatus" xml:space="preserve">
+    <value />
+  </data>
+  <data name="DataToBeProvidedForApplicant" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ForwardTo" xml:space="preserve">
+    <value />
+  </data>
+  <data name="IsThereAnyFileToProvideApplicant" xml:space="preserve">
+    <value />
+  </data>
+  <data name="NeedAdditionalFees" xml:space="preserve">
+    <value />
+  </data>
+  <data name="OnlyPdfIsAcceptable" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Reason" xml:space="preserve">
+    <value />
+  </data>
+  <data name="RTIAction" xml:space="preserve">
+    <value />
+  </data>
+  <data name="RTIInformation" xml:space="preserve">
+    <value />
+  </data>
+  <data name="RTISubmissionDate" xml:space="preserve">
+    <value />
+  </data>
+  <data name="SendTo" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ActionStatus" xml:space="preserve">
+    <value />
+  </data>
+  <data name="BPL" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value />
+  </data>
+  <data name="DoAction" xml:space="preserve">
+    <value />
+  </data>
+  <data name="EmployeeId" xml:space="preserve">
+    <value />
+  </data>
+  <data name="NoActionHasTakenYet" xml:space="preserve">
+    <value />
+  </data>
+  <data name="NoRecordsAvailable" xml:space="preserve">
+    <value />
+  </data>
+  <data name="OfficerName" xml:space="preserve">
+    <value />
+  </data>
+  <data name="RTIFiledDate" xml:space="preserve">
+    <value />
+  </data>
+  <data name="RTIRequestID" xml:space="preserve">
+    <value />
+  </data>
+  <data name="SNo" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value />
+  </data>
+  <data name="SubjectOfRTI" xml:space="preserve">
+    <value />
+  </data>
+  <data name="TakeAction" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Charge" xml:space="preserve">
+    <value />
+  </data>
+  <data name="IsActive" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ActionTaken" xml:space="preserve">
+    <value />
+  </data>
+  <data name="All" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ClickHere" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value />
+  </data>
+  <data name="EnterTheOTPThatHasBeenSentToYourMobile" xml:space="preserve">
+    <value />
+  </data>
+  <data name="File" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ForgetPassword" xml:space="preserve">
+    <value />
+  </data>
+  <data name="From" xml:space="preserve">
+    <value />
+  </data>
+  <data name="IsMeeting" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Permanent" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Please" xml:space="preserve">
+    <value />
+  </data>
+  <data name="RTIDateTime" xml:space="preserve">
+    <value />
+  </data>
+  <data name="SelectDesignation" xml:space="preserve">
+    <value />
+  </data>
+  <data name="SelectYourDesignation" xml:space="preserve">
+    <value />
+  </data>
+  <data name="SelectYourRole" xml:space="preserve">
+    <value />
+  </data>
+  <data name="To" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ToGetVCOnYourRegisteredMobile" xml:space="preserve">
+    <value />
+  </data>
+  <data name="URL" xml:space="preserve">
+    <value />
+  </data>
+  <data name="DepartmentId" xml:space="preserve">
+    <value />
+  </data>
+  <data name="EmployeeCode" xml:space="preserve">
+    <value />
+  </data>
+  <data name="EmployeeMapId" xml:space="preserve">
+    <value />
+  </data>
+  <data name="RTI_Request_Info_1" xml:space="preserve">
+    <value />
+  </data>
+  <data name="RTI_Request_Info_10" xml:space="preserve">
+    <value />
+  </data>
+  <data name="RTI_Request_Info_11" xml:space="preserve">
+    <value />
+  </data>
+  <data name="RTI_Request_Info_2" xml:space="preserve">
+    <value />
+  </data>
+  <data name="RTI_Request_Info_3" xml:space="preserve">
+    <value />
+  </data>
+  <data name="RTI_Request_Info_4" xml:space="preserve">
+    <value />
+  </data>
+  <data name="RTI_Request_Info_5" xml:space="preserve">
+    <value />
+  </data>
+  <data name="RTI_Request_Info_6" xml:space="preserve">
+    <value />
+  </data>
+  <data name="RTI_Request_Info_7" xml:space="preserve">
+    <value />
+  </data>
+  <data name="RTI_Request_Info_8" xml:space="preserve">
+    <value />
+  </data>
+  <data name="RTI_Request_Info_9" xml:space="preserve">
+    <value />
+  </data>
+  <data name="MappingID" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Ex_Address" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Ex_Email" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Ex_Mobile" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Ex_ApplicationDetailsHere" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Ex_Bpl_Card_No" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Ex_OtherCountryName" xml:space="preserve">
+    <value />
+  </data>
+  <data name="FileDescriptionHere" xml:space="preserve">
+    <value />
+  </data>
+  <data name="IssueYear" xml:space="preserve">
+    <value />
+  </data>
+  <data name="SubjectHere" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Ex_Color" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Ex_Fax" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Ex_OfficeAddress" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Ex_OfficeName" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Ex_PublishDate" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Ex_URL" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ReAssignRTI" xml:space="preserve">
+    <value />
+  </data>
+  <data name="RTI_ReAssign" xml:space="preserve">
+    <value />
+  </data>
+  <data name="FieldRequired" xml:space="preserve">
+    <value />
+  </data>
+  <data name="SecurityCodeRequired" xml:space="preserve">
+    <value />
+  </data>
+  <data name="TotalCompletedRTI" xml:space="preserve">
+    <value />
+  </data>
+  <data name="TotalRejectedRTI" xml:space="preserve">
+    <value />
+  </data>
+  <data name="TotalRTI" xml:space="preserve">
+    <value />
+  </data>
+  <data name="TotalRTIForClarification" xml:space="preserve">
+    <value />
+  </data>
+  <data name="TotalUnderProcessRTI" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ClarificationDescription" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ClarificationNeed" xml:space="preserve">
+    <value />
+  </data>
+  <data name="RejectedDetail" xml:space="preserve">
+    <value />
+  </data>
+  <data name="RejectedReason" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Upload_Dept_User_Manual" xml:space="preserve">
+    <value />
+  </data>
+  <data name="DeptManual" xml:space="preserve">
+    <value />
+  </data>
+  <data name="DeptUserManual" xml:space="preserve">
+    <value />
+  </data>
+</root>

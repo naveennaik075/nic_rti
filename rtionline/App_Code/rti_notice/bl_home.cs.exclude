@@ -1,0 +1,57 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+
+/// <summary>
+/// Summary description for bl_home
+/// </summary>
+public class bl_home
+{
+    public bl_home()
+    {
+        //
+        // TODO: Add constructor logic here
+        //
+    }
+
+    string district_id;
+
+    public string District_id { get { return district_id; } set { district_id = value; } }
+
+
+    string session, stamp_id, document_name, mime_type, file_extn, section_id, upload_date, client_ip, user_id, file_id, remark, em1_app, org_type, type, active, display_name,status;
+    byte[] file_data;
+    string cate, schemes_id;
+    int emp_id;
+
+    public string Schemes_id { get { return schemes_id; } set { schemes_id = value; } }
+    public string Session { get { return session; } set { session = value; } }
+    public string Stamp_id { get { return stamp_id; } set { stamp_id = value; } }
+    public string Document_Name { get { return document_name; } set { document_name = value; } }
+    public string Mime_type { get { return mime_type; } set { mime_type = value; } }
+    public string File_Extn { get { return file_extn; } set { file_extn = value; } }
+    public string Section_Id { get { return section_id; } set { section_id = value; } }
+    public string Upload_Date { get { return upload_date; } set { upload_date = value; } }
+    public string Client_Ip { get { return client_ip; } set { client_ip = value; } }
+    public string User_Id { get { return user_id; } set { user_id = value; } }
+    public byte[] File_Data { get { return file_data; } set { file_data = value; } }
+    public string File_Id { get { return file_id; } set { file_id = value; } }
+    public string Remark { get { return remark; } set { remark = value; } }
+    public string Em2_app_no { get { return em1_app; } set { em1_app = value; } }
+    public string Org_Type { get { return org_type; } set { org_type = value; } }
+
+    public string Type { get { return type; } set { type = value; } }
+
+    public string Active { get { return active; } set { active = value; } }
+
+    public string Display_name { get { return display_name; } set { display_name = value; } }
+
+    public string Cate { get { return cate; } set { cate = value; } }
+
+    public string Status { get { return status; } set { status = value; } }
+
+    public int Emp_id { get { return emp_id; } set { emp_id = value; } }
+}
+
+

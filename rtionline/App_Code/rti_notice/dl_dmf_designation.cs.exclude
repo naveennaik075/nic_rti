@@ -1,0 +1,1899 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Transactions;
+using System.Data.SqlClient;
+using MySql.Data.MySqlClient;
+
+
+
+/// <summary>
+/// Summary description for dl_dmf_designation
+/// ekta
+/// 1 oct 2016
+/// </summary>
+public class dl_dmf_designation
+{
+    public dl_dmf_designation()
+    {
+        //
+        // TODO: Add constructor logic here
+        //
+    }
+
+    public ReturnClass.ReturnDataTable dmf_designation_id()
+    {
+        ReturnClass.ReturnDataTable dt = new ReturnClass.ReturnDataTable();
+        db_maria_connection db = new db_maria_connection();
+
+        string qr = @"select IFNULL(MAX(designation_id),0) AS dsgid FROM dmf_designation ";
+
+        //MyMySqlParameter[] pm = new MyMySqlParameter[]{
+        //         new MyMySqlParameter("@designation_id",bl.designation_id)
+
+
+        //    };
+
+        dt = db.executeSelectQuery(qr);
+
+        return dt;
+    }
+    public ReturnClass.ReturnDataTable dmf_employee_id(bl_dmf_designation bl)
+    {
+        ReturnClass.ReturnDataTable dt = new ReturnClass.ReturnDataTable();
+        db_maria_connection db = new db_maria_connection();
+
+        string qr = @"select IFNULL(MAX(emp_id ),0) AS employee_id FROM dmf_employee e where   year(e.datetime)=@datetime";
+
+        MySqlParameter[] pm = new MySqlParameter[]{
+                 new MySqlParameter("@datetime",bl.Year)
+
+
+            };
+
+        dt = db.executeSelectQuery(qr, pm);
+
+        return dt;
+    }
+    public ReturnClass.ReturnDataTable action_id(bl_dmf_designation bl)
+    {
+        ReturnClass.ReturnDataTable dt = new ReturnClass.ReturnDataTable();
+        db_maria_connection db = new db_maria_connection();
+
+        string qr = @"select IFNULL(MAX(Action_Id),0) AS Action_id FROM dmf_employee_transaction where emp_id=@emp_id ";
+
+        MySqlParameter[] pm = new MySqlParameter[]{
+                 new MySqlParameter("@emp_id",bl.emp_id)
+
+
+            };
+
+        dt = db.executeSelectQuery(qr, pm);
+
+        return dt;
+    }
+    public ReturnClass.ReturnDataTable Office_Mapping_Id(bl_dmf_designation bl)
+    {
+        ReturnClass.ReturnDataTable dt = new ReturnClass.ReturnDataTable();
+        db_maria_connection db = new db_maria_connection();
+
+        string qr = @"select eop.Office_Mapping_Id From emp_office_mapping eop 
+                      inner join  permissions p on eop.Emp_Id=p.Emp_Id
+                      inner join employees e on e.Emp_Id=eop.Emp_Id
+                      inner join user_login ul on ul.Login_Id=eop.Emp_Id
+                      where p.Approved='Y' and p.Active='Y' and p.Category=@Category
+                      and e.Dist_Code=@Dist_Code";
+
+        MySqlParameter[] pm = new MySqlParameter[]{
+           
+                  new MySqlParameter("@Category",bl.Category),
+                     new MySqlParameter("@Dist_Code",bl.District_id)
+            };
+        dt = db.executeSelectQuery(qr, pm);
+
+        return dt;
+    }
+
+    public ReturnClass.ReturnDataTable Office_Mapping_Id_state(bl_dmf_designation bl)
+    {
+        ReturnClass.ReturnDataTable dt = new ReturnClass.ReturnDataTable();
+        db_maria_connection db = new db_maria_connection();
+
+        string qr = @"select eop.Office_Mapping_Id From emp_office_mapping eop 
+                      inner join  permissions p on eop.Emp_Id=p.Emp_Id
+                      inner join employees e on e.Emp_Id=eop.Emp_Id
+                      inner join user_login ul on ul.Login_Id=eop.Emp_Id
+                      where p.Approved='Y' and p.Active='Y' and p.Category=@Category";
+
+        MySqlParameter[] pm = new MySqlParameter[]{
+
+                  new MySqlParameter("@Category",bl.Category),
+                     
+            };
+        dt = db.executeSelectQuery(qr, pm);
+
+        return dt;
+    }
+
+    //public ReturnClass.ReturnDataTable bind_dmf_category(bl_dmf_designation bl)
+    //{
+    //    ReturnClass.ReturnDataTable dt = new ReturnClass.ReturnDataTable();
+    //    db_maria_connection db = new db_maria_connection();
+
+    //    string qr = @"Select category as name,id as value from dmf_designation Where designation_id=@designation_id ";
+
+    //    MySqlParameter[] pm = new MySqlParameter[]{
+    //             new MySqlParameter("@designation_id",bl.designation_id)
+
+
+    //        };
+
+    //    dt = db.executeSelectQuery(qr, pm);
+
+    //    return dt;
+    //}
+
+
+    //DB_Select
+    public ReturnClass.ReturnDataTable Select_dmf_designation_by_id(bl_dmf_designation bl)
+    {
+        ReturnClass.ReturnDataTable dt = new ReturnClass.ReturnDataTable();
+        db_maria_connection db = new db_maria_connection();
+
+        string qr = @"Select * from dmf_designation Where designation_id=@designation_id ";
+
+        MySqlParameter[] pm = new MySqlParameter[]{
+                 new MySqlParameter("@designation_id",bl.Desg_id)
+
+
+            };
+
+        dt = db.executeSelectQuery(qr, pm);
+
+        return dt;
+    }
+
+    public ReturnClass.ReturnDataTable empty_filedata(bl_dmf_designation bl)
+    {
+        ReturnClass.ReturnDataTable dt = new ReturnClass.ReturnDataTable();
+        db_maria_connection db = new db_maria_connection();
+
+        string qr = @"select ud.file_data from upload_doc ud where ud.emp_id=@emp_id and ud.file_id=@file_id ";
+
+        MySqlParameter[] pm = new MySqlParameter[]{
+                 new MySqlParameter("@emp_id",bl.Emp_id),
+                  new MySqlParameter("@file_id",bl.File_id)
+
+
+            };
+
+        dt = db.executeSelectQuery(qr, pm);
+
+        return dt;
+    }
+
+    public ReturnClass.ReturnDataTable Select_dmf_employee_by_id(bl_dmf_designation bl)
+    {
+        ReturnClass.ReturnDataTable dt = new ReturnClass.ReturnDataTable();
+        db_maria_connection db = new db_maria_connection();
+
+        string qr = "", where = "", orderby = "";
+        try
+        {
+
+            List<MySqlParameter> pm = new List<MySqlParameter>();
+            if (bl.Emp_id != 0 && bl.Emp_id != null)
+            {
+
+                MySqlParameter ba = new MySqlParameter("Emp_id", bl.Emp_id);
+                pm.Add(ba);
+                where += " and de.emp_id=@Emp_id ";
+
+            }
+            if (bl.File_id != "" && bl.File_id != null)
+            {
+
+                MySqlParameter ba = new MySqlParameter("File_id", bl.File_id);
+                pm.Add(ba);
+                where += " and ud.file_id=@File_id ";
+
+            }
+            // qr = "Select emp_id,name_hindi,name_eng,desg_category,designation_id,date_format(datefrom,'%d/%m/%Y') as datefrom,date_format(dateto,'%d/%m/%Y') as dateto from dmf_employee where 1=1";
+            qr = @"SELECT  ud.emp_id,ud.file_id,ud.Upload_Date,ud.document_name,ud.mime_type,ud.file_extn,ud.file_data,de.email_id,de.contact_no,de.phone_no,de.main_category,de.gender,de.desg_category as ddl_designation_cat,doo.desg_name_hindi as desg_cat,doo.desg_category as desg_category,dd.desg_name_hindi as desg_id,dd.designation_id as designation_id,de.emp_id,de.name_hindi,de.name_eng,de.`status`,de.order_by,
+                 de.user_id,de.client_ip,de.datetime,date_format(de.datefrom,'%d/%m/%Y') as datefrom,date_format(de.dateto,'%d/%m/%Y') as dateto,de.district_id
+                  FROM dmf_employee de 
+                  INNER JOIN dmf_designation  dd ON dd.designation_id=de.designation_id
+                   INNER JOIN dmf_designation  doo ON doo.designation_id=de.desg_category
+                   inner join dmf_category dc on dc.cat_id=dd.desg_category
+                    inner join upload_doc ud on ud.emp_id=de.emp_id 
+                    where 1=1";
+
+            //            string qr1 = @"SELECT  ud.emp_id,ud.file_id,ud.Upload_Date,ud.document_name,ud.mime_type,ud.file_extn,ud.file_data,de.email_id,de.contact_no,de.main_category,
+            //                 (case when de.gender='F' then 'Female' when de.gender='M' then 'Male' END) as gender,de.desg_category as ddl_designation_cat,
+            //                doo.desg_name_hindi as desg_category,dd.desg_name_hindi as designation_id,de.emp_id,de.name_hindi,de.name_eng,de.order_by,
+            //                (case when de.status='A' then 'Active' else 'Inactive' END) as status,
+            //                 de.user_id,de.client_ip,de.datetime,date_format(de.datefrom,'%d/%m/%Y') as datefrom,date_format(de.dateto,'%d/%m/%Y') as dateto,de.district_id, dcl.Hindi_Name as main_category
+            //                  FROM dmf_employee de 
+            //                  INNER JOIN dmf_designation  dd ON dd.designation_id=de.designation_id
+            //                   INNER JOIN dmf_designation  doo ON doo.designation_id=de.desg_category
+            //                   inner join dmf_category dc on dc.cat_id=dd.desg_category 
+            //                    inner join upload_doc ud on ud.emp_id=de.emp_id
+            //                     inner join ddl_cat_list dcl on dcl.Id=de.main_category
+            //                    where 1=1";
+
+
+            where = where + " order by datefrom";
+
+            qr = qr + where;
+            dt = db.executeSelectQuery(qr, pm.ToArray());
+
+        }
+        catch (Exception Ex)
+        {
+            dt.status = false;
+            dt.message = Ex.Message;
+        }
+
+
+        return dt;
+    }
+
+
+    //DB_Delete
+    public ReturnClass.ReturnBool delete_dmf_designation(bl_dmf_designation bl)
+    {
+
+        ReturnClass.ReturnBool rb = new ReturnClass.ReturnBool();
+        db_maria_connection db = new db_maria_connection();
+
+        using (TransactionScope transScope = new TransactionScope())
+        {
+
+            string query = "INSERT INTO dmf_designation_log SELECT * from  dmf_designation where designation_id=@designation_id ";
+
+            MySqlParameter[] pm = new MySqlParameter[]{
+                        new MySqlParameter("designation_id",bl.Desg_id)
+            };
+
+
+            rb = db.executeInsertQuery(query, pm);
+
+
+            if (rb.status == true)
+            {
+                string query2 = "Delete From  dmf_designation Where designation_id=@designation_id";
+
+
+
+                MySqlParameter[] pm2 = new MySqlParameter[]{
+                        new MySqlParameter("designation_id",bl.Desg_id)
+            };
+
+                rb = db.executeInsertQuery(query2, pm2);
+                transScope.Complete();
+            }
+        }
+
+        return rb;
+
+    }
+    public ReturnClass.ReturnBool delete_dmf_employee(bl_dmf_designation bl)
+    {
+
+        ReturnClass.ReturnBool rb = new ReturnClass.ReturnBool();
+        db_maria_connection db = new db_maria_connection();
+
+        using (TransactionScope transScope = new TransactionScope())
+        {
+
+            string query = "INSERT INTO dmf_employee_log SELECT * from  dmf_employee where emp_id=@emp_id ";
+
+            MySqlParameter[] pm = new MySqlParameter[]{
+                        new MySqlParameter("emp_id",bl.Emp_id)
+            };
+
+
+            rb = db.executeInsertQuery(query, pm);
+
+
+            if (rb.status == true)
+            {
+                string query3 = "INSERT INTO upload_doc_log SELECT * from  upload_doc where emp_id=@emp_id ";
+
+
+
+                MySqlParameter[] pm3 = new MySqlParameter[]{
+                        new MySqlParameter("emp_id",bl.Emp_id)
+            };
+
+                rb = db.executeInsertQuery(query3, pm3);
+
+            }
+
+            if (rb.status == true)
+            {
+                string query2 = "Delete From  dmf_employee Where emp_id=@emp_id";
+
+
+
+                MySqlParameter[] pm2 = new MySqlParameter[]{
+                        new MySqlParameter("emp_id",bl.Emp_id)
+            };
+
+                rb = db.executeInsertQuery(query2, pm2);
+            }
+
+            if (rb.status == true)
+            {
+                string query1 = "delete from dmf_employee_status where emp_id=@emp_id";
+
+
+
+                MySqlParameter[] pm1 = new MySqlParameter[]{
+                        new MySqlParameter("emp_id",bl.Emp_id)
+            };
+
+                rb = db.executeInsertQuery(query1, pm1);
+            }
+            if (rb.status == true)
+            {
+                string query4 = "delete from dmf_employee_transaction where emp_id=@emp_id";
+
+
+
+                MySqlParameter[] pm4 = new MySqlParameter[]{
+                        new MySqlParameter("emp_id",bl.Emp_id)
+            };
+
+                rb = db.executeInsertQuery(query4, pm4);
+            }
+
+
+            if (bl.Emp_id == 0)
+            { }
+            else
+            {
+                if (rb.status == true)
+                {
+                    string query4 = "Delete From  upload_doc Where emp_id=@emp_id";
+
+
+
+                    MySqlParameter[] pm4 = new MySqlParameter[]{
+                        new MySqlParameter("emp_id",bl.Emp_id)
+            };
+                    rb = db.executeInsertQuery(query4, pm4);
+                }
+
+
+            }
+
+            if (rb.status == true)
+            {
+                transScope.Complete();
+            }
+        }
+
+        return rb;
+
+    }
+
+
+    //DB_Update
+    public ReturnClass.ReturnBool Update_dmf_designation(bl_dmf_designation bl)
+    {
+
+        ReturnClass.ReturnBool rb = new ReturnClass.ReturnBool();
+        db_maria_connection db = new db_maria_connection();
+
+        using (TransactionScope transScope = new TransactionScope())
+        {
+
+            string query = "INSERT INTO dmf_designation_log SELECT * from  dmf_designation  Where designation_id=@designation_id";
+
+            MySqlParameter[] pm = new MySqlParameter[]{
+                        new MySqlParameter("designation_id",bl.designation_id)
+            };
+
+            rb = db.executeInsertQuery(query, pm);
+
+
+            if (rb.status == true)
+            {
+
+                string query2 = @"Update dmf_designation Set desg_category=@desg_category,desg_name_hindi=@desg_name_hindi,desg_name_eng=@desg_name_eng,
+
+                                desg_status=@desg_status,order_by=@order_by,user_id=@user_id,
+                                client_ip=@client_ip,datetime=@datetime Where designation_id=@designation_id ";
+
+
+                MySqlParameter[] pm2 = new MySqlParameter[]{
+                        new MySqlParameter("desg_category",bl.desg_category),
+                            new MySqlParameter("desg_name_hindi",bl.desg_name_hindi),
+                            new MySqlParameter("desg_name_eng",bl.desg_name_eng),
+                            new MySqlParameter("desg_status",bl.desg_status),
+                            new MySqlParameter("order_by",bl.order_by),
+                            new MySqlParameter("user_id",bl.user_id),
+                            new MySqlParameter("client_ip",bl.client_ip),
+                            new MySqlParameter("datetime",bl.datetime),
+                            new MySqlParameter("designation_id",bl.Desg_id)
+            };
+
+                rb = db.executeInsertQuery(query2, pm2);
+                transScope.Complete();
+            }
+        }
+
+        return rb;
+
+    }
+
+    //    public ReturnClass.ReturnBool Update_dmf_employee(bl_dmf_designation bl)
+    //    {
+
+    //        ReturnClass.ReturnBool rb = new ReturnClass.ReturnBool();
+    //        db_maria_connection db = new db_maria_connection();
+
+    //        using (TransactionScope transScope = new TransactionScope())
+    //        {
+
+    //            string query = "INSERT INTO dmf_employee_log SELECT * from  dmf_employee  Where emp_id=@emp_id";
+
+    //            MySqlParameter[] pm = new MySqlParameter[]{
+    //                        new MySqlParameter("emp_id",bl.Emp_id)
+    //            };
+
+    //            rb = db.executeInsertQuery(query, pm);
+
+
+    //            if (rb.status == true)
+    //            {
+    //                string query2 = @"Update dmf_employee Set desg_category=@desg_category,designation_id=@designation_id,name_hindi=@name_hindi,name_eng=@name_eng,
+    //
+    //                                status=@status,order_by=@order_by,user_id=@user_id,
+    //                                client_ip=@client_ip,datefrom=@datefrom,dateto=@dateto,email_id=@email_id,contact_no=@contact_no,main_category=@main_category,gender=@gender Where emp_id=@emp_id ";
+    //                MySqlParameter[] pm2 = new MySqlParameter[]{
+    //                       new MySqlParameter("desg_category",bl.desg_category),
+    //                          new MySqlParameter("designation_id",bl.Desg_id),
+    //                            new MySqlParameter("name_hindi",bl.Name_hindi),
+    //                            new MySqlParameter("name_eng",bl.Name_eng),
+    //                            new MySqlParameter("status",bl.Status),
+    //                            new MySqlParameter("order_by",bl.order_by),
+    //                            new MySqlParameter("user_id",bl.user_id),
+    //                            new MySqlParameter("client_ip",bl.client_ip),
+    //                             new MySqlParameter("datefrom",bl.Datefrom),
+    //                            new MySqlParameter("dateto",bl.Dateto),
+    //                            new MySqlParameter("emp_id",bl.Emp_id),
+    //                              new MySqlParameter("district_id",bl.District_id),
+    //                              new MySqlParameter("email_id",bl.Email_id),
+    //                              new MySqlParameter("contact_no",bl.Contact_no),
+    //                              new MySqlParameter("main_category",bl.Main_category),
+    //                              new MySqlParameter("gender",bl.Gender)
+    //            };
+
+    //                rb = db.executeInsertQuery(query2, pm2);
+    //                transScope.Complete();
+    //            }
+    //        }
+
+    //        return rb;
+
+    //    }
+
+    //DB_Insert
+
+    //    public ReturnClass.ReturnBool insert_dmf_employee(bl_dmf_designation bl)
+    //    {
+
+    //        ReturnClass.ReturnBool rb = new ReturnClass.ReturnBool();
+    //        db_maria_connection db = new db_maria_connection();
+
+    //        string query = @"Insert Into dmf_employee(emp_id,desg_category,designation_id,name_hindi,name_eng,status,order_by,user_id,client_ip,datetime,datefrom,dateto,district_id) 
+    //                            Values(@emp_id,@desg_category,@designation_id,@name_hindi,@name_eng,@status,@order_by,@user_id,@client_ip,@datetime,@datefrom,@dateto,@district_id)";
+
+
+    //        MySqlParameter[] pm = new MySqlParameter[]{
+    //                            new MySqlParameter("desg_category",bl.desg_category),
+    //                             new MySqlParameter("designation_id",bl.Desg_id),
+    //                            new MySqlParameter("name_hindi",bl.Name_hindi),
+    //                            new MySqlParameter("name_eng",bl.Name_eng),
+    //                            new MySqlParameter("status",bl.Status),
+    //                            new MySqlParameter("order_by",bl.order_by),
+    //                            new MySqlParameter("user_id",bl.user_id),
+    //                            new MySqlParameter("client_ip",bl.client_ip),
+    //                            new MySqlParameter("datetime",bl.datetime),
+    //                            new MySqlParameter("emp_id",bl.Emp_id),
+    //                              new MySqlParameter("datefrom",bl.Datefrom),
+    //                                new MySqlParameter("dateto",bl.Dateto),
+    //                              new MySqlParameter("district_id",bl.District_id)
+
+
+    //            };
+
+    //        rb = db.executeInsertQuery(query, pm);
+
+    //        return rb;
+
+    //    }
+    public ReturnClass.ReturnBool insert_dmf_designation(bl_dmf_designation bl)
+    {
+
+        ReturnClass.ReturnBool rb = new ReturnClass.ReturnBool();
+        db_maria_connection db = new db_maria_connection();
+
+        string query = @"Insert Into dmf_designation(designation_id,desg_category,desg_name_hindi,desg_name_eng,desg_status,order_by,user_id,client_ip,datetime) 
+                            Values(@designation_id,@desg_category,@desg_name_hindi,@desg_name_eng,@desg_status,@order_by,@user_id,@client_ip,@datetime)";
+
+
+        MySqlParameter[] pm = new MySqlParameter[]{
+                            new MySqlParameter("desg_category",bl.desg_category),
+                            new MySqlParameter("desg_name_hindi",bl.desg_name_hindi),
+                            new MySqlParameter("desg_name_eng",bl.desg_name_eng),
+                            new MySqlParameter("desg_status",bl.desg_status),
+                            new MySqlParameter("order_by",bl.order_by),
+                            new MySqlParameter("user_id",bl.user_id),
+                            new MySqlParameter("client_ip",bl.client_ip),
+                            new MySqlParameter("datetime",bl.datetime),
+                            new MySqlParameter("designation_id",bl.Desg_id)
+
+            };
+
+        rb = db.executeInsertQuery(query, pm);
+
+        return rb;
+
+    }
+
+    public ReturnClass.ReturnDataTable bind_grid_dmf_designation(bl_dmf_designation bl)
+    {
+        ReturnClass.ReturnDataTable dt = new ReturnClass.ReturnDataTable();
+        db_maria_connection db = new db_maria_connection();
+
+        string qr = "", where = "", orderby = "";
+        try
+        {
+            List<MySqlParameter> pm = new List<MySqlParameter>();
+            //if (bl.User_id != "0" && bl.User_id != null && bl.User_id != "" && bl.User_id != "Select")
+            //{
+
+            //    MySqlParameter da = new MySqlParameter("User_id", bl.User_id);
+            //    pm.Add(da);
+            //    where += " and user_id=@User_id ";
+            //}
+            //if (bl.Role_id != "0" && bl.Role_id != null && bl.Role_id != "" )
+            //{
+
+            //    MySqlParameter ba = new MySqlParameter("Role_id", bl.Role_id);
+            //    pm.Add(ba);
+            //    where += " and role_id=@Role_id ";
+            //}
+            //if ( bl.Desg_id != null )
+            //{
+            //    MySqlParameter ca = new MySqlParameter("designation_id", bl.Desg_id);
+            //    pm.Add(ca);
+            //    where += " and designation_id=@designation_id ";
+            //} 
+            if (bl.Desg_category != "0" && bl.Desg_category != null && bl.Desg_category != "" && bl.Desg_category != "Select")
+            {
+
+                MySqlParameter ba = new MySqlParameter("Desg_category", bl.Desg_category);
+                pm.Add(ba);
+                where += " and de.desg_category=@Desg_category ";
+            }
+            // qr = "select designation_id,desg_category,desg_name_hindi,desg_name_eng,desg_status,order_by,user_id,client_ip,datetime from dmf_designation where 1=1";
+            qr = @"SELECT dc.name as desg_category,de.designation_id,de.desg_category,de.desg_name_hindi,desg_name_eng,desg_status,order_by,user_id,client_ip,datetime  
+		         FROM dmf_designation de 
+                 INNER JOIN dmf_category dc on de.desg_category=dc.cat_id where 1=1";
+
+            where = where + " order by desg_name_hindi";
+            qr = qr + where;
+            dt = db.executeSelectQuery(qr, pm.ToArray());
+
+        }
+        catch (Exception Ex)
+        {
+            dt.status = false;
+            dt.message = Ex.Message;
+        }
+
+
+        return dt;
+    }
+
+    public ReturnClass.ReturnDataTable bind_grid_dmf_employee(bl_dmf_designation bl)
+    {
+        ReturnClass.ReturnDataTable dt = new ReturnClass.ReturnDataTable();
+        db_maria_connection db = new db_maria_connection();
+
+        string qr = "", where = "", orderby = "";
+        try
+        {
+            List<MySqlParameter> pm = new List<MySqlParameter>();
+
+            if (bl.Type != "0" && bl.Type != null && bl.Type != "")
+            {
+                MySqlParameter ca = new MySqlParameter("Type", bl.Type);
+                pm.Add(ca);
+                where += " and dc.`type`=@Type ";
+            }
+            MySqlParameter user_id = new MySqlParameter("user_id", bl.User_id);
+            pm.Add(user_id);
+            qr = @"				SELECT  ud.emp_id,ud.file_id,ud.Upload_Date,ud.document_name,ud.mime_type,ud.file_extn,ud.file_data,de.email_id,de.contact_no,de.phone_no,de.main_category,
+            (case when de.gender='F' then 'Female' when de.gender='M' then 'Male' END) as gender,de.desg_category as ddl_designation_cat,
+            ddo.desg_name_hindi as desg_category,dd.desg_name_hindi as designation_id,de.emp_id,de.name_hindi,de.name_eng,de.order_by,
+            (case when de.status='A' then 'Active' else 'Inactive' END) as status,
+            de.user_id,de.client_ip,de.datetime,date_format(de.datefrom,'%d/%m/%Y') as datefrom,date_format(de.dateto,'%d/%m/%Y') as dateto,de.district_id, dcl.Hindi_Name as main_categoryy
+            FROM dmf_employee de 
+            INNER JOIN dmf_designation  dd ON dd.designation_id=de.designation_id
+            INNER JOIN dmf_designation  ddo ON ddo.designation_id=de.desg_category
+            inner join dmf_category dc on dc.cat_id=dd.desg_category 
+            inner join upload_doc ud on ud.emp_id=de.emp_id
+            inner join ddl_cat_list dcl on dcl.Id=de.main_category
+             where de.user_id=@user_id ";
+
+
+            where = where + " order by desg_category";
+
+            qr = qr + where;
+            dt = db.executeSelectQuery(qr, pm.ToArray());
+
+        }
+        catch (Exception Ex)
+        {
+            dt.status = false;
+            dt.message = Ex.Message;
+        }
+
+
+        return dt;
+    }
+
+    public ReturnClass.ReturnDataTable bind_grid_dmf_employee_approve(bl_dmf_designation bl)
+    {
+        ReturnClass.ReturnDataTable dt = new ReturnClass.ReturnDataTable();
+        db_maria_connection db = new db_maria_connection();
+
+        string qr = "", where = "", orderby = "";
+        try
+        {
+            List<MySqlParameter> pm = new List<MySqlParameter>();
+
+            if (bl.Type != "0" && bl.Type != null && bl.Type != "")
+            {
+                MySqlParameter ca = new MySqlParameter("Type", bl.Type);
+                pm.Add(ca);
+                where += " and dc.`type`=@Type ";
+            }
+            MySqlParameter Office_Mapping_Id = new MySqlParameter("Office_Mapping_Id", bl.Mapping_id);
+            pm.Add(Office_Mapping_Id);
+            MySqlParameter status = new MySqlParameter("Status", bl.Status);
+            pm.Add(status);
+
+            qr = @"		SELECT  ud.emp_id,ud.file_id,ud.Upload_Date,ud.document_name,ud.mime_type,ud.file_extn,ud.file_data,de.email_id,de.contact_no, de.phone_no,de.main_category,
+(case when de.gender='F' then 'Female' when de.gender='M' then 'Male' END) as gender,de.desg_category as ddl_designation_cat,
+doo.desg_name_hindi as desg_category,dd.desg_name_hindi as designation_id,de.emp_id,de.name_hindi,de.name_eng,de.order_by,
+(case when des.Status='A' then 'Approve' else 'Pending' END) as status,
+de.user_id,de.client_ip,de.datetime,date_format(de.datefrom,'%d/%m/%Y') as datefrom,date_format(de.dateto,'%d/%m/%Y') as dateto,de.district_id, dcl.Hindi_Name as main_categoryy
+FROM dmf_employee de 
+INNER JOIN dmf_designation  dd ON dd.designation_id=de.designation_id
+INNER JOIN dmf_designation  doo ON doo.designation_id=de.desg_category
+inner join dmf_category dc on dc.cat_id=dd.desg_category 
+inner join upload_doc ud on ud.emp_id=de.emp_id
+inner join ddl_cat_list dcl on dcl.Id=de.main_category
+inner join dmf_employee_status des on des.emp_id=de.emp_id
+where des.Office_Mapping_Id=@Office_Mapping_Id and des.Status=@Status";
+
+
+            where = where + " order by desg_category";
+
+            qr = qr + where;
+            dt = db.executeSelectQuery(qr, pm.ToArray());
+
+        }
+        catch (Exception Ex)
+        {
+            dt.status = false;
+            dt.message = Ex.Message;
+        }
+
+
+        return dt;
+    }
+
+
+    public ReturnClass.ReturnDataTable bind_designation_cat(bl_dmf_designation bl)
+    {
+        ReturnClass.ReturnDataTable dt = new ReturnClass.ReturnDataTable();
+        db_maria_connection db = new db_maria_connection();
+
+        string qr = "", where = "", orderby = "";
+        try
+        {
+            List<MySqlParameter> pm = new List<MySqlParameter>();
+            if (bl.Type != "0" && bl.Type != null && bl.Type != "Select" && bl.Type != "")
+            {
+
+                MySqlParameter ba = new MySqlParameter("Type", bl.Type);
+                pm.Add(ba);
+                where += " and  type=@type";
+            }
+            if (bl.Category != "0" && bl.Category != null && bl.Category != "Select" && bl.Category != "")
+            {
+
+                MySqlParameter ba = new MySqlParameter("Category", bl.Category);
+                pm.Add(ba);
+                where += " and dd.desg_category=@Category ";
+            }
+
+
+            qr = @"select dd.desg_name_hindi as name, dd.designation_id as value from dmf_designation dd 
+                 inner join dmf_category dc on dc.cat_id=dd.desg_category
+                 where 1=1 ";
+            where = where + " order by name desc";
+            qr = qr + where;
+            dt = db.executeSelectQuery(qr, pm.ToArray());
+
+        }
+        catch (Exception Ex)
+        {
+            dt.status = false;
+            dt.message = Ex.Message;
+        }
+
+        return dt;
+    }
+    public ReturnClass.ReturnDataTable bind_main_category(bl_dmf_designation bl)
+    {
+        ReturnClass.ReturnDataTable dt = new ReturnClass.ReturnDataTable();
+        db_maria_connection db = new db_maria_connection();
+
+        string qr = @"select Id as value,Name as name FROM ddl_cat_list dc where  dc.Category=@Category  and dc.Id<>@Id ";
+
+        MySqlParameter[] pm = new MySqlParameter[]{
+                 new MySqlParameter("@Category",bl.Category),
+                 new MySqlParameter("@Id",bl.Cat_id)
+
+
+            };
+
+        dt = db.executeSelectQuery(qr, pm);
+
+        return dt;
+    }
+
+    public ReturnClass.ReturnDataTable State_level_commitee(bl_dmf_designation bl)
+    {
+        ReturnClass.ReturnDataTable dt = new ReturnClass.ReturnDataTable();
+        db_maria_connection db = new db_maria_connection();
+
+        string qr = @"select Id as value,Name as name FROM ddl_cat_list dc where  dc.Category=@Category  and dc.Id=@Id ";
+
+        MySqlParameter[] pm = new MySqlParameter[]{
+                 new MySqlParameter("@Category",bl.Category),
+                 new MySqlParameter("@Id",bl.Cat_id)
+
+
+            };
+
+        dt = db.executeSelectQuery(qr, pm);
+
+        return dt;
+    }
+    public ReturnClass.ReturnDataTable category(bl_dmf_designation bl)
+    {
+        ReturnClass.ReturnDataTable dt = new ReturnClass.ReturnDataTable();
+        db_maria_connection db = new db_maria_connection();
+
+        string qr = @"select dc.cat_id,dc.name from dmf_category dc where dc.type=@type order by dc.name ";
+
+        MySqlParameter[] pm = new MySqlParameter[]{
+                 new MySqlParameter("type",bl.type)
+                             };
+
+        dt = db.executeSelectQuery(qr, pm);
+
+        return dt;
+    }
+
+    public ReturnClass.ReturnDataTable get_emp_maaping_id(bl_dmf_designation bl)
+    {
+        ReturnClass.ReturnDataTable dt = new ReturnClass.ReturnDataTable();
+        db_maria_connection db = new db_maria_connection();
+
+        string qr = @"select eom.Office_Mapping_Id  from emp_office_mapping eom where  eom.Emp_Id=@Emp_Id ";
+
+        MySqlParameter[] pm = new MySqlParameter[]{
+                 new MySqlParameter("Emp_Id",bl.User_id)
+                             };
+
+        dt = db.executeSelectQuery(qr, pm);
+
+        return dt;
+    }
+
+    public ReturnClass.ReturnDataTable bind_designation_category(bl_dmf_designation bl)
+    {
+        ReturnClass.ReturnDataTable dt = new ReturnClass.ReturnDataTable();
+        db_maria_connection db = new db_maria_connection();
+
+        string qr = "", where = "", orderby = "";
+        try
+        {
+            List<MySqlParameter> pm = new List<MySqlParameter>();
+            if (bl.Type != "0" && bl.Type != null && bl.Type != "Select" && bl.Type != "")
+            {
+
+                MySqlParameter ba = new MySqlParameter("Type", bl.Type);
+                pm.Add(ba);
+                where += " and type=@type";
+            }
+
+            qr = @"Select cat_id as value,name as name from dmf_category where 1=1 ";
+            where = where + " order by name";
+            qr = qr + where;
+            dt = db.executeSelectQuery(qr, pm.ToArray());
+
+        }
+        catch (Exception Ex)
+        {
+            dt.status = false;
+            dt.message = Ex.Message;
+        }
+
+        return dt;
+    }
+
+    //public ReturnClass.ReturnBool Upload(bl_dmf_designation bl)
+    //{
+    //    ReturnClass.ReturnBool rb = new ReturnClass.ReturnBool();
+    //    db_maria_connection db = new db_maria_connection();
+
+    //    try
+    //    {
+    //        using (TransactionScope transScope = new TransactionScope())
+    //        {
+    //            string qr1 = "INSERT INTO upload_doc(emp_id,document_name,file_extn,file_data,client_ip,section_id) VALUES(@emp_id,@document_name,@file_extn,@file_data,@client_ip,@Section_id)";
+    //            MySqlParameter[] pm1 = new MySqlParameter[]{
+    //            new MySqlParameter("emp_id", bl.Emp_id),
+    //            new MySqlParameter("document_name", bl.Document_Name),
+    //            new MySqlParameter("file_extn", bl.File_Extn),
+    //            new MySqlParameter("file_data", bl.File_Data),
+    //            new MySqlParameter ("client_ip",bl.Client_ip),
+    //             new MySqlParameter ("Section_id", bl.Section_Id)
+
+    //        };
+
+    //            rb = db.executeInsertQuery(qr1, pm1);
+    //            if (rb.status == true)
+    //            {
+    //                transScope.Complete();
+    //            }
+    //        }
+    //    }
+    //    catch (Exception ex)
+    //    {
+    //        rb.status = false;
+    //        rb.message = ex.Message;
+    //    }
+    //    return rb;
+    //}
+
+
+    //DB_Insert
+    public ReturnClass.ReturnBool insert_dmf_employee(bl_dmf_designation bl)
+    {
+
+        ReturnClass.ReturnBool rb = new ReturnClass.ReturnBool();
+        db_maria_connection db = new db_maria_connection();
+
+        using (TransactionScope transScope = new TransactionScope())
+        {
+            if (bl.Document_Name != "")
+            {
+                string qr1 = "INSERT INTO upload_doc(emp_id,Upload_Date,document_name,mime_type,file_extn,file_data,section_id,client_ip,user_id) VALUES(@emp_id,@Upload_Date,@document_name,@Mime_type,@file_extn,@file_data,@Section_id,@client_ip,@user_id)";
+                MySqlParameter[] pm1 = new MySqlParameter[]{
+                new MySqlParameter("emp_id", bl.Emp_id),
+                 new MySqlParameter ("Upload_Date", bl.Upload_Date),
+                new MySqlParameter("document_name", bl.Document_Name),
+                new MySqlParameter("Mime_type", bl.Mime_type),
+                new MySqlParameter("file_extn", bl.File_Extn),
+                new MySqlParameter("file_data", bl.File_Data),
+                 new MySqlParameter ("Section_id", bl.Section_Id),
+                new MySqlParameter ("client_ip",bl.Client_ip),
+                  new MySqlParameter("user_id",bl.user_id)
+           };
+
+                rb = db.executeInsertQuery(qr1, pm1);
+
+            }
+            if (rb.status == true)
+            {
+                string query = @"Insert Into dmf_employee(emp_id,desg_category,designation_id,name_hindi,name_eng,status,order_by,user_id,client_ip,datetime,datefrom,dateto,district_id,email_id,contact_no,main_category,gender,phone_no) 
+                            Values(@emp_id,@desg_category,@designation_id,@name_hindi,@name_eng,@status,@order_by,@user_id,@client_ip,@datetime,@datefrom,@dateto,@district_id,@email_id,@contact_no,@main_category,@gender,@phone_no)";
+
+
+                MySqlParameter[] pm2 = new MySqlParameter[]{
+                            new MySqlParameter("desg_category",bl.desg_category),
+                             new MySqlParameter("designation_id",bl.Desg_id),
+                            new MySqlParameter("name_hindi",bl.Name_hindi),
+                            new MySqlParameter("name_eng",bl.Name_eng),
+                            new MySqlParameter("status",bl.Status),
+                            new MySqlParameter("order_by",bl.order_by),
+                            new MySqlParameter("user_id",bl.user_id),
+                            new MySqlParameter("client_ip",bl.client_ip),
+                            new MySqlParameter("datetime",bl.datetime),
+                            new MySqlParameter("emp_id",bl.Emp_id),
+                            new MySqlParameter("datefrom",bl.Datefrom),
+                            new MySqlParameter("dateto",bl.Dateto),
+                            new MySqlParameter("district_id",bl.District_id),
+                            new MySqlParameter ("email_id", bl.Email_id),
+                            new MySqlParameter ("contact_no", bl.Contact_no),
+                              new MySqlParameter ("main_category", bl.main_category),
+                               new MySqlParameter ("gender", bl.Gender),
+                               new MySqlParameter("phone_no",bl.phone_no)
+                                
+            };
+
+
+
+                rb = db.executeInsertQuery(query, pm2);
+
+            }
+            if (rb.status == true)
+            {
+                string query = @"Insert Into dmf_employee_status(emp_id,Action_Id,Office_Mapping_Id,Action_Date,Remark,Status,User_Id,Entry_Date_Time,client_ip) 
+                            Values(@emp_id,@Action_Id,@Office_Mapping_Id,@Action_Date,@Remark,@Status,@User_Id,@Entry_Date_Time,@client_ip)";
+
+                MySqlParameter[] pm3 = new MySqlParameter[]{
+                            new MySqlParameter("emp_id",bl.emp_id),
+                             new MySqlParameter("Action_Id",bl.Action_Id),
+                            new MySqlParameter("Office_Mapping_Id",bl.Office_Map_Id),
+                            new MySqlParameter("Action_Date",bl.Action_Date),
+                            new MySqlParameter("Remark",bl.Remark),
+                            new MySqlParameter("Status",bl.Status),
+                            new MySqlParameter("User_Id",bl.User_id),
+                            new MySqlParameter("Entry_Date_Time",bl.datetime),
+                            new MySqlParameter("client_ip",bl.client_ip)
+            };
+
+
+
+                rb = db.executeInsertQuery(query, pm3);
+            }
+            if (rb.status == true)
+            {
+                string query = @"Insert Into dmf_employee_transaction(emp_id,Action_Id,Office_Mapping_Id,Remark,Status,login_id,client_ip,Entry_Datetime) 
+                            Values(@emp_id,@Action_Id,@Office_Mapping_Id,@Remark,@Status,@login_id,@client_ip,@Entry_Datetime)";
+
+
+                MySqlParameter[] pm4 = new MySqlParameter[]{
+                            new MySqlParameter("emp_id",bl.emp_id),
+                             new MySqlParameter("Action_Id",bl.Action_Id),
+                            new MySqlParameter("Office_Mapping_Id",bl.Office_Map_Id),
+                            new MySqlParameter("Remark",bl.Remark),
+                            new MySqlParameter("Status",bl.Status),
+                            new MySqlParameter("login_id",bl.User_id),
+                            new MySqlParameter("client_ip",bl.client_ip),
+                             new MySqlParameter("Entry_Datetime",bl.datetime)
+            };
+
+
+
+                rb = db.executeInsertQuery(query, pm4);
+                transScope.Complete();
+            }
+
+
+        }
+
+        return rb;
+
+    }
+
+    //public ReturnClass.ReturnDataTable bind_designation(bl_dmf_designation bl)
+    //{
+    //    ReturnClass.ReturnDataTable dt = new ReturnClass.ReturnDataTable();
+    //    db_maria_connection db = new db_maria_connection();
+
+    //    string qr = "", where = "", orderby = "";
+    //    try
+    //    {
+    //        List<MySqlParameter> pm = new List<MySqlParameter>();
+    //        if (bl.Type != "0" && bl.Type != null && bl.Type != "Select" && bl.Type != "")
+    //        {
+
+    //            MySqlParameter ba = new MySqlParameter("Type", bl.Type);
+    //            pm.Add(ba);
+    //            where += " and desg_category=@type";
+    //        }
+    //        if (bl.Type1 != "0" && bl.Type1 != null && bl.Type1 != "Select" && bl.Type1 != "")
+    //        {
+
+    //            MySqlParameter ba = new MySqlParameter("Type1", bl.Type1);
+    //            pm.Add(ba);
+    //            where += " and desg_category=@Type1";
+    //        }
+
+    //        qr = @"Select designation_id as value,desg_name_hindi as name from dmf_designation where 1=1";
+    //        where = where + " order by desg_name_hindi";
+    //        qr = qr + where;
+    //        dt = db.executeSelectQuery(qr, pm.ToArray());
+
+    //    }
+    //    catch (Exception Ex)
+    //    {
+    //        dt.status = false;
+    //        dt.message = Ex.Message;
+    //    }
+
+    //    return dt;
+    //}
+
+    //public ReturnClass.ReturnDataTable bind_designation()
+    //{
+    //    ReturnClass.ReturnDataTable dt = new ReturnClass.ReturnDataTable();
+    //    db_maria_connection db = new db_maria_connection();
+
+    //      string  qr = @"Select designation_id as value,desg_name_hindi as name from dmf_designation ";
+
+    //        dt = db.executeSelectQuery(qr);
+
+
+    //    return dt;
+    //}
+    public ReturnClass.ReturnDataTable bind_grid_dmf_employee_img(bl_dmf_designation bl)
+    {
+        ReturnClass.ReturnDataTable dt = new ReturnClass.ReturnDataTable();
+        db_maria_connection db = new db_maria_connection();
+
+        string qr = "", where = "";
+        try
+        {
+            List<MySqlParameter> pm = new List<MySqlParameter>();
+
+            MySqlParameter ca = new MySqlParameter("emp_id", bl.Employee_id);
+            pm.Add(ca);
+
+            MySqlParameter cb = new MySqlParameter("file_id", bl.File_id);
+            pm.Add(cb);
+
+            qr = @"SELECT file_data FROM  upload_doc where emp_id=@emp_id and file_id=@file_id";
+
+            qr = qr + where;
+            dt = db.executeSelectQuery(qr, pm.ToArray());
+
+        }
+        catch (Exception Ex)
+        {
+            dt.status = false;
+            dt.message = Ex.Message;
+        }
+
+
+        return dt;
+    }
+
+    public ReturnClass.ReturnBool Update_dmf_employee(bl_dmf_designation bl)
+    {
+
+        ReturnClass.ReturnBool rb = new ReturnClass.ReturnBool();
+        db_maria_connection db = new db_maria_connection();
+
+        using (TransactionScope transScope = new TransactionScope())
+        {
+
+            string query = "INSERT INTO dmf_employee_log SELECT * from  dmf_employee  Where emp_id=@emp_id";
+
+            MySqlParameter[] pm = new MySqlParameter[]{
+                        new MySqlParameter("emp_id",bl.Emp_id)
+            };
+
+
+            rb = db.executeInsertQuery(query, pm);
+            if (rb.status == true)
+            {
+                string query2 = @"Update dmf_employee Set desg_category=@desg_category,designation_id=@designation_id,name_hindi=@name_hindi,name_eng=@name_eng,
+
+                                status=@status,order_by=@order_by,user_id=@user_id,
+                                client_ip=@client_ip,datefrom=@datefrom,dateto=@dateto,email_id=@email_id,contact_no=@contact_no,main_category=@main_category,gender=@gender,phone_no=@phone_no Where emp_id=@emp_id ";
+
+
+                MySqlParameter[] pm2 = new MySqlParameter[]{
+                       new MySqlParameter("desg_category",bl.desg_category),
+                          new MySqlParameter("designation_id",bl.Desg_id),
+                            new MySqlParameter("name_hindi",bl.Name_hindi),
+                            new MySqlParameter("name_eng",bl.Name_eng),
+                            new MySqlParameter("status",bl.Status),
+                            new MySqlParameter("order_by",bl.order_by),
+                            new MySqlParameter("user_id",bl.user_id),
+                            new MySqlParameter("client_ip",bl.client_ip),
+                             new MySqlParameter("datefrom",bl.Datefrom),
+                            new MySqlParameter("dateto",bl.Dateto),
+                            new MySqlParameter("emp_id",bl.Emp_id),
+                              new MySqlParameter("district_id",bl.District_id),
+                              new MySqlParameter("email_id",bl.Email_id),
+                              new MySqlParameter("contact_no",bl.Contact_no),
+                              new MySqlParameter("main_category",bl.Main_category),
+                              new MySqlParameter("gender",bl.Gender),
+                              new MySqlParameter ("phone_no",bl.phone_no)
+            };
+                rb = db.executeInsertQuery(query2, pm2);
+            }
+            if (bl.File_Data == null)
+            { }
+            else
+            {
+                if (rb.status == true)
+                {
+                    string query3 = "INSERT INTO upload_doc_log SELECT * from  upload_doc where emp_id=@emp_id ";
+
+
+
+                    MySqlParameter[] pm3 = new MySqlParameter[]{
+                        new MySqlParameter("emp_id",bl.Emp_id)
+            };
+
+                    rb = db.executeInsertQuery(query3, pm3);
+
+                }
+
+
+                if (rb.status == true)
+                {
+                    string query4 = @"Update upload_doc Set Upload_Date=@Upload_Date,document_name=@document_name,mime_type=@mime_type,file_extn=@file_extn,
+                                file_data=@file_data,client_ip=@client_ip,user_id=@user_id,section_id=@Section_id  Where emp_id=@emp_id ";
+
+                    MySqlParameter[] pm4 = new MySqlParameter[]{
+                new MySqlParameter("emp_id", bl.Emp_id),
+                 new MySqlParameter ("Upload_Date", bl.Upload_Date),
+                new MySqlParameter("document_name", bl.Document_Name),
+                new MySqlParameter("Mime_type", bl.Mime_type),
+                new MySqlParameter("file_extn", bl.File_Extn),
+                new MySqlParameter("file_data", bl.File_Data),
+                 new MySqlParameter ("Section_id", bl.Section_Id),
+                new MySqlParameter ("client_ip",bl.Client_ip),
+                  new MySqlParameter("user_id",bl.user_id)
+         };
+                    rb = db.executeInsertQuery(query4, pm4);
+
+                }
+            }
+
+            if (rb.status == true)
+            {
+                transScope.Complete();
+            }
+        }
+
+        return rb;
+
+    }
+
+    public ReturnClass.ReturnBool Update_status(bl_dmf_designation bl)
+    {
+
+        ReturnClass.ReturnBool rb = new ReturnClass.ReturnBool();
+        db_maria_connection db = new db_maria_connection();
+
+        using (TransactionScope transScope = new TransactionScope())
+        {
+
+            string query = @"Insert Into dmf_employee_transaction(emp_id,Action_Id,Office_Mapping_Id,Remark,Status,login_id,client_ip,Entry_Datetime) 
+                            Values(@emp_id,@Action_Id,@Office_Mapping_Id,@Remark,@Status,@login_id,@client_ip,@Entry_Datetime)";
+
+            MySqlParameter[] pm = new MySqlParameter[]{
+                       new MySqlParameter("emp_id",bl.Emp_id),
+                             new MySqlParameter("Action_Id",bl.Action_Id),
+                            new MySqlParameter("Office_Mapping_Id",bl.Office_Map_Id),
+                            new MySqlParameter("Remark",bl.Remark),
+                            new MySqlParameter("Status",bl.Status),
+                            new MySqlParameter("login_id",bl.User_id),
+                            new MySqlParameter("client_ip",bl.client_ip),
+                             new MySqlParameter("Entry_Datetime",bl.datetime)
+            };
+
+
+            rb = db.executeInsertQuery(query, pm);
+            if (rb.status == true)
+            {
+                string query2 = @"UPDATE dmf_employee_status SET Status=@Status,Action_Id=@Action_Id,User_id=@User_id where emp_id=@emp_id ";
+
+
+                MySqlParameter[] pm2 = new MySqlParameter[]{
+                       new MySqlParameter("Status",bl.Status),
+                         new MySqlParameter("Action_Id",bl.Action_Id),
+                          new MySqlParameter("User_id",bl.User_id),
+                              new MySqlParameter("emp_id",bl.emp_id)
+            };
+                rb = db.executeInsertQuery(query2, pm2);
+            }
+
+            if (rb.status == true)
+            {
+                transScope.Complete();
+            }
+        }
+
+        return rb;
+
+    }
+
+
+    //ekta 6-dec-2016
+    //yojna entry master or yojna master tablke
+    public ReturnClass.ReturnDataTable bind_yojna_category(bl_dmf_designation bl)
+    {
+        ReturnClass.ReturnDataTable dt = new ReturnClass.ReturnDataTable();
+        db_maria_connection db = new db_maria_connection();
+
+        string qr = @"select Hindi_Name as name,id as value from ddl_cat_list where category=@category";
+
+        MySqlParameter[] pm = new MySqlParameter[]{
+                 new MySqlParameter("@category",bl.category)
+
+
+            };
+
+        dt = db.executeSelectQuery(qr, pm);
+
+        return dt;
+
+    }
+    public ReturnClass.ReturnDataTable yojna_id(bl_dmf_designation bl)
+    {
+        ReturnClass.ReturnDataTable dt = new ReturnClass.ReturnDataTable();
+        db_maria_connection db = new db_maria_connection();
+        bl.year = DateTime.Now.ToString("yyyy");
+
+        string qr = @"select IFNULL(MAX(yojna_id),0) AS yid FROM yojna_master where year(Date_Time) = @year";
+
+        MySqlParameter[] pm = new MySqlParameter[]{
+                 new MySqlParameter("@year",bl.year)
+
+
+            };
+
+        dt = db.executeSelectQuery(qr, pm);
+
+        return dt;
+    }
+
+
+    public ReturnClass.ReturnBool insert_yojna_master(bl_dmf_designation bl)
+    {
+        //yojna_id,yojna_name,yojna_name_hi,abbriviation,yojna_cat,Client_Ip,User_Id,Date_Time
+        ReturnClass.ReturnBool rb = new ReturnClass.ReturnBool();
+        db_maria_connection db = new db_maria_connection();
+
+        string query = @"Insert Into yojna_master(yojna_id,yojna_name,yojna_name_hi,abbriviation,yojna_cat,prioporty,User_Id,Client_Ip,Date_Time) 
+                            Values(@yojna_id,@yojna_name,@yojna_name_hi,@abbriviation,@yojna_cat,@prioporty,@User_Id,@Client_Ip,@Date_Time)";
+
+
+        MySqlParameter[] pm = new MySqlParameter[]{
+                            new MySqlParameter("yojna_id",bl.Yojna_id),
+                            new MySqlParameter("yojna_name",bl.yojna_name),
+                            new MySqlParameter("yojna_name_hi",bl.yojna_name_hi),
+                            new MySqlParameter("abbriviation",bl.abbriviation),
+                            new MySqlParameter("yojna_cat",bl.yojna_cat),
+                            new MySqlParameter("prioporty",bl.Prioporty),
+                            new MySqlParameter("User_Id",bl.User_id),
+                            new MySqlParameter("Client_Ip",bl.client_ip),
+                            new MySqlParameter("Date_Time",bl.datetime)
+
+            };
+
+        rb = db.executeInsertQuery(query, pm);
+
+        return rb;
+
+    }
+
+    public ReturnClass.ReturnDataTable bind_yojna_master()
+    {
+        ReturnClass.ReturnDataTable dt = new ReturnClass.ReturnDataTable();
+        db_maria_connection db = new db_maria_connection();
+
+        string qr = @"SELECT ym.yojna_id,ym.yojna_name,ym.yojna_name_hi,ym.abbriviation,ym.prioporty,dc.Name as  category,
+ date_format(ym.Date_Time,'%d/%m/%Y') as date_time
+  FROM yojna_master ym  inner join ddl_cat_list dc on ym.yojna_cat=dc.Id  ";
+
+
+        dt = db.executeSelectQuery(qr);
+
+        return dt;
+
+    }
+
+
+    public ReturnClass.ReturnDataTable bind_yojna(bl_dmf_designation bl)
+    {
+        ReturnClass.ReturnDataTable dt = new ReturnClass.ReturnDataTable();
+        db_maria_connection db = new db_maria_connection();
+
+        string qr = @" select yojna_id,yojna_name_hi,abbriviation,yojna_cat, case prioporty when 'HI' Then 'HIGH'
+ when 'LW' Then 'LOW'
+  else  prioporty end as prioporty,  '0' as no_of_task,'0' as accepted_task ,'0' as accepted_money, 
+ '0' as spend_mony, '0' as complete , '0' as incomplete from yojna_master where yojna_cat=@category";
+
+        MySqlParameter[] pm = new MySqlParameter[]{
+                 new MySqlParameter("@category",bl.category)
+
+
+            };
+
+        dt = db.executeSelectQuery(qr, pm);
+
+        return dt;
+
+    }
+
+    public ReturnClass.ReturnBool insert_yojna_entry_master(bl_dmf_designation bl)
+    {
+        //yojna_id,yojna_name,yojna_name_hi,abbriviation,yojna_cat,Client_Ip,User_Id,Date_Time
+        ReturnClass.ReturnBool rb = new ReturnClass.ReturnBool();
+        db_maria_connection db = new db_maria_connection();
+
+        string query = @"Insert Into yojna_entry_master(yojna_id,district_id,no_of_task,accepted_task,accepted_money,spend_mony,complete,incomplete,year,Client_Ip,User_Id,Date_Time ) 
+                            Values(@yojna_id,@district_id,@no_of_task,@accepted_task,@accepted_money,@spend_mony,@complete,@incomplete,@year,@Client_Ip,@User_Id,@Date_Time )";
+
+
+        MySqlParameter[] pm = new MySqlParameter[]{
+                            new MySqlParameter("yojna_id",bl.yojna_id),
+                            new MySqlParameter("district_id",bl.district_id),
+                            new MySqlParameter("no_of_task",bl.no_of_task),
+                            new MySqlParameter("accepted_task",bl.accepted_task),
+                               new MySqlParameter("accepted_money",bl.Accepted_money),
+                             new MySqlParameter("spend_mony",bl.spend_mony),
+                              new MySqlParameter("complete",bl.complete),
+                               new MySqlParameter("incomplete",bl.incomplete),
+                                new MySqlParameter("year",bl.year),
+                               new MySqlParameter("Client_Ip",bl.client_ip),
+                              new MySqlParameter("User_Id",bl.user_id),
+                              new MySqlParameter("Date_Time",bl.datetime)
+
+            };
+
+        rb = db.executeInsertQuery(query, pm);
+
+        return rb;
+
+    }
+
+    public ReturnClass.ReturnDataTable select_yojna_entry_master(bl_dmf_designation bl)
+    {
+        ReturnClass.ReturnDataTable dt = new ReturnClass.ReturnDataTable();
+        db_maria_connection db = new db_maria_connection();
+
+        string qr = @"select ym.yojna_name_hi,ym.abbriviation, case ym.prioporty when 'HI' Then 'HIGH'
+ when 'LW' Then 'LOW'
+  else  prioporty end as prioporty, ye.yojna_id,ye.yojna_id,ye.district_id,ye.no_of_task,
+ye.accepted_task,ye.accepted_money,ye.spend_mony,ye.complete,ye.incomplete,
+ye.year,ye.Client_Ip,ye.User_Id,ye.Date_Time from yojna_entry_master ye
+inner join yojna_master ym on ym.yojna_id=ye.yojna_id   
+ where district_id=@district_id and ym.yojna_cat=@category";
+
+        MySqlParameter[] pm = new MySqlParameter[]{
+                 new MySqlParameter("@district_id",bl.district_id),
+                 new MySqlParameter("@category",bl.category)
+            };
+
+        dt = db.executeSelectQuery(qr, pm);
+
+        return dt;
+
+    }
+    public ReturnClass.ReturnBool update_yojna_entry_master(bl_dmf_designation bl)
+    {
+        ReturnClass.ReturnBool rb = new ReturnClass.ReturnBool();
+        db_maria_connection db = new db_maria_connection();
+
+
+        MySqlParameter[] param = new MySqlParameter[] {
+             new MySqlParameter("yojna_id",bl.yojna_id),
+
+                new MySqlParameter("no_of_task",bl.no_of_task),
+                new MySqlParameter("accepted_task",bl.accepted_task),
+                  new MySqlParameter("accepted_money",bl.Accepted_money),
+                new MySqlParameter("spend_mony",bl.spend_mony),
+                new MySqlParameter("complete",bl.complete),
+                new MySqlParameter("incomplete",bl.incomplete)
+        };
+
+        string upnotQur = @"update yojna_entry_master set no_of_task=@no_of_task,accepted_task=@accepted_task,accepted_money=@accepted_money,spend_mony=@spend_mony,complete=@complete,incomplete=@incomplete where yojna_id=@yojna_id";
+        rb = db.executeUpdateQuery(upnotQur, param);
+
+        return rb;
+    }
+
+
+    //----------------------------------------------------------  Afftected Area ------------------------------------------------------------------------------
+
+    public ReturnClass.ReturnDataTable Tashil(bl_dmf_designation em)
+    {
+        ReturnClass.ReturnDataTable dt = new ReturnClass.ReturnDataTable();
+        db_maria_connection db = new db_maria_connection();
+        try
+        {
+            string qr = "select distinct  cg.tahsil_code as value,cg.tahsil_name_en as name from cg_cenus_data_all  cg where cg.district_code=@district_code";
+            MySqlParameter[] pm = new MySqlParameter[]{
+                new MySqlParameter("district_code", em.district_id)
+                };
+
+            dt = db.executeSelectQuery(qr, pm);
+
+        }
+        catch (Exception Ex)
+        {
+            throw Ex;
+        }
+        return dt;
+    }
+
+    public ReturnClass.ReturnDataTable gram_panchayat(bl_dmf_designation em)
+    {
+        ReturnClass.ReturnDataTable dt = new ReturnClass.ReturnDataTable();
+        db_maria_connection db = new db_maria_connection();
+        try
+        {
+            string qr = "select distinct  cg.gram_panchayat_code as value,cg.gram_panchayat_name_en as name from cg_cenus_data_all  cg where cg.tahsil_code=@tahsil_code";
+            MySqlParameter[] pm = new MySqlParameter[]{
+                new MySqlParameter("tahsil_code", em.block_code)
+                };
+
+            dt = db.executeSelectQuery(qr, pm);
+
+        }
+        catch (Exception Ex)
+        {
+            throw Ex;
+        }
+        return dt;
+    }
+    public ReturnClass.ReturnDataTable Village_gram(bl_dmf_designation em)
+    {
+        ReturnClass.ReturnDataTable dt = new ReturnClass.ReturnDataTable();
+        db_maria_connection db = new db_maria_connection();
+        try
+        {
+
+            string qr = "select distinct  cg.village_code as value,cg.village_name_en as name from cg_cenus_data_all  cg where cg.gram_panchayat_code=@gram_panchayat_code";
+            MySqlParameter[] pm = new MySqlParameter[]{
+                new MySqlParameter("gram_panchayat_code", em.gram_panchayat_code)
+            };
+
+            dt = db.executeSelectQuery(qr, pm);
+
+
+
+        }
+        catch (Exception Ex)
+        {
+            throw Ex;
+        }
+        return dt;
+    }
+    public ReturnClass.ReturnDataTable district()
+    {
+        ReturnClass.ReturnDataTable dt = new ReturnClass.ReturnDataTable();
+        db_maria_connection db = new db_maria_connection();
+        try
+        {
+
+            string qr = "select district_code as value ,district_name_en as name from cg_cenus_data_all";
+
+            dt = db.executeSelectQuery(qr);
+
+
+
+        }
+        catch (Exception Ex)
+        {
+            throw Ex;
+        }
+        return dt;
+    }
+    public ReturnClass.ReturnDataTable are_id(bl_dmf_designation bl)
+    {
+        ReturnClass.ReturnDataTable dt = new ReturnClass.ReturnDataTable();
+        db_maria_connection db = new db_maria_connection();
+        bl.year = DateTime.Now.ToString("yyyy");
+
+        string qr = @"select IFNULL(MAX(are_id),0) AS aid FROM affect_area_entry where year(date_time) = @year";
+
+        MySqlParameter[] pm = new MySqlParameter[]{
+                 new MySqlParameter("@year",bl.year)
+
+
+            };
+
+        dt = db.executeSelectQuery(qr, pm);
+
+        return dt;
+    }
+    public ReturnClass.ReturnBool insert_affect_area_entry(bl_dmf_designation bl)
+    {
+
+        ReturnClass.ReturnBool rb = new ReturnClass.ReturnBool();
+        db_maria_connection db = new db_maria_connection();
+
+        string query = @"Insert Into affect_area_entry(are_id,district_code,tahsil_code,panchayat_code,village_code,name,father_mother_name,
+                                                   age,gender,category,aadhar_no,bank_name,ac_no,ifsc_code,user_id,client_ip,date_time) 
+                                            Values(@are_id,@district_code,@tahsil_code,@panchayat_code,@village_code,@name,@father_mother_name,
+                                                    @age,@gender,@category,@aadhar_no,@bank_name,@ac_no,@ifsc_code,@user_id,@client_ip,@date_time)";
+
+
+        MySqlParameter[] pm = new MySqlParameter[]{
+                            new MySqlParameter("are_id",bl.are_id),
+                            new MySqlParameter("district_code",bl.district_id),
+                            new MySqlParameter("tahsil_code",bl.block_code),
+                            new MySqlParameter("panchayat_code",bl.Gram_panchayat_code),
+                             new MySqlParameter("village_code",bl.village_code),
+
+                             new MySqlParameter("name",bl.name),
+                            new MySqlParameter("father_mother_name",bl.father_mother_name),
+                            new MySqlParameter("age",bl.age),
+
+                             new MySqlParameter("gender",bl.Gender),
+                            new MySqlParameter("category",bl.Category),
+                            new MySqlParameter("aadhar_no",bl.aadhar_no),
+                             new MySqlParameter("bank_name",bl.bank_name),
+                            new MySqlParameter("ac_no",bl.ac_no),
+                            new MySqlParameter("ifsc_code",bl.ifsc_code),
+
+                            new MySqlParameter("user_id",bl.User_id),
+                            new MySqlParameter("client_ip",bl.client_ip),
+                            new MySqlParameter("date_time",bl.datetime)
+
+            };
+
+
+        rb = db.executeInsertQuery(query, pm);
+        return rb;
+
+    }
+
+    //------------------------------------------------------------------- End Of Affected Are ------------------------------------------------------------------------------------------------------
+
+
+    public ReturnClass.ReturnDataTable chk_emp_approval(bl_dmf_designation bl)
+    {
+        ReturnClass.ReturnDataTable dt = new ReturnClass.ReturnDataTable();
+        db_maria_connection db = new db_maria_connection();
+        try
+        {
+            string qr = "select emp_id from dmf_employee_status d where d.emp_id=@emp_id and d.Status=@status";
+            MySqlParameter[] pm = new MySqlParameter[]{
+                 new MySqlParameter("emp_id", bl.Emp_id),
+                new MySqlParameter("status", "A")
+                };
+
+            dt = db.executeSelectQuery(qr, pm);
+
+        }
+        catch (Exception Ex)
+        {
+            throw Ex;
+        }
+        return dt;
+    }
+
+
+    public ReturnClass.ReturnDataTable dmf_employee_approve(bl_dmf_designation bl)
+    {
+        ReturnClass.ReturnDataTable dt = new ReturnClass.ReturnDataTable();
+        db_maria_connection db = new db_maria_connection();
+
+        string qr = "", where = "", orderby = "";
+        try
+        {
+            List<MySqlParameter> pm = new List<MySqlParameter>();
+
+            if (bl.Type != "0" && bl.Type != null && bl.Type != "")
+            {
+                MySqlParameter ca = new MySqlParameter("Type", bl.Type);
+                pm.Add(ca);
+                where += " and dc.`type`=@Type ";
+            }
+            if (bl.Main_category != "0" && bl.Main_category != null && bl.Main_category != "")
+            {
+                MySqlParameter caa = new MySqlParameter("Main_category", bl.Main_category);
+                pm.Add(caa);
+                where += " and de.Main_category=@Main_category ";
+            }
+
+            MySqlParameter Status = new MySqlParameter("Status", bl.Status);
+            MySqlParameter District_id = new MySqlParameter("district_id", bl.District_id);
+            pm.Add(Status);
+            pm.Add(District_id);
+            qr = @"SELECT  ud.emp_id,ud.file_id,ud.Upload_Date,ud.document_name,ud.mime_type,ud.file_extn,ud.file_data,de.email_id,de.contact_no,de.phone_no,de.main_category,
+            (case when de.gender='F' then 'Female' when de.gender='M' then 'Male' END) as gender,de.desg_category as ddl_designation_cat,
+            ddo.desg_name_hindi as desg_category,dd.desg_name_hindi as designation_id,de.emp_id,de.name_hindi,de.name_eng,de.order_by,
+            (case when de.status='A' then 'Active' else 'Inactive' END) as status,
+            de.user_id,de.client_ip,de.datetime,date_format(de.datefrom,'%d/%m/%Y') as datefrom,date_format(de.dateto,'%d/%m/%Y') as dateto,de.district_id, dcl.Hindi_Name as main_categoryy
+            FROM dmf_employee de 
+            INNER JOIN dmf_designation  dd ON dd.designation_id=de.designation_id
+            INNER JOIN dmf_designation  ddo ON ddo.designation_id=de.desg_category
+            inner join dmf_category dc on dc.cat_id=dd.desg_category 
+            inner join upload_doc ud on ud.emp_id=de.emp_id
+            inner join ddl_cat_list dcl on dcl.Id=de.main_category
+            inner join dmf_employee_status dms on dms.emp_id=de.emp_id
+            where  dms.Status=@Status and de.district_id=@district_id";
+
+
+            where = where + " order by desg_category";
+
+            qr = qr + where;
+            dt = db.executeSelectQuery(qr, pm.ToArray());
+
+        }
+        catch (Exception Ex)
+        {
+            dt.status = false;
+            dt.message = Ex.Message;
+        }
+
+
+        return dt;
+    }
+    //public ReturnClass.ReturnDataTable dmf_employee_state(bl_dmf_designation bl)
+    //{
+    //    ReturnClass.ReturnDataTable dt = new ReturnClass.ReturnDataTable();
+    //    db_maria_connection db = new db_maria_connection();
+
+    //    string qr = "", where = "", orderby = "";
+    //    try
+    //    {
+    //        List<MySqlParameter> pm = new List<MySqlParameter>();
+
+    //        if (bl.Type != "0" && bl.Type != null && bl.Type != "")
+    //        {
+    //            MySqlParameter ca = new MySqlParameter("Type", bl.Type);
+    //            pm.Add(ca);
+    //            where += " and dc.`type`=@Type ";
+    //        }
+
+    //        MySqlParameter Status = new MySqlParameter("Status", bl.Status);
+
+    //        pm.Add(Status);
+
+    //        qr = @"SELECT  ud.emp_id,ud.file_id,ud.Upload_Date,ud.document_name,ud.mime_type,ud.file_extn,ud.file_data,de.email_id,de.contact_no,de.main_category,
+    //        (case when de.gender='F' then 'Female' when de.gender='M' then 'Male' END) as gender,de.desg_category as ddl_designation_cat,dd.desg_name_eng,
+    //        ddo.desg_name_eng as desg_category,dd.desg_name_eng as designation_id,de.emp_id,de.name_hindi,de.name_eng,de.order_by,
+    //        (case when de.status='A' then 'Active' else 'Inactive' END) as status,
+    //        de.user_id,de.client_ip,de.datetime,date_format(de.datefrom,'%d/%m/%Y') as datefrom,date_format(de.dateto,'%d/%m/%Y') as dateto,de.district_id, dcl.Name as main_categoryy
+    //        FROM dmf_employee de 
+    //        INNER JOIN dmf_designation  dd ON dd.designation_id=de.designation_id
+    //        INNER JOIN dmf_designation  ddo ON ddo.designation_id=de.desg_category
+    //        inner join dmf_category dc on dc.cat_id=dd.desg_category 
+    //        inner join upload_doc ud on ud.emp_id=de.emp_id
+    //        inner join ddl_cat_list dcl on dcl.Id=de.main_category
+    //  inner join dmf_employee_status dms on dms.emp_id=de.emp_id
+    //        where  dms.Status=@Status ";
+
+
+    //        where = where + " order by desg_category";
+
+    //        qr = qr + where;
+    //        dt = db.executeSelectQuery(qr, pm.ToArray());
+
+    //    }
+    //    catch (Exception Ex)
+    //    {
+    //        dt.status = false;
+    //        dt.message = Ex.Message;
+    //    }
+
+
+    //    return dt;
+    //}
+
+
+    public ReturnClass.ReturnDataTable dmf_employee_state(bl_dmf_designation bl)
+    {
+        ReturnClass.ReturnDataTable dt = new ReturnClass.ReturnDataTable();
+        db_maria_connection db = new db_maria_connection();
+
+        string qr = "", where = "", orderby = "";
+        try
+        {
+            List<MySqlParameter> pm = new List<MySqlParameter>();
+
+            if (bl.Type != "0" && bl.Type != null && bl.Type != "")
+            {
+                MySqlParameter ca = new MySqlParameter("Type", bl.Type);
+                pm.Add(ca);
+                where += " and dc.`type`=@Type";
+            }
+
+            MySqlParameter Status = new MySqlParameter("Status", bl.Status);
+
+            pm.Add(Status);
+
+            qr = @" SELECT  de.name_eng,group_concat( dd.desg_name_eng ORDER BY dd.designation_id separator ', ') as designation_id, ud.emp_id,ud.file_id,ud.Upload_Date,ud.document_name,ud.mime_type,ud.file_extn,ud.file_data,de.email_id,de.phone_no,de.contact_no,de.main_category,
+            (case when de.gender='F' then 'Female' when de.gender='M' then 'Male' END) as gender,de.desg_category as ddl_designation_cat,
+            ddo.desg_name_eng as desg_category,dd.desg_name_eng as designation_id,de.emp_id,de.name_hindi,de.name_eng,de.order_by,
+            (case when de.status='A' then 'Active' else 'Inactive' END) as status,
+            de.user_id,de.client_ip,de.datetime,date_format(de.datefrom,'%d/%m/%Y') as datefrom,date_format(de.dateto,'%d/%m/%Y') as dateto,de.district_id, dcl.name as main_categoryy
+            FROM dmf_employee de 
+            INNER JOIN dmf_designation  dd ON dd.designation_id=de.designation_id
+            INNER JOIN dmf_designation  ddo ON ddo.designation_id=de.desg_category
+            inner join dmf_category dc on dc.cat_id=dd.desg_category 
+            inner join upload_doc ud on ud.emp_id=de.emp_id
+            inner join ddl_cat_list dcl on dcl.Id=de.main_category
+            inner join dmf_employee_status dms on dms.emp_id=de.emp_id
+            where  dms.Status=@Status ";
+
+
+
+            where = where + " group by de.name_eng order by desg_category,dd.designation_id";
+
+            qr = qr + where;
+            dt = db.executeSelectQuery(qr, pm.ToArray());
+
+        }
+        catch (Exception Ex)
+        {
+            dt.status = false;
+            dt.message = Ex.Message;
+        }
+
+
+        return dt;
+    }
+
+    public ReturnClass.ReturnDataTable dmf_employee_status_report()
+    {
+        ReturnClass.ReturnDataTable dt = new ReturnClass.ReturnDataTable();
+        db_maria_connection db = new db_maria_connection();
+
+        string qr = "", orderby = "";
+        try
+        {
+            
+
+            qr = @"select distinct cg.district_name_en,cg.district_code, "+
+                " (select ifnull(count(de1.emp_id),0) from dmf_employee de1 where  de1.district_id=cg.district_code and de1.main_category <>'STC') as total, "+
+                " (select ifnull(count(de1.emp_id),0) from dmf_employee de1 inner join dmf_employee_status st on de1.emp_id=st.emp_id "+
+               " where de1.main_category='TRH' and de1.district_id=cg.district_code and st.`Status`='P') as TRH_pending, "+
+                " (select ifnull(count(de1.emp_id),0) from dmf_employee de1 inner join dmf_employee_status st on de1.emp_id=st.emp_id "+
+                " where de1.main_category='MAN' and de1.district_id=cg.district_code and st.`Status`='P') as MAN_pending, "+
+                " (select ifnull(count(de1.emp_id),0) from dmf_employee de1 inner join dmf_employee_status st on de1.emp_id=st.emp_id "+
+                " where de1.main_category='TRH' and de1.district_id=cg.district_code and st.`Status`='A') as TRH_Approved, "+
+                " (select ifnull(count(de1.emp_id),0) from dmf_employee de1 inner join dmf_employee_status st on de1.emp_id=st.emp_id "+
+                " where de1.main_category='MAN' and de1.district_id=cg.district_code and st.`Status`='A') as MAN_Approved "+
+               " from cg_cenus_data_all cg ";
+
+
+            orderby = " order by cg.district_name_en";
+
+            qr = qr + orderby;
+            dt = db.executeSelectQuery(qr);
+
+        }
+        catch (Exception Ex)
+        {
+            dt.status = false;
+            dt.message = Ex.Message;
+        }
+
+
+        return dt;
+    }
+
+    //-----------------------ekta pending approve notice--------------------
+    public ReturnClass.ReturnDataTable pending_for_approval(Notice_Entry ne)
+    {
+        ReturnClass.ReturnDataTable dts = new ReturnClass.ReturnDataTable();
+        db_maria_connection db = new db_maria_connection();
+        MySqlParameter[] param = new MySqlParameter[]
+            {
+               new MySqlParameter("Pending",ne.Pending)
+            };
+
+        string query = "";
+
+        query = @"select nb.status,nb.Notice_Id as Notice_Id,nb.File_Id as File_Id,nb.Header as Header,nb.bold,nb.blink,nb.priority,nb.color,nb.image,fd.mime_type as mime_type,fd.file_data as file_data, 
+                        (CASE WHEN Validity_From IS NOT NULL OR Validity_From !='' THEN DATE_FORMAT(Validity_From,'%d/%m/%Y') ELSE 'Not Available' END)Validity_From,  
+                        (CASE WHEN Validity_To IS NOT NULL OR Validity_To!='' THEN DATE_FORMAT(Validity_To,'%d/%m/%Y') ELSE 'Not Available' END)Validity_To, 
+                        (CASE WHEN DATE_FORMAT(Publish_Date,'%d/%m/%Y') IS NULL OR DATE_FORMAT(Publish_Date,'%d/%m/%Y')='' THEN DATE_FORMAT(validity_from,'%d/%m/%Y') ELSE DATE_FORMAT(Publish_Date,'%d/%m/%Y') END)Publish_Date, 
+                        (case when url is null or url='' then 'Not Available' else url end)url, 
+                        (case when Permanent='Y' then 'Yes' when Permanent='N' then 'No' end)permanent, 
+                        (case when hyperlink='Y' then 'Yes' when hyperlink='N' then 'No' end)hyperlink, 
+                        (case when Active='A' then 'Active' when Active='D' then 'Inactive' end)Active, 
+                        (case when file_type='I' then 'Internal' when file_type='E' then 'External' end)file_type 
+                        from notice_board nb 
+                        left outer join file_details fd on nb.file_id=fd.file_id where status=@Pending";
+
+        dts = db.executeSelectQuery(query, param);
+        return dts;
+    }
+    public ReturnClass.ReturnBool delete_notice_and_file(Notice_Entry ne)
+    {
+
+        ReturnClass.ReturnBool rb = new ReturnClass.ReturnBool();
+        db_maria_connection db = new db_maria_connection();
+
+        using (TransactionScope transScope = new TransactionScope())
+        {
+
+            string query = "insert into notice_board_log select * from Notice_Board where Notice_Id=@NoticeID";
+
+            MySqlParameter[] pm = new MySqlParameter[]{
+                           new MySqlParameter("NoticeID",ne.NoticeID)
+                };
+
+
+            rb = db.executeInsertQuery(query, pm);
+            if (rb.status == true)
+            {
+
+                string query2 = @"delete from Notice_Board where Notice_Id=@NoticeID";
+                MySqlParameter[] pm2 = new MySqlParameter[]{
+                           new MySqlParameter("NoticeID",ne.NoticeID)
+                };
+                rb = db.executeDeleteQuery(query2, pm2);
+            }
+            if (ne.file_id == null)
+            { }
+            else
+            {
+                if (rb.status == true)
+                {
+                    string query3 = "insert into File_Details_Log select * from File_Details where file_id=@file_id";
+                    MySqlParameter[] pm3 = new MySqlParameter[] { 
+                         new MySqlParameter("file_id",ne.file_id)
+                         };
+                    rb = db.executeInsertQuery(query3, pm3);
+
+                }
+                if (rb.status == true)
+                {
+                    string query4 = "delete from file_details where file_id=@file_id";
+
+                    MySqlParameter[] pm4 = new MySqlParameter[]{
+                    new MySqlParameter("file_id",ne.file_id)
+                      };
+                    rb = db.executeInsertQuery(query4, pm4);
+                }
+            }
+
+            if (rb.status == true)
+            {
+                transScope.Complete();
+            }
+        }
+
+        return rb;
+
+    }
+    public ReturnClass.ReturnBool approve_notice(Notice_Entry ne)
+    {
+        ReturnClass.ReturnBool rb = new ReturnClass.ReturnBool();
+        db_maria_connection db = new db_maria_connection();
+        using (TransactionScope ts = new TransactionScope())
+        {
+            string qr1 = @"insert into notice_board_log select * from Notice_Board where Notice_Id=@NoticeID";
+            MySqlParameter[] pm = new MySqlParameter[]{
+                           new MySqlParameter("NoticeID",ne.NoticeID)
+                };
+
+            rb = db.executeInsertQuery(qr1, pm);
+
+            if (rb.status == true)
+            {
+                string qr = " UPDATE Notice_Board SET status=@status where  Notice_Id=@NoticeID ";
+                MySqlParameter[] pm1 = new MySqlParameter[]{
+                           new MySqlParameter("NoticeID",ne.NoticeID),
+                           new MySqlParameter("status",ne.status)
+                };
+                rb = db.executeUpdateQuery(qr, pm1);
+                ts.Complete();
+            }
+        }
+
+        return rb;
+
+    }
+    
+}

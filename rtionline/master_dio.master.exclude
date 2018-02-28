@@ -1,0 +1,238 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="master_dio.master.cs" Inherits="master_dio" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+   
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="author" content="SemiColonWeb" />
+
+    <!-- Stylesheets
+	============================================= -->
+    <link href="http://fonts.googleapis.com/css?family=Lato:300,400,400italic,600,700|Raleway:300,400,500,600,700|Crete+Round:400italic" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="css/bootstrap.css" type="text/css" />
+    <link rel="stylesheet" href="style.css" type="text/css" />
+    <link rel="stylesheet" href="css/swiper.css" type="text/css" />
+    <link rel="stylesheet" href="css/dark.css" type="text/css" />
+    <link rel="stylesheet" href="css/font-icons.css" type="text/css" />
+    <link rel="stylesheet" href="css/animate.css" type="text/css" />
+    <link rel="stylesheet" href="css/magnific-popup.css" type="text/css" />
+    <link rel="stylesheet" href="css/myfile.css"  />
+    <link rel="stylesheet" href="css/responsive.css" type="text/css" />
+    <script type="text/javascript" src="../js/jquery.js"></script>
+
+    <script type="text/javascript" src="../js/plugins.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--[if lt IE 9]>
+		<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+	<![endif]-->
+    <title>Right To Inform Act </title>
+</head>
+<body>
+    <div id="wrapper" class="clearfix">
+        <header id="header">
+
+            <div id="header-wrap">
+
+                <div class=" container-fullwidth clearfix">
+
+                    <div id="primary-menu-trigger"><i class="icon-reorder"></i></div>
+                    <!-- Logo
+					============================================= -->
+                    <div id="logo">
+                        <a href="#" class="standard-logo" data-dark-logo="../images/rti_logo.png">
+                                <img src="../images/24.04.17.png" /></a>
+                            <a href="#" class="retina-logo" data-dark-logo="../images/rti_logo.png">
+                                <img src="../images/24.04.17.png" alt="DMF Logo" /></a>
+                    </div>
+                    <!-- #logo end -->
+
+                    <!-- Primary Navigation
+					============================================= -->
+                    <nav id="primary-menu" class="sub-title">
+                        <ul>
+                            <li><a href="../dio/DioWelcome.aspx">
+                                <div>Home</div>
+                            </a>
+                            </li>
+                            <li>
+                                <a href="../user/UserActionDetailDio.aspx">
+                                    <div>Show the Action Details</div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../dio/Create_Office.aspx">
+                                    <div> Create Office</div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../dio/Employee_create.aspx.aspx">
+                                    <div>Create Employee</div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../dio/Create_Password.aspx">
+                                    <div>Create Password</div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../dio/Assign_role.aspx">
+                                    <div>Assign Role </div>
+                                </a>
+                            </li>
+                             <%--<li>
+                                <a href="../user/Change_Password.aspx">
+                                    <div>Change Password </div>
+                                </a>
+                            </li>--%>
+                            <li class="mega-menu">
+                                <a href="../LogOut.aspx">
+                                    <div>LogOut </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <!-- #primary-menu end -->
+
+                </div>
+
+            </div>
+
+        </header>
+          <!-- #header end -->
+
+   
+    <form id="form1" runat="server">
+          <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+       
+        <asp:ContentPlaceHolder id="Content_master_dio" runat="server">
+        
+        </asp:ContentPlaceHolder>
+            
+    </form>
+         <!-- Footer
+		============================================= -->
+         <footer id="footer" class="dark">
+
+            <div class="container">
+
+             <%--    <!-- Footer Widgets
+				============================================= -->
+                <div class="footer-widgets-wrap clearfix">
+
+                    <div class="col_two_third">
+
+                        <div class="col_one_third">
+
+                            <div class="widget clearfix">
+
+                                <img src="../images/rti_logo_white.png" alt="" class="footer-logo" />
+
+                                <p>The object of the District Mineral Foundation Trust shall be to work for the interest and benefit of persons and areas affected by mining or mining related operations in such manner as specified in these Rules. </p>
+
+                                <div style="background: url('../images/world-map.png') no-repeat center center; background-size: 100%;">
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="col_one_third">
+
+                            <div class="widget widget_links clearfix">
+
+                                <h4>Main Menu</h4>
+
+                                <ul>
+                                    <li><a href="UserWelcome.aspx">Home</a></li>
+                                    <li><a href="#">Profile</a></li>
+                                    <li><a href="#">Mine List</a></li>
+                                    <li><a href="#">Mines wise contribution</a></li>
+                                    <li><a href="#">Affected areas</a></li>
+                                    <li><a href="#">DMF Rules</a></li>
+                                    <li><a href="#">ODMF Rules</a></li>
+                                </ul>
+
+                            </div>
+
+                        </div>
+
+                        <div class="col_one_third col_last">
+                        </div>
+
+                    </div>
+
+                    <div class="col_one_third col_last">
+                        <%--<div class="fb-page" data-href="https://www.facebook.com/InvestChhattisgarh/" data-tabs="timeline" data-height="380" data-small-header="true" data-adapt-container-width="true" data-hide-cover="true" data-show-facepile="true">
+                            <div class="fb-xfbml-parse-ignore">
+                                <blockquote cite="https://www.facebook.com/InvestChhattisgarh/"><a href="https://www.facebook.com/InvestChhattisgarh/">Invest Chhattisgarh</a></blockquote>
+                            </div>
+                        </div>
+                        <div id="fb-root"></div>
+                        <script id="facebook-jssdk" src="//connect.facebook.net/en_US/sdk.js#xfbml=1&amp;version=v2.5"></script>
+                        <script>(function (d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&amp;version=v2.5";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>--%>
+                    <%--</div>
+
+                </div>
+
+            </div>--%>
+            <!-- .footer-widgets-wrap end -->
+
+             
+            <!-- Copyrights
+			============================================= -->
+                
+            <div id="copyrights">
+
+                <div class="container clearfix">
+
+                    <div class="row text-center">
+                        &copy; Content Owned by Department of General Administration, Government of Chhattisgarh.
+                        
+                   
+                     </div>
+
+                    <div class="row">
+                        <div class="col-sm-10">
+                            <img src="../images/rays.png" />
+                            <p style="font-size: 12px;">All efforts have been made to make the information as accurate as possible. Departments of General Administartion or NIC, will not be responsible for any damage caused by inaccuracy in the information available on this Website. Site Designed, Developed &amp; Hosted By : <a href="http://cg.nic.in/home/home.php" target="_blank">National Informatics Center </a>, Chhattisgarh </p>
+                        </div>
+                        <div class="col-sm-2">
+                            <img src="../images/logo_nicg.png" />
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+                </div>
+            <!-- #copyrights end -->
+
+
+        </footer>
+        <!-- #footer end -->
+	
+     </div>
+       <div id="gotoTop" class="icon-angle-up"></div>
+
+    <!-- External JavaScripts
+	============================================= -->
+
+   
+ 
+       <script type="text/javascript" src="../js/functions.js"></script>
+    <!-- Footer Scripts
+	============================================= -->
+</body>
+</html>

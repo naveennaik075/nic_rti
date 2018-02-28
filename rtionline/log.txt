@@ -1,0 +1,1026 @@
+1/7/2017-5:11:31 PM->executeInsertQuery - Query: INSERT INTO emp_office_mapping
+                          (office_mapping_id,emp_code,office_id,designation_id,base_department_id,office_level_id,district_id_ofc,office_category,user_id,charge_type,Active,client_ip)
+                           VALUES(@office_mapping_id,@emp_code,@office_id,@designation_id,@base_department_id,@office_level_id,@district_id_ofc,@office_category,@user_id,@charge_type,@Active,@client_ip)
+   error - -Duplicate entry '201700002001' for key 'PRIMARY'
+1/7/2017-5:12:07 PM->executeSelectQuery - Query: select MAX(SUBSTRING(office_mapping_id,10,12)) as ID from emp_office_mapping where emp_code = @empCode
+   error - -Fatal error encountered during command execution.
+1/7/2017-5:14:13 PM->executeInsertQuery - Query: INSERT INTO emp_office_mapping
+                          (office_mapping_id,emp_code,office_id,designation_id,base_department_id,office_level_id,district_id_ofc,office_category,user_id,charge_type,Active,client_ip)
+                           VALUES(@office_mapping_id,@emp_code,@office_id,@designation_id,@base_department_id,@office_level_id,@district_id_ofc,@office_category,@user_id,@charge_type,@Active,@client_ip)
+   error - -Duplicate entry '201700002001' for key 'PRIMARY'
+1/7/2017-5:17:00 PM->executeSelectQuery - Query: select MAX(SUBSTRING(office_mapping_id,10,12)) as ID from emp_office_mapping em where em.emp_code = @empCode
+   error - -Fatal error encountered during command execution.
+1/7/2017-5:17:01 PM->executeInsertQuery - Query: INSERT INTO emp_office_mapping
+                          (office_mapping_id,emp_code,office_id,designation_id,base_department_id,office_level_id,district_id_ofc,office_category,user_id,charge_type,Active,client_ip)
+                           VALUES(@office_mapping_id,@emp_code,@office_id,@designation_id,@base_department_id,@office_level_id,@district_id_ofc,@office_category,@user_id,@charge_type,@Active,@client_ip)
+   error - -Duplicate entry '201700002001' for key 'PRIMARY'
+1/7/2017-5:17:10 PM->executeSelectQuery - Query: select MAX(SUBSTRING(office_mapping_id,10,12)) as ID from emp_office_mapping em where em.emp_code = @empCode
+   error - -Fatal error encountered during command execution.
+1/7/2017-5:17:32 PM->executeSelectQuery - Query: select MAX(SUBSTRING(office_mapping_id,10,12)) as ID from emp_office_mapping em where em.emp_code = @empCode
+   error - -Fatal error encountered during command execution.
+1/7/2017-5:17:39 PM->executeSelectQuery - Query: select MAX(SUBSTRING(office_mapping_id,10,12)) as ID from emp_office_mapping em where em.emp_code = @empCode
+   error - -Fatal error encountered during command execution.
+1/7/2017-5:17:40 PM->executeInsertQuery - Query: INSERT INTO emp_office_mapping
+                          (office_mapping_id,emp_code,office_id,designation_id,base_department_id,office_level_id,district_id_ofc,office_category,user_id,charge_type,Active,client_ip)
+                           VALUES(@office_mapping_id,@emp_code,@office_id,@designation_id,@base_department_id,@office_level_id,@district_id_ofc,@office_category,@user_id,@charge_type,@Active,@client_ip)
+   error - -Duplicate entry '201700002001' for key 'PRIMARY'
+1/9/2017-1:10:18 PM->executeInsertQuery - Query: INSERT INTO emp_office_mapping
+                          (office_mapping_id,emp_code,office_id,designation_id,base_department_id,office_level_id,district_id_ofc,office_category,user_id,charge_type,Active,client_ip)
+                           VALUES(@office_mapping_id,@emp_code,@office_id,@designation_id,@base_department_id,@office_level_id,@district_id_ofc,@office_category,@user_id,@charge_type,@Active,@client_ip)
+   error - -Duplicate entry '201700001-2211050337-2' for key 'emp_code_office_id_designation_id'
+1/11/2017-3:05:02 PM->executeInsertQuery - Query: INSERT INTO emp_office_mapping
+                          (office_mapping_id,emp_code,office_id,designation_id,base_department_id,office_level_id,district_id_ofc,office_category,user_id,charge_type,Active,client_ip, FromActive, ToActive)
+                           VALUES(@office_mapping_id,@emp_code,@office_id,@designation_id,@base_department_id,@office_level_id,@district_id_ofc,@office_category,@user_id,@charge_type,@Active,@client_ip, @fromActive, @toActive)
+   error - -Incorrect datetime value: '::1' for column 'FromActive' at row 1
+1/11/2017-3:11:48 PM->executeInsertQuery - Query: INSERT INTO emp_office_mapping
+                          (office_mapping_id,emp_code,office_id,designation_id,base_department_id,office_level_id,district_id_ofc,office_category,user_id,charge_type,Active,client_ip, FromActive, ToActive)
+                           VALUES(@office_mapping_id,@emp_code,@office_id,@designation_id,@base_department_id,@office_level_id,@district_id_ofc,@office_category,@user_id,@charge_type,@Active,@client_ip, @fromActive, @toActive)
+   error - -Incorrect datetime value: '::1' for column 'FromActive' at row 1
+1/11/2017-3:12:24 PM->executeInsertQuery - Query: INSERT INTO emp_office_mapping
+                          (office_mapping_id,emp_code,office_id,designation_id,base_department_id,office_level_id,district_id_ofc,office_category,user_id,charge_type,Active,client_ip, FromActive, ToActive)
+                           VALUES(@office_mapping_id,@emp_code,@office_id,@designation_id,@base_department_id,@office_level_id,@district_id_ofc,@office_category,@user_id,@charge_type,@Active,@client_ip, @fromActive, @toActive)
+   error - -Incorrect datetime value: '::1' for column 'FromActive' at row 1
+1/11/2017-3:15:07 PM->executeInsertQuery - Query: INSERT INTO emp_office_mapping
+                          (office_mapping_id,emp_code,office_id,designation_id,base_department_id,office_level_id,district_id_ofc,office_category,user_id,charge_type,Active,client_ip, FromActive, ToActive)
+                           VALUES(@office_mapping_id,@emp_code,@office_id,@designation_id,@base_department_id,@office_level_id,@district_id_ofc,@office_category,@user_id,@charge_type,@Active,@client_ip, @fromActive, @toActive)
+   error - -Incorrect datetime value: '::1' for column 'FromActive' at row 1
+1/12/2017-11:17:16 AM->executeSelectQuery - Query: select  emp_id, Name_en from  emp_office_mapping A where A.base_department_id= @base_department_id and A.district_id=@district_id_ofc 
+                       and Active='Y' order by Name_en asc
+   error - -Unknown column 'emp_id' in 'field list'
+1/12/2017-11:17:19 AM->executeSelectQuery - Query: select  emp_id, Name_en from  emp_office_mapping A where A.base_department_id= @base_department_id and A.district_id=@district_id_ofc 
+                       and Active='Y' order by Name_en asc
+   error - -Unknown column 'emp_id' in 'field list'
+1/12/2017-11:17:22 AM->executeSelectQuery - Query: select  emp_id, Name_en from  emp_office_mapping A where A.base_department_id= @base_department_id and A.district_id=@district_id_ofc 
+                       and Active='Y' order by Name_en asc
+   error - -Unknown column 'emp_id' in 'field list'
+1/12/2017-11:17:33 AM->executeSelectQuery - Query: select  emp_id, Name_en from  emp_office_mapping A where A.base_department_id= @base_department_id and A.district_id=@district_id_ofc 
+                       and Active='Y' order by Name_en asc
+   error - -Unknown column 'emp_id' in 'field list'
+1/12/2017-11:22:02 AM->executeSelectQuery - Query: select  emp_code, B.Name_en from  emp_office_mapping A 
+                       inner join employee_table as B on A.emp_code = B.emp_id      
+                       where A.base_department_id= @base_department_id and A.district_id=@district_id_ofc 
+                       and Active='Y' order by Name_en asc
+   error - -Unknown column 'A.district_id' in 'where clause'
+1/12/2017-11:22:07 AM->executeSelectQuery - Query: select  emp_code, B.Name_en from  emp_office_mapping A 
+                       inner join employee_table as B on A.emp_code = B.emp_id      
+                       where A.base_department_id= @base_department_id and A.district_id=@district_id_ofc 
+                       and Active='Y' order by Name_en asc
+   error - -Unknown column 'A.district_id' in 'where clause'
+1/12/2017-11:22:09 AM->executeSelectQuery - Query: select  emp_code, B.Name_en from  emp_office_mapping A 
+                       inner join employee_table as B on A.emp_code = B.emp_id      
+                       where A.base_department_id= @base_department_id and A.district_id=@district_id_ofc 
+                       and Active='Y' order by Name_en asc
+   error - -Unknown column 'A.district_id' in 'where clause'
+1/17/2017-12:16:10 PM->executeInsertQuery - Query: INSERT INTO login (LoginID, UserID, Password, RollID, PasswordChange, DisableTime, Active,Client_ip,ClientOS,ClientBrowser,user_agent)  VALUES  (@loginID, @userID, @password, @rollID, @passwordChange, @disableTime, @active, @Client_ip, @ClientOS, @ClientBrowser, @user_agent)
+   error - -Column 'LoginID' cannot be null
+1/17/2017-12:17:14 PM->executeInsertQuery - Query: INSERT INTO login (LoginID, UserID, Password, RollID, PasswordChange, DisableTime, Active,Client_ip,ClientOS,ClientBrowser,user_agent)  VALUES  (@loginID, @userID, @password, @rollID, @passwordChange, @disableTime, @active, @Client_ip, @ClientOS, @ClientBrowser, @user_agent)
+   error - -Column 'LoginID' cannot be null
+1/17/2017-12:20:33 PM->executeInsertQuery - Query: INSERT INTO login (LoginID, UserID, Password, RollID, PasswordChange, DisableTime, Active,Client_ip,ClientOS,ClientBrowser,user_agent)  VALUES  (@loginID, @userID, @password, @rollID, @passwordChange, @disableTime, @active, @Client_ip, @ClientOS, @ClientBrowser, @user_agent)
+   error - -Column 'LoginID' cannot be null
+1/17/2017-12:24:19 PM->executeInsertQuery - Query: INSERT INTO login (LoginID, UserID, Password, RollID, PasswordChange, DisableTime, Active,Client_ip,ClientOS,ClientBrowser,user_agent)  VALUES  (@loginID, @userID, @password, @rollID, @passwordChange, @disableTime, @active, @Client_ip, @ClientOS, @ClientBrowser, @user_agent)
+   error - -Column 'LoginID' cannot be null
+1/18/2017-12:11:35 PM->executeSelectQuery - Query: SELECT Name, UserType, DATE_FORMAT(LoginTimeStamp,'%d/%m/%Y/%T') as LoginTimeStamp FROM rti_login, usertype WHERE UserName=@uname AND rti_login.UserTypeID=usertype.UserTypeID
+   error - -Table 'rti_nic_cg.rti_login' doesn't exist
+1/18/2017-4:55:02 PM->executeSelectQuery - Query: select dept_id, DeptName from basedepartment 
+   error - -Unknown column 'DeptName' in 'field list'
+1/18/2017-4:55:07 PM->executeSelectQuery - Query: select dept_id, DeptName from basedepartment 
+   error - -Unknown column 'DeptName' in 'field list'
+1/20/2017-11:30:12 AM->executeSelectQuery - Query: SELECT Name, UserType, DATE_FORMAT(LoginTimeStamp,'%d/%m/%Y/%T') as LoginTimeStamp FROM rti_login, usertype WHERE UserName=@uname AND rti_login.UserTypeID=usertype.UserTypeID
+   error - -Table 'rti_nic_cg.rti_login' doesn't exist
+1/20/2017-11:56:40 AM->executeSelectQuery - Query: SELECT Name, UserType, DATE_FORMAT(LoginTimeStamp,'%d/%m/%Y/%T') as LoginTimeStamp FROM rti_login, usertype WHERE UserName=@uname AND rti_login.UserTypeID=usertype.UserTypeID
+   error - -Table 'rti_nic_cg.rti_login' doesn't exist
+1/23/2017-4:25:04 PM->executeSelectQuery - Query: select emp.emp_id as id, emp.Name_en as empname,emp.mobile_no as mblname, dic.District_Name as dist, bd.dept_name as depnm,
+                    dg.Designation_Name as designm,ofc.OfficeName as office,emp.email_id as email, st.state_name_e as state
+                    from employee_table emp
+                    INNER join office ofc on ofc.DistrictCodeNew=emp.district_id and ofc.BaseDeptCode= emp.base_department_id and 
+                    ofc.StateCode = emp.state_id and ofc.NewOfficeCode=emp.NewOfficeCode
+                    inner join districts dic on dic.StateCode = emp.state_id and dic.District_ID = emp.district_id
+                    inner join basedepartment bd on bd.dept_id = emp.base_department_id
+                    inner join designation dg on dg.Designation_ID = emp.Designation_ID
+                    inner join state st on st.state_id=emp.state_id   where 1 = 1      and emp.state_id= @state     and emp.district_id = @district    and emp.NewOfficeCode= @NewOfficeCode  
+   error - -Fatal error encountered during command execution.
+1/23/2017-4:39:08 PM->executeSelectQuery - Query: select emp.emp_id as id, emp.Name_en as empname,emp.mobile_no as mblname, dic.District_Name as dist, bd.dept_name as depnm,
+                    dg.Designation_Name as designm,ofc.OfficeName as office,emp.email_id as email, st.state_name_e as state
+                    from employee_table emp
+                    INNER join office ofc on ofc.DistrictCodeNew=emp.district_id and ofc.BaseDeptCode= emp.base_department_id and 
+                    ofc.StateCode = emp.state_id and ofc.NewOfficeCode=emp.NewOfficeCode
+                    inner join districts dic on dic.StateCode = emp.state_id and dic.District_ID = emp.district_id
+                    inner join basedepartment bd on bd.dept_id = emp.base_department_id
+                    inner join designation dg on dg.Designation_ID = emp.Designation_ID
+                    inner join state st on st.state_id=emp.state_id   where 1 = 1      and emp.state_id= @state     and emp.district_id = @district    and emp.NewOfficeCode= @NewOfficeCode  
+   error - -Fatal error encountered during command execution.
+1/24/2017-12:14:54 PM->executeSelectQuery - Query: select district_id,district_nm_e,cid,entry_datetime,client_ip,user_id from districts where state_id=@state_id order by district_nm_e 
+   error - -Unknown column 'district_nm_e' in 'field list'
+1/24/2017-12:19:01 PM->executeSelectQuery - Query: select district_id,district_nm_e,cid,entry_datetime,client_ip,user_id from districts where state_id=@state_id order by district_nm_e 
+   error - -Unknown column 'district_nm_e' in 'field list'
+1/24/2017-2:35:33 PM->executeSelectQuery - Query:  select count(*) as office_count from office ofc
+                       inner join districts dic on  dic.StateCode=ofc.StateCode and dic.district_id = ofc.DistrictCodeNew 
+                       inner join basedepartment bd on bd.dept_id = ofc.BaseDeptCode
+                       inner join officelevel ol on ol.OfficeLevelCode = ofc.OfficeLevel  and ol.StateCode= ofc.StateCode  and ol.BaseDeptCode=ofc.BaseDeptCode    where 1 = 1      and StateCode= @state     and DistrictCodeNew = @district   
+   error - -Column 'StateCode' in where clause is ambiguous
+1/24/2017-2:46:48 PM->executeSelectQuery - Query: select district_id,district_nm_e,cid,entry_datetime,client_ip,user_id from districts where state_id=@state_id order by district_nm_e 
+   error - -Unknown column 'district_nm_e' in 'field list'
+1/25/2017-10:55:50 AM->executeSelectQuery - Query: select ds.district_id, ds.district_nm_e from district ds where ds.state_id=@stateid order by district_nm_e asc
+   error - -Table 'rti_nic_cg.district' doesn't exist
+1/25/2017-11:21:32 AM->executeSelectQuery - Query: select emp.emp_id as id, emp.Name_en as empname,emp.mobile_no as mblname, dic.District_Name as dist, bd.dept_name as depnm,dg.Designation_Name as designm,ofc.OfficeName as office,emp.email_id as email, st.state_name_e as state
+                    from employee_table emp
+                    left join office ofc on ofc.DistrictCodeNew=emp.district_id and ofc.BaseDeptCode= emp.base_department_id and ofc.StateCode = emp.state_id and ofc.NewOfficeCode=emp.NewOfficeCode
+                    left join districts dic on dic.StateCode = emp.state_id and dic.District_ID = emp.district_id
+                    left join basedepartment bd on bd.dept_id = emp.base_department_id
+                    left join designation dg on dg.Designation_ID = emp.Designation_ID
+                    left join state st on st.state_id=emp.state_id   where 1 = 1      and state_id= @state     and district_id = @district    order by emp.emp_id 
+   error - -Fatal error encountered during command execution.
+1/25/2017-11:21:34 AM->executeSelectQuery - Query: select emp.emp_id as id, emp.Name_en as empname,emp.mobile_no as mblname, dic.District_Name as dist, bd.dept_name as depnm,dg.Designation_Name as designm,ofc.OfficeName as office,emp.email_id as email, st.state_name_e as state
+                    from employee_table emp
+                    left join office ofc on ofc.DistrictCodeNew=emp.district_id and ofc.BaseDeptCode= emp.base_department_id and ofc.StateCode = emp.state_id and ofc.NewOfficeCode=emp.NewOfficeCode
+                    left join districts dic on dic.StateCode = emp.state_id and dic.District_ID = emp.district_id
+                    left join basedepartment bd on bd.dept_id = emp.base_department_id
+                    left join designation dg on dg.Designation_ID = emp.Designation_ID
+                    left join state st on st.state_id=emp.state_id   where 1 = 1      and state_id= @state     and district_id = @district    order by emp.emp_id 
+   error - -Fatal error encountered during command execution.
+1/25/2017-11:22:10 AM->executeSelectQuery - Query: select emp.emp_id as id, emp.Name_en as empname,emp.mobile_no as mblname, dic.District_Name as dist, bd.dept_name as depnm,dg.Designation_Name as designm,ofc.OfficeName as office,emp.email_id as email, st.state_name_e as state
+                    from employee_table emp
+                    left join office ofc on ofc.DistrictCodeNew=emp.district_id and ofc.BaseDeptCode= emp.base_department_id and ofc.StateCode = emp.state_id and ofc.NewOfficeCode=emp.NewOfficeCode
+                    left join districts dic on dic.StateCode = emp.state_id and dic.District_ID = emp.district_id
+                    left join basedepartment bd on bd.dept_id = emp.base_department_id
+                    left join designation dg on dg.Designation_ID = emp.Designation_ID
+                    left join state st on st.state_id=emp.state_id   where 1 = 1      and state_id= @state     and district_id = @district    order by emp.emp_id 
+   error - -Fatal error encountered during command execution.
+1/25/2017-11:26:28 AM->executeSelectQuery - Query: select emp.emp_id as id, emp.Name_en as empname,emp.mobile_no as mblname, dic.District_Name as dist, bd.dept_name as depnm,dg.Designation_Name as designm,ofc.OfficeName as office,emp.email_id as email, st.state_name_e as state
+                    from employee_table emp
+                    left join office ofc on ofc.DistrictCodeNew=emp.district_id and ofc.BaseDeptCode= emp.base_department_id and ofc.StateCode = emp.state_id and ofc.NewOfficeCode=emp.NewOfficeCode
+                    left join districts dic on dic.StateCode = emp.state_id and dic.District_ID = emp.district_id
+                    left join basedepartment bd on bd.dept_id = emp.base_department_id
+                    left join designation dg on dg.Designation_ID = emp.Designation_ID
+                    left join state st on st.state_id=emp.state_id   where 1 = 1      and emp.state_id= @state     and emp.district_id = @district    order by emp.emp_id 
+   error - -Fatal error encountered during command execution.
+1/25/2017-11:27:32 AM->executeSelectQuery - Query: select emp.emp_id as id, emp.Name_en as empname,emp.mobile_no as mblname, dic.District_Name as dist, bd.dept_name as depnm,dg.Designation_Name as designm,ofc.OfficeName as office,emp.email_id as email, st.state_name_e as state
+                    from employee_table emp
+                    left join office ofc on ofc.DistrictCodeNew=emp.district_id and ofc.BaseDeptCode= emp.base_department_id and ofc.StateCode = emp.state_id and ofc.NewOfficeCode=emp.NewOfficeCode
+                    left join districts dic on dic.StateCode = emp.state_id and dic.District_ID = emp.district_id
+                    left join basedepartment bd on bd.dept_id = emp.base_department_id
+                    left join designation dg on dg.Designation_ID = emp.Designation_ID
+                    left join state st on st.state_id=emp.state_id   where 1 = 1      and emp.state_id= @state     and emp.district_id = @district    order by emp.emp_id 
+   error - -Fatal error encountered during command execution.
+1/25/2017-11:27:43 AM->executeSelectQuery - Query: select emp.emp_id as id, emp.Name_en as empname,emp.mobile_no as mblname, dic.District_Name as dist, bd.dept_name as depnm,dg.Designation_Name as designm,ofc.OfficeName as office,emp.email_id as email, st.state_name_e as state
+                    from employee_table emp
+                    left join office ofc on ofc.DistrictCodeNew=emp.district_id and ofc.BaseDeptCode= emp.base_department_id and ofc.StateCode = emp.state_id and ofc.NewOfficeCode=emp.NewOfficeCode
+                    left join districts dic on dic.StateCode = emp.state_id and dic.District_ID = emp.district_id
+                    left join basedepartment bd on bd.dept_id = emp.base_department_id
+                    left join designation dg on dg.Designation_ID = emp.Designation_ID
+                    left join state st on st.state_id=emp.state_id   where 1 = 1      and emp.state_id= @state     and emp.district_id = @district    order by emp.emp_id 
+   error - -Fatal error encountered during command execution.
+1/25/2017-11:27:47 AM->executeSelectQuery - Query: select emp.emp_id as id, emp.Name_en as empname,emp.mobile_no as mblname, dic.District_Name as dist, bd.dept_name as depnm,dg.Designation_Name as designm,ofc.OfficeName as office,emp.email_id as email, st.state_name_e as state
+                    from employee_table emp
+                    left join office ofc on ofc.DistrictCodeNew=emp.district_id and ofc.BaseDeptCode= emp.base_department_id and ofc.StateCode = emp.state_id and ofc.NewOfficeCode=emp.NewOfficeCode
+                    left join districts dic on dic.StateCode = emp.state_id and dic.District_ID = emp.district_id
+                    left join basedepartment bd on bd.dept_id = emp.base_department_id
+                    left join designation dg on dg.Designation_ID = emp.Designation_ID
+                    left join state st on st.state_id=emp.state_id   where 1 = 1      and emp.state_id= @state     and emp.district_id = @district    order by emp.emp_id 
+   error - -Fatal error encountered during command execution.
+1/25/2017-11:30:01 AM->executeSelectQuery - Query: select emp.emp_id as id, emp.Name_en as empname,emp.mobile_no as mblname, dic.District_Name as dist, bd.dept_name as depnm,dg.Designation_Name as designm,ofc.OfficeName as office,emp.email_id as email, st.state_name_e as state
+                    from employee_table emp
+                    left join office ofc on ofc.DistrictCodeNew=emp.district_id and ofc.BaseDeptCode= emp.base_department_id and ofc.StateCode = emp.state_id and ofc.NewOfficeCode=emp.NewOfficeCode
+                    left join districts dic on dic.StateCode = emp.state_id and dic.District_ID = emp.district_id
+                    left join basedepartment bd on bd.dept_id = emp.base_department_id
+                    left join designation dg on dg.Designation_ID = emp.Designation_ID
+                    left join state st on st.state_id=emp.state_id   where 1 = 1      and emp.state_id= @state     and emp.district_id = @district    order by emp.emp_id 
+   error - -Fatal error encountered during command execution.
+1/25/2017-11:33:21 AM->executeSelectQuery - Query: select emp.emp_id as id, emp.Name_en as empname,emp.mobile_no as mblname, dic.District_Name as dist, bd.dept_name as depnm,dg.Designation_Name as designm,ofc.OfficeName as office,emp.email_id as email, st.state_name_e as state
+                    from employee_table emp
+                    left join office ofc on ofc.DistrictCodeNew=emp.district_id and ofc.BaseDeptCode= emp.base_department_id and ofc.StateCode = emp.state_id and ofc.NewOfficeCode=emp.NewOfficeCode
+                    left join districts dic on dic.StateCode = emp.state_id and dic.District_ID = emp.district_id
+                    left join basedepartment bd on bd.dept_id = emp.base_department_id
+                    left join designation dg on dg.Designation_ID = emp.Designation_ID
+                    left join state st on st.state_id=emp.state_id   where 1 = 1      and emp.state_id= @state     and emp.district_id = @district    order by emp.emp_id 
+   error - -Fatal error encountered during command execution.
+1/25/2017-1:15:24 PM->executeSelectQuery - Query: select district_id,district_nm_e,cid,entry_datetime,client_ip,user_id from districts where state_id=@state_id order by district_nm_e 
+   error - -Unknown column 'district_nm_e' in 'field list'
+1/25/2017-1:15:39 PM->executeSelectQuery - Query: select ds.district_id, ds.district_nm_e from district ds where ds.state_id=@stateid order by district_nm_e asc
+   error - -Table 'rti_nic_cg.district' doesn't exist
+1/25/2017-1:16:10 PM->executeSelectQuery - Query: select ds.district_id, ds.district_nm_e from district ds where ds.state_id=@stateid order by district_nm_e asc
+   error - -Table 'rti_nic_cg.district' doesn't exist
+1/25/2017-2:02:00 PM->executeSelectQuery - Query: SELECT distinct B.NewOfficeCode, B.OfficeName FROM employee_table as A 
+                        inner join office as B on A.NewOfficeCode = B.NewOfficeCode 
+                        where A.district_id=@district_id and A.base_department_id=@department_id   where 1 = 1  order by B.OfficeName 
+   error - -You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'where 1 = 1  order by B.OfficeName' at line 3
+1/25/2017-2:02:03 PM->executeSelectQuery - Query: SELECT distinct B.NewOfficeCode, B.OfficeName FROM employee_table as A 
+                        inner join office as B on A.NewOfficeCode = B.NewOfficeCode 
+                        where A.district_id=@district_id and A.base_department_id=@department_id   where 1 = 1  order by B.OfficeName 
+   error - -You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'where 1 = 1  order by B.OfficeName' at line 3
+1/25/2017-2:02:06 PM->executeSelectQuery - Query: SELECT distinct B.NewOfficeCode, B.OfficeName FROM employee_table as A 
+                        inner join office as B on A.NewOfficeCode = B.NewOfficeCode 
+                        where A.district_id=@district_id and A.base_department_id=@department_id   where 1 = 1  order by B.OfficeName 
+   error - -You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'where 1 = 1  order by B.OfficeName' at line 3
+1/25/2017-2:02:08 PM->executeSelectQuery - Query: SELECT distinct B.NewOfficeCode, B.OfficeName FROM employee_table as A 
+                        inner join office as B on A.NewOfficeCode = B.NewOfficeCode 
+                        where A.district_id=@district_id and A.base_department_id=@department_id   where 1 = 1  order by B.OfficeName 
+   error - -You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'where 1 = 1  order by B.OfficeName' at line 3
+1/25/2017-2:02:11 PM->executeSelectQuery - Query: SELECT distinct B.NewOfficeCode, B.OfficeName FROM employee_table as A 
+                        inner join office as B on A.NewOfficeCode = B.NewOfficeCode 
+                        where A.district_id=@district_id and A.base_department_id=@department_id   where 1 = 1  order by B.OfficeName 
+   error - -You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'where 1 = 1  order by B.OfficeName' at line 3
+1/25/2017-2:02:13 PM->executeSelectQuery - Query: SELECT distinct B.NewOfficeCode, B.OfficeName FROM employee_table as A 
+                        inner join office as B on A.NewOfficeCode = B.NewOfficeCode 
+                        where A.district_id=@district_id and A.base_department_id=@department_id   where 1 = 1  order by B.OfficeName 
+   error - -You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'where 1 = 1  order by B.OfficeName' at line 3
+1/25/2017-2:04:28 PM->executeSelectQuery - Query: SELECT distinct B.NewOfficeCode, B.OfficeName FROM employee_table as A 
+                        inner join office as B on A.NewOfficeCode = B.NewOfficeCode 
+                        where A.district_id=@district_id and A.base_department_id=@department_id   where 1 = 1  order by B.OfficeName 
+   error - -You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'where 1 = 1  order by B.OfficeName' at line 3
+1/25/2017-2:04:55 PM->executeSelectQuery - Query: SELECT distinct B.NewOfficeCode, B.OfficeName FROM employee_table as A 
+                        inner join office as B on A.NewOfficeCode = B.NewOfficeCode 
+                        inner join officelevel as C on B.OfficeLevel = C.OfficeLevelCode and B.BaseDeptCode=C.BaseDeptCode 
+                        where A.district_id=@district_id and A.base_department_id=@department_id   where 1 = 1  order by B.OfficeName 
+   error - -You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'where 1 = 1  order by B.OfficeName' at line 4
+1/25/2017-2:04:57 PM->executeSelectQuery - Query: SELECT distinct B.NewOfficeCode, B.OfficeName FROM employee_table as A 
+                        inner join office as B on A.NewOfficeCode = B.NewOfficeCode 
+                        inner join officelevel as C on B.OfficeLevel = C.OfficeLevelCode and B.BaseDeptCode=C.BaseDeptCode 
+                        where A.district_id=@district_id and A.base_department_id=@department_id   where 1 = 1  order by B.OfficeName 
+   error - -You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'where 1 = 1  order by B.OfficeName' at line 4
+1/25/2017-2:05:00 PM->executeSelectQuery - Query: SELECT distinct B.NewOfficeCode, B.OfficeName FROM employee_table as A 
+                        inner join office as B on A.NewOfficeCode = B.NewOfficeCode 
+                        inner join officelevel as C on B.OfficeLevel = C.OfficeLevelCode and B.BaseDeptCode=C.BaseDeptCode 
+                        where A.district_id=@district_id and A.base_department_id=@department_id   where 1 = 1  order by B.OfficeName 
+   error - -You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'where 1 = 1  order by B.OfficeName' at line 4
+1/25/2017-2:05:02 PM->executeSelectQuery - Query: SELECT distinct B.NewOfficeCode, B.OfficeName FROM employee_table as A 
+                        inner join office as B on A.NewOfficeCode = B.NewOfficeCode 
+                        inner join officelevel as C on B.OfficeLevel = C.OfficeLevelCode and B.BaseDeptCode=C.BaseDeptCode 
+                        where A.district_id=@district_id and A.base_department_id=@department_id   where 1 = 1  order by B.OfficeName 
+   error - -You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'where 1 = 1  order by B.OfficeName' at line 4
+1/25/2017-2:05:45 PM->executeSelectQuery - Query: SELECT distinct B.NewOfficeCode, B.OfficeName FROM employee_table as A 
+                        inner join office as B on A.NewOfficeCode = B.NewOfficeCode 
+                        inner join officelevel as C on B.OfficeLevel = C.OfficeLevelCode and B.BaseDeptCode=C.BaseDeptCode 
+                        where A.district_id=@district_id and A.base_department_id=@department_id   where 1 = 1  order by B.OfficeName 
+   error - -You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'where 1 = 1  order by B.OfficeName' at line 4
+1/25/2017-2:34:55 PM->executeSelectQuery - Query: SELECT distinct B.NewOfficeCode, B.OfficeName FROM employee_table as A 
+                        inner join office as B on A.NewOfficeCode = B.NewOfficeCode 
+                        inner join officelevel as C on B.OfficeLevel = C.OfficeLevelCode and B.BaseDeptCode=C.BaseDeptCode 
+                        where A.district_id=@district_id and A.base_department_id=@department_id  and C.OfficeLvelType = '00'  order by B.OfficeName 
+   error - -Unknown column 'C.OfficeLvelType' in 'where clause'
+1/25/2017-2:35:07 PM->executeSelectQuery - Query: SELECT distinct B.NewOfficeCode, B.OfficeName FROM employee_table as A 
+                        inner join office as B on A.NewOfficeCode = B.NewOfficeCode 
+                        inner join officelevel as C on B.OfficeLevel = C.OfficeLevelCode and B.BaseDeptCode=C.BaseDeptCode 
+                        where A.district_id=@district_id and A.base_department_id=@department_id  and C.OfficeLvelType = '00'  order by B.OfficeName 
+   error - -Unknown column 'C.OfficeLvelType' in 'where clause'
+1/25/2017-2:35:30 PM->executeSelectQuery - Query: SELECT distinct B.NewOfficeCode, B.OfficeName FROM employee_table as A 
+                        inner join office as B on A.NewOfficeCode = B.NewOfficeCode 
+                        inner join officelevel as C on B.OfficeLevel = C.OfficeLevelCode and B.BaseDeptCode=C.BaseDeptCode 
+                        where A.district_id=@district_id and A.base_department_id=@department_id  and C.OfficeLvelType = '00'  order by B.OfficeName 
+   error - -Unknown column 'C.OfficeLvelType' in 'where clause'
+1/25/2017-2:36:53 PM->executeSelectQuery - Query: SELECT distinct B.NewOfficeCode, B.OfficeName FROM employee_table as A 
+                        inner join office as B on A.NewOfficeCode = B.NewOfficeCode 
+                        inner join officelevel as C on B.OfficeLevel = C.OfficeLevelCode and B.BaseDeptCode=C.BaseDeptCode 
+                        where A.district_id=@district_id and A.base_department_id=@department_id  and C.OfficeLvelType = '00'  order by B.OfficeName 
+   error - -Unknown column 'C.OfficeLvelType' in 'where clause'
+1/25/2017-3:47:59 PM->executeSelectQuery - Query: select ds.district_id, ds.district_nm_e from district ds where ds.state_id=@stateid order by district_nm_e asc
+   error - -Table 'rti_nic_cg.district' doesn't exist
+1/25/2017-4:22:53 PM->executeSelectQuery - Query: select district_id,district_nm_e,cid,entry_datetime,client_ip,user_id from districts where state_id=@state_id order by district_nm_e 
+   error - -Unknown column 'district_nm_e' in 'field list'
+1/25/2017-4:26:06 PM->executeSelectQuery - Query: select district_id,district_nm_e,cid,entry_datetime,client_ip,user_id from districts where state_id=@state_id order by district_nm_e 
+   error - -Unknown column 'district_nm_e' in 'field list'
+1/25/2017-4:27:10 PM->executeSelectQuery - Query: select district_id,district_nm_e,cid,entry_datetime,client_ip,user_id from districts where state_id=@state_id order by district_nm_e 
+   error - -Unknown column 'district_nm_e' in 'field list'
+1/27/2017-10:59:19 AM->executeSelectQuery - Query: SELECT Name, UserType, DATE_FORMAT(LoginTimeStamp,'%d/%m/%Y/%T') as LoginTimeStamp FROM rti_login, usertype WHERE UserName=@uname AND rti_login.UserTypeID=usertype.UserTypeID
+   error - -Table 'rti_nic_cg.rti_login' doesn't exist
+1/27/2017-11:25:55 AM->executeSelectQuery - Query: SELECT Name, UserType, DATE_FORMAT(LoginTimeStamp,'%d/%m/%Y/%T') as LoginTimeStamp FROM rti_login, usertype WHERE UserName=@uname AND rti_login.UserTypeID=usertype.UserTypeID
+   error - -Table 'rti_nic_cg.rti_login' doesn't exist
+1/30/2017-12:29:55 PM->executeSelectQuery - Query: select rta.`status` as status ,rta.action_detail as action, rta.comments as comment, et.Name_en as nameofficer, deg.Designation_Name as namedeg, ofc.OfficeName as office, bde.dept_name as department ,DATE_FORMAT(rta.action_date_time,'%d/%M/%y') as action_date 
+from rti_status rs
+inner  join rti_action rta on rta.rti_id= rs.rti_id
+INNER join emp_office_mapping eop on eop.office_mapping_id= rta.officer_mapping_id
+inner join employee_table et on et.emp_id	= eop.emp_code
+inner join office ofc on ofc.NewOfficeCode= eop.office_id
+inner join basedepartment bde on bde.dept_id = eop.base_department_id
+inner join designation deg on deg.Designation_ID = eop.designation_id
+where rs.user_id=@userid
+ order by rta.action_id DESC
+   error - -Unknown column 'rta.comments' in 'field list'
+1/30/2017-12:35:12 PM->executeInsertQuery - Query: INSERT INTO login (LoginID, UserID, Password, RollID, PasswordChange, DisableTime, Active,Client_ip,ClientOS,ClientBrowser,user_agent)  VALUES  (@loginID, @userID, @password, @rollID, @passwordChange, @disableTime, @active, @Client_ip, @ClientOS, @ClientBrowser, @user_agent)
+   error - -Duplicate entry '201700022' for key 'PRIMARY'
+31/01/2017-12:23:39->executeSelectQuery - Query: select District_ID,District_Name from districts order by District_Name  where StateCode=@statecode
+   error - -You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'where StateCode='22'' at line 1
+31/01/2017-12:25:40->executeSelectQuery - Query: select District_ID,District_Name from districts order by District_Name  where StateCode=@statecode
+   error - -You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'where StateCode='22'' at line 1
+31/01/2017-12:28:13->executeSelectQuery - Query: select District_ID,District_Name from districts order by District_Name  where StateCode=@statecode
+   error - -You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'where StateCode='22'' at line 1
+31/01/2017-12:30:14->executeSelectQuery - Query: select District_ID,District_Name from districts order by District_Name  where StateCode=@statecode
+   error - -You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'where StateCode='22'' at line 1
+31/01/2017-12:31:42->executeSelectQuery - Query: select District_ID,District_Name from districts order by District_Name  where StateCode=@statecode
+   error - -You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'where StateCode='22'' at line 1
+31/01/2017-12:31:51->executeSelectQuery - Query: select District_ID,District_Name from districts order by District_Name  where StateCode=@statecode
+   error - -You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'where StateCode='22'' at line 1
+31/01/2017-12:33:18->executeSelectQuery - Query: select District_ID,District_Name from districts order by District_Name  where StateCode=@statecode
+   error - -You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'where StateCode='22'' at line 1
+31/01/2017-12:33:21->executeSelectQuery - Query: select District_ID,District_Name from districts order by District_Name  where StateCode=@statecode
+   error - -You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'where StateCode='22'' at line 1
+31/01/2017-17:09:02->executeInsertQuery - Query: insert into forward 
+(rti_id,action_id,file_id,sendingMethod,r_officeMapping_id,s_officeMapping_id,section_mapping_id,ip_address,client_OS,client_browser,userAgent)
+values 
+(@rti_id,@action_id,@file_id,@sendingMethod,@r_officeMapping_id,@s_officeMapping_id,@section_mapping_id,@ip_address,@client_OS,@client_browser,@userAgent)       
+
+   error - -Fatal error encountered during command execution.
+01/02/2017-12:00:21->executeInsertQuery - Query: insert into forward 
+(rti_id,action_id,file_id,sendingMethod,r_officeMapping_id,s_officeMapping_id,section_mapping_id,ip_address,client_OS,client_browser,userAgent)
+values 
+(@rti_id,@action_id,@file_id,@sendingMethod,@r_officeMapping_id,@s_officeMapping_id,@section_mapping_id,@ip_address,@client_OS,@client_browser,@userAgent)       
+
+   error - -Fatal error encountered during command execution.
+01/02/2017-12:02:29->executeInsertQuery - Query: insert into forward 
+(rti_id,action_id,file_id,sendingMethod,r_officeMapping_id,s_officeMapping_id,section_mapping_id,ip_address,client_OS,client_browser,userAgent)
+values 
+(@rti_id,@action_id,@file_id,@sendingMethod,@r_officeMapping_id,@s_officeMapping_id,@section_mapping_id,@ip_address,@client_OS,@client_browser,@userAgent)       
+
+   error - -Fatal error encountered during command execution.
+01/02/2017-12:07:37->executeInsertQuery - Query: insert into forward 
+(rti_id,action_id,file_id,sendingMethod,r_officeMapping_id,s_officeMapping_id,section_mapping_id,ip_address,client_OS,client_browser,userAgent)
+values 
+(@rti_id,@action_id,@file_id,@sendingMethod,@r_officeMapping_id,@s_officeMapping_id,@section_mapping_id,@ip_address,@client_OS,@client_browser,@userAgent)       
+
+   error - -Incorrect integer value: '' for column 'file_id' at row 1
+01/02/2017-12:09:59->executeInsertQuery - Query: insert into rti_action
+(action_id,rti_id,officer_mapping_id,action_detail,action_date,IsUpload,ipaddress,status,client_OS,client_browser,userAgent) 
+values
+(@action_id,@rti_id,@officer_mapping_id,@action_detail,@action_date,@Isupload,@ipaddress,@status,@client_os,@client_browser,@useragent)
+   error - -Data too long for column 'officer_mapping_id' at row 1
+01/02/2017-12:12:09->executeInsertQuery - Query: insert into rti_action
+(action_id,rti_id,officer_mapping_id,action_detail,action_date,IsUpload,ipaddress,status,client_OS,client_browser,userAgent) 
+values
+(@action_id,@rti_id,@officer_mapping_id,@action_detail,@action_date,@Isupload,@ipaddress,@status,@client_os,@client_browser,@useragent)
+   error - -Data too long for column 'officer_mapping_id' at row 1
+01/02/2017-12:12:24->executeInsertQuery - Query: insert into rti_action
+(action_id,rti_id,officer_mapping_id,action_detail,action_date,IsUpload,ipaddress,status,client_OS,client_browser,userAgent) 
+values
+(@action_id,@rti_id,@officer_mapping_id,@action_detail,@action_date,@Isupload,@ipaddress,@status,@client_os,@client_browser,@useragent)
+   error - -Data too long for column 'officer_mapping_id' at row 1
+01/02/2017-12:14:01->executeInsertQuery - Query: insert into rti_action
+(action_id,rti_id,officer_mapping_id,action_detail,action_date,IsUpload,ipaddress,status,client_OS,client_browser,userAgent) 
+values
+(@action_id,@rti_id,@officer_mapping_id,@action_detail,@action_date,@Isupload,@ipaddress,@status,@client_os,@client_browser,@useragent)
+   error - -Data too long for column 'officer_mapping_id' at row 1
+01/02/2017-12:17:03->executeInsertQuery - Query: insert into rti_action
+(action_id,rti_id,officer_mapping_id,action_detail,action_date,IsUpload,ipaddress,status,client_OS,client_browser,userAgent) 
+values
+(@action_id,@rti_id,@officer_mapping_id,@action_detail,@action_date,@Isupload,@ipaddress,@status,@client_os,@client_browser,@useragent)
+   error - -Data too long for column 'officer_mapping_id' at row 1
+01/02/2017-12:19:40->executeUpdateQuery - Query: update rti_status set status=@status , action_id=@actionid,
+ officer_maping_id=@ofcmapid,IPAddress=@ipaddress,action_date=@actiondate,client_browser=@clientbr, 
+ client_OS=@clintos,useragent=@useragent,IsNew=@isnew, user_id=@userid
+ where rti_id=@rtiid
+   error - -Fatal error encountered during command execution.
+2/2/2017-2:44:07 PM->executeSelectQuery - Query: select rta.`status` as status ,rta.action_detail as action, rta.comments as comment, et.Name_en as nameofficer, deg.Designation_Name as namedeg, ofc.OfficeName as office, bde.dept_name as department ,DATE_FORMAT(rta.action_date_time,'%d/%M/%y') as action_date 
+from rti_status rs
+inner  join rti_action rta on rta.rti_id= rs.rti_id
+INNER join emp_office_mapping eop on eop.office_mapping_id= rta.officer_mapping_id
+inner join employee_table et on et.emp_id	= eop.emp_code
+inner join office ofc on ofc.NewOfficeCode= eop.office_id
+inner join basedepartment bde on bde.dept_id = eop.base_department_id
+inner join designation deg on deg.Designation_ID = eop.designation_id
+where rs.user_id=@userid
+ order by rta.action_id DESC
+   error - -Unknown column 'rta.comments' in 'field list'
+2/2/2017-4:49:46 PM->executeSelectQuery - Query: select rta.`status` as status ,rta.action_detail as action, rta.comments as comment, et.Name_en as nameofficer, deg.Designation_Name as namedeg, ofc.OfficeName as office, bde.dept_name as department ,DATE_FORMAT(rta.action_date_time,'%d/%M/%y') as action_date 
+from rti_status rs
+inner  join rti_action rta on rta.rti_id= rs.rti_id
+INNER join emp_office_mapping eop on eop.office_mapping_id= rta.officer_mapping_id
+inner join employee_table et on et.emp_id	= eop.emp_code
+inner join office ofc on ofc.NewOfficeCode= eop.office_id
+inner join basedepartment bde on bde.dept_id = eop.base_department_id
+inner join designation deg on deg.Designation_ID = eop.designation_id
+where rs.user_id=@userid
+ order by rta.action_id DESC
+   error - -Unknown column 'rta.comments' in 'field list'
+2/2/2017-5:04:01 PM->executeSelectQuery - Query: select rta.`status` as status ,rta.action_detail as action, rta.comments as comment, et.Name_en as nameofficer, deg.Designation_Name as namedeg, ofc.OfficeName as office, bde.dept_name as department ,DATE_FORMAT(rta.action_date_time,'%d/%M/%y') as action_date 
+from rti_status rs
+inner  join rti_action rta on rta.rti_id= rs.rti_id
+INNER join emp_office_mapping eop on eop.office_mapping_id= rta.officer_mapping_id
+inner join employee_table et on et.emp_id	= eop.emp_code
+inner join office ofc on ofc.NewOfficeCode= eop.office_id
+inner join basedepartment bde on bde.dept_id = eop.base_department_id
+inner join designation deg on deg.Designation_ID = eop.designation_id
+where rs.user_id=@userid
+ order by rta.action_id DESC
+   error - -Unknown column 'rta.comments' in 'field list'
+2/2/2017-5:09:56 PM->executeSelectQuery - Query: select rta.`status` as status ,rta.action_detail as action, rta.comments as comment, et.Name_en as nameofficer, deg.Designation_Name as namedeg, ofc.OfficeName as office, bde.dept_name as department ,DATE_FORMAT(rta.action_date_time,'%d/%M/%y') as action_date 
+from rti_status rs
+inner  join rti_action rta on rta.rti_id= rs.rti_id
+INNER join emp_office_mapping eop on eop.office_mapping_id= rta.officer_mapping_id
+inner join employee_table et on et.emp_id	= eop.emp_code
+inner join office ofc on ofc.NewOfficeCode= eop.office_id
+inner join basedepartment bde on bde.dept_id = eop.base_department_id
+inner join designation deg on deg.Designation_ID = eop.designation_id
+where rs.rti_id=@userid
+ order by rta.action_id DESC
+   error - -Unknown column 'rta.comments' in 'field list'
+06/02/2017-15:30:38->executeInsertQuery - Query: insert into rti_action
+                       (action_id,rti_id,officer_mapping_id,action_detail,action_date,IsUpload,IsMeeting,meeting_date,ipaddress,
+                        status,client_OS,client_browser,userAgent) values
+                        (@action_id,@rti_id,@officer_mapping_id,@action_detail,@action_date,@Isupload,@IsMeeting,@meeting_date,
+                        @ipaddress,@status,@client_os,@client_browser,@useragent)
+   error - -Duplicate entry '001-2017000047' for key 'PRIMARY'
+06/02/2017-15:33:49->executeInsertQuery - Query: insert into rti_status_log select * from rti_status  rd  WHERE rd.rti_id =@rti_Id
+   error - -Column count doesn't match value count at row 1
+06/02/2017-15:40:28->executeInsertQuery - Query: insert into rti_status_log select * from rti_status  rd  WHERE rd.rti_id =@rti_Id
+   error - -Column count doesn't match value count at row 1
+06/02/2017-15:42:05->executeInsertQuery - Query: insert into rti_status_log select * from rti_status  rd  WHERE rd.rti_id =@rti_Id
+   error - -Column count doesn't match value count at row 1
+07/02/2017-10:44:59->executeSelectQuery - Query: select ra.action_id,ra.action_detail as detail,(ra.action_date,'%d/%M/%Y') as date,dl.DisplayName_en as status,
+et.Name_en as name,ofc.OfficeName ,deg.Designation_Name,fwd.sendingMethod , dl1.DisplayName_en as sending_method,af.fileName
+ from rti_action ra
+inner join emp_office_mapping eom on eom.office_mapping_id=ra.officer_mapping_id 
+inner join employee_table et ON et.emp_id =eom.emp_code
+inner join designation	deg on deg.Designation_ID = eom.designation_id	
+inner join office ofc on ofc.NewOfficeCode= eom.office_id 
+left outer join forward fwd on fwd.action_id= ra.action_id and fwd.rti_id=ra.rti_id
+left outer join action_files af on af.action_id= ra.action_id and af.rti_id= ra.rti_id
+inner JOIN  ddl_list dl on dl.DDL_Name_Value= ra.`status`
+left outer join ddl_list dl1 on dl1.DDL_Name_Value= fwd.sendingMethod
+where ra.rti_id=@rtiid order by ra.action_id
+   error - -Operand should contain 1 column(s)
+07/02/2017-10:45:10->executeSelectQuery - Query: select ra.action_id,ra.action_detail as detail,(ra.action_date,'%d/%M/%Y') as date,dl.DisplayName_en as status,
+et.Name_en as name,ofc.OfficeName ,deg.Designation_Name,fwd.sendingMethod , dl1.DisplayName_en as sending_method,af.fileName
+ from rti_action ra
+inner join emp_office_mapping eom on eom.office_mapping_id=ra.officer_mapping_id 
+inner join employee_table et ON et.emp_id =eom.emp_code
+inner join designation	deg on deg.Designation_ID = eom.designation_id	
+inner join office ofc on ofc.NewOfficeCode= eom.office_id 
+left outer join forward fwd on fwd.action_id= ra.action_id and fwd.rti_id=ra.rti_id
+left outer join action_files af on af.action_id= ra.action_id and af.rti_id= ra.rti_id
+inner JOIN  ddl_list dl on dl.DDL_Name_Value= ra.`status`
+left outer join ddl_list dl1 on dl1.DDL_Name_Value= fwd.sendingMethod
+where ra.rti_id=@rtiid order by ra.action_id
+   error - -Operand should contain 1 column(s)
+07/02/2017-10:45:48->executeSelectQuery - Query: select ra.action_id,ra.action_detail as detail,(ra.action_date,'%d/%M/%Y') as date,dl.DisplayName_en as status,
+et.Name_en as name,ofc.OfficeName ,deg.Designation_Name,fwd.sendingMethod , dl1.DisplayName_en as sending_method,af.fileName
+ from rti_action ra
+inner join emp_office_mapping eom on eom.office_mapping_id=ra.officer_mapping_id 
+inner join employee_table et ON et.emp_id =eom.emp_code
+inner join designation	deg on deg.Designation_ID = eom.designation_id	
+inner join office ofc on ofc.NewOfficeCode= eom.office_id 
+left outer join forward fwd on fwd.action_id= ra.action_id and fwd.rti_id=ra.rti_id
+left outer join action_files af on af.action_id= ra.action_id and af.rti_id= ra.rti_id
+inner JOIN  ddl_list dl on dl.DDL_Name_Value= ra.`status`
+left outer join ddl_list dl1 on dl1.DDL_Name_Value= fwd.sendingMethod
+where ra.rti_id=@rtiid order by ra.action_id
+   error - -Operand should contain 1 column(s)
+07/02/2017-10:45:58->executeSelectQuery - Query: select ra.action_id,ra.action_detail as detail,(ra.action_date,'%d/%M/%Y') as date,dl.DisplayName_en as status,
+et.Name_en as name,ofc.OfficeName ,deg.Designation_Name,fwd.sendingMethod , dl1.DisplayName_en as sending_method,af.fileName
+ from rti_action ra
+inner join emp_office_mapping eom on eom.office_mapping_id=ra.officer_mapping_id 
+inner join employee_table et ON et.emp_id =eom.emp_code
+inner join designation	deg on deg.Designation_ID = eom.designation_id	
+inner join office ofc on ofc.NewOfficeCode= eom.office_id 
+left outer join forward fwd on fwd.action_id= ra.action_id and fwd.rti_id=ra.rti_id
+left outer join action_files af on af.action_id= ra.action_id and af.rti_id= ra.rti_id
+inner JOIN  ddl_list dl on dl.DDL_Name_Value= ra.`status`
+left outer join ddl_list dl1 on dl1.DDL_Name_Value= fwd.sendingMethod
+where ra.rti_id=@rtiid order by ra.action_id
+   error - -Operand should contain 1 column(s)
+07/02/2017-11:59:55->executeSelectQuery - Query: select ra.rti_id ra.action_id,ra.action_detail as detail,date_format(ra.action_date,'%d/%M/%Y') as date,dl.DisplayName_en as status,
+et.Name_en as name,ofc.OfficeName ,deg.Designation_Name,fwd.sendingMethod , dl1.DisplayName_en as sending_method,af.fileName ,af.action_fileID as fileid
+ from rti_action ra
+inner join emp_office_mapping eom on eom.office_mapping_id=ra.officer_mapping_id 
+inner join employee_table et ON et.emp_id =eom.emp_code
+inner join designation	deg on deg.Designation_ID = eom.designation_id	
+inner join office ofc on ofc.NewOfficeCode= eom.office_id 
+left outer join forward fwd on fwd.action_id= ra.action_id and fwd.rti_id=ra.rti_id
+left outer join action_files af on af.action_id= ra.action_id and af.rti_id= ra.rti_id
+inner JOIN  ddl_list dl on dl.DDL_Name_Value= ra.`status`
+left outer join ddl_list dl1 on dl1.DDL_Name_Value= fwd.sendingMethod
+where ra.rti_id=@rtiid order by ra.action_id
+   error - -You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '.action_id,ra.action_detail as detail,date_format(ra.action_date,'%d/%M/%Y') as ' at line 1
+07/02/2017-12:00:09->executeSelectQuery - Query: select ra.rti_id ra.action_id,ra.action_detail as detail,date_format(ra.action_date,'%d/%M/%Y') as date,dl.DisplayName_en as status,
+et.Name_en as name,ofc.OfficeName ,deg.Designation_Name,fwd.sendingMethod , dl1.DisplayName_en as sending_method,af.fileName ,af.action_fileID as fileid
+ from rti_action ra
+inner join emp_office_mapping eom on eom.office_mapping_id=ra.officer_mapping_id 
+inner join employee_table et ON et.emp_id =eom.emp_code
+inner join designation	deg on deg.Designation_ID = eom.designation_id	
+inner join office ofc on ofc.NewOfficeCode= eom.office_id 
+left outer join forward fwd on fwd.action_id= ra.action_id and fwd.rti_id=ra.rti_id
+left outer join action_files af on af.action_id= ra.action_id and af.rti_id= ra.rti_id
+inner JOIN  ddl_list dl on dl.DDL_Name_Value= ra.`status`
+left outer join ddl_list dl1 on dl1.DDL_Name_Value= fwd.sendingMethod
+where ra.rti_id=@rtiid order by ra.action_id
+   error - -You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '.action_id,ra.action_detail as detail,date_format(ra.action_date,'%d/%M/%Y') as ' at line 1
+07/02/2017-12:00:25->executeSelectQuery - Query: select ra.rti_id ra.action_id,ra.action_detail as detail,date_format(ra.action_date,'%d/%M/%Y') as date,dl.DisplayName_en as status,
+et.Name_en as name,ofc.OfficeName ,deg.Designation_Name,fwd.sendingMethod , dl1.DisplayName_en as sending_method,af.fileName ,af.action_fileID as fileid
+ from rti_action ra
+inner join emp_office_mapping eom on eom.office_mapping_id=ra.officer_mapping_id 
+inner join employee_table et ON et.emp_id =eom.emp_code
+inner join designation	deg on deg.Designation_ID = eom.designation_id	
+inner join office ofc on ofc.NewOfficeCode= eom.office_id 
+left outer join forward fwd on fwd.action_id= ra.action_id and fwd.rti_id=ra.rti_id
+left outer join action_files af on af.action_id= ra.action_id and af.rti_id= ra.rti_id
+inner JOIN  ddl_list dl on dl.DDL_Name_Value= ra.`status`
+left outer join ddl_list dl1 on dl1.DDL_Name_Value= fwd.sendingMethod
+where ra.rti_id=@rtiid order by ra.action_id
+   error - -You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '.action_id,ra.action_detail as detail,date_format(ra.action_date,'%d/%M/%Y') as ' at line 1
+07/02/2017-12:02:36->executeSelectQuery - Query: select ra.rti_id ra.action_id,ra.action_detail as detail,date_format(ra.action_date,'%d/%M/%Y') as date,dl.DisplayName_en as status,
+et.Name_en as name,ofc.OfficeName ,deg.Designation_Name,fwd.sendingMethod , dl1.DisplayName_en as sending_method,af.fileName ,af.action_fileID as fileid
+ from rti_action ra
+inner join emp_office_mapping eom on eom.office_mapping_id=ra.officer_mapping_id 
+inner join employee_table et ON et.emp_id =eom.emp_code
+inner join designation	deg on deg.Designation_ID = eom.designation_id	
+inner join office ofc on ofc.NewOfficeCode= eom.office_id 
+left outer join forward fwd on fwd.action_id= ra.action_id and fwd.rti_id=ra.rti_id
+left outer join action_files af on af.action_id= ra.action_id and af.rti_id= ra.rti_id
+inner JOIN  ddl_list dl on dl.DDL_Name_Value= ra.`status`
+left outer join ddl_list dl1 on dl1.DDL_Name_Value= fwd.sendingMethod
+where ra.rti_id=@rtiid order by ra.action_id
+   error - -You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '.action_id,ra.action_detail as detail,date_format(ra.action_date,'%d/%M/%Y') as ' at line 1
+07/02/2017-12:26:58->executeSelectQuery - Query: select ra.rti_id,ra.action_id,ra.action_detail as detail,
+date_format(ra.action_date,'%d/%M/%Y') as date,dl.DisplayName_en as status,et.Name_en as name,
+ofc.OfficeName ,deg.Designation_Name,fwd.sendingMethod ,dl1.DisplayName_en as sending_method,
+af.fileName, af.action_fileID as fileid, af.FileDescription ad f_desc
+from rti_action ra
+ inner join emp_office_mapping eom on eom.office_mapping_id=ra.officer_mapping_id 
+ inner join employee_table et ON et.emp_id =eom.emp_code
+ inner join designation	deg on deg.Designation_ID = eom.designation_id	
+ inner join office ofc on ofc.NewOfficeCode= eom.office_id 
+ left outer join forward fwd on fwd.action_id= ra.action_id and fwd.rti_id=ra.rti_id
+ left outer join action_files af on af.action_id= ra.action_id and af.rti_id= ra.rti_id
+ inner JOIN  ddl_list dl on dl.DDL_Name_Value= ra.`status`
+ left outer join ddl_list dl1 on dl1.DDL_Name_Value= fwd.sendingMethod
+where ra.rti_id=@rtiid order by ra.action_id 
+   error - -You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'f_desc
+from rti_action ra
+ inner join emp_office_mapping eom on eom.office_map' at line 4
+5/18/2017-2:58:19 PM->executeSelectQuery - Query: CALL `check_login`(@loginid, @password);
+   error - -Unable to connect to any of the specified MySQL hosts.
+5/18/2017-4:48:15 PM->GetConnectionString : -Object reference not set to an instance of an object.
+5/18/2017-4:48:15 PM->executeSelectQuery - Query: select lo.UserID, emp.Name_en, emp.state_id,emp.base_department_id, emp.NewOfficeCode, emp.district_id,lo.RollID from login lo
+inner join employee_table emp on emp.emp_id=lo.LoginID
+ where lo.UserID=@user
+   error - -Authentication to host '' for user '' using method 'mysql_native_password' failed with message: Access denied for user ''@'Ram-PC' (using password: NO)
+5/18/2017-4:48:41 PM->GetConnectionString : -Object reference not set to an instance of an object.
+5/18/2017-4:48:41 PM->executeSelectQuery - Query: select lo.UserID, emp.Name_en, emp.state_id,emp.base_department_id, emp.NewOfficeCode, emp.district_id,lo.RollID from login lo
+inner join employee_table emp on emp.emp_id=lo.LoginID
+ where lo.UserID=@user
+   error - -Authentication to host '' for user '' using method 'mysql_native_password' failed with message: Access denied for user ''@'Ram-PC' (using password: NO)
+5/18/2017-4:49:03 PM->GetConnectionString : -Object reference not set to an instance of an object.
+5/18/2017-4:49:03 PM->executeSelectQuery - Query: select lo.UserID, emp.Name_en, emp.state_id,emp.base_department_id, emp.NewOfficeCode, emp.district_id,lo.RollID from login lo
+inner join employee_table emp on emp.emp_id=lo.LoginID
+ where lo.UserID=@user
+   error - -Authentication to host '' for user '' using method 'mysql_native_password' failed with message: Access denied for user ''@'Ram-PC' (using password: NO)
+5/18/2017-4:51:00 PM->GetConnectionString : -Object reference not set to an instance of an object.
+5/18/2017-4:51:00 PM->executeSelectQuery - Query: select lo.UserID, emp.Name_en, emp.state_id,emp.base_department_id, emp.NewOfficeCode, emp.district_id,lo.RollID from login lo
+inner join employee_table emp on emp.emp_id=lo.LoginID
+ where lo.UserID=@user
+   error - -Authentication to host '' for user '' using method 'mysql_native_password' failed with message: Access denied for user ''@'Ram-PC' (using password: NO)
+5/18/2017-4:51:35 PM->GetConnectionString : -Object reference not set to an instance of an object.
+5/18/2017-4:52:45 PM->GetConnectionString : -Object reference not set to an instance of an object.
+5/18/2017-4:53:51 PM->executeSelectQuery - Query: select lo.UserID, emp.Name_en, emp.state_id,emp.base_department_id, emp.NewOfficeCode, emp.district_id,lo.RollID from login lo
+inner join employee_table emp on emp.emp_id=lo.LoginID
+ where lo.UserID=@user
+   error - -Authentication to host '' for user '' using method 'mysql_native_password' failed with message: Access denied for user ''@'Ram-PC' (using password: NO)
+5/18/2017-4:54:37 PM->executeSelectQuery - Query: select et.state_id as state_id, em.base_department_id as base_department_id,em.district_id_ofc as district_id, em.office_id from emp_office_mapping em 
+inner join employee_table et on et.emp_id = em.emp_code
+where em.office_mapping_id = @eom
+   error - -Fatal error encountered during command execution.
+5/18/2017-4:57:19 PM->executeSelectQuery - Query: select et.state_id as state_id, em.base_department_id as base_department_id,em.district_id_ofc as district_id, em.office_id from emp_office_mapping em 
+inner join employee_table et on et.emp_id = em.emp_code
+where em.office_mapping_id = @eom
+   error - -Fatal error encountered during command execution.
+5/18/2017-4:57:25 PM->executeSelectQuery - Query: select et.state_id as state_id, em.base_department_id as base_department_id,em.district_id_ofc as district_id, em.office_id from emp_office_mapping em 
+inner join employee_table et on et.emp_id = em.emp_code
+where em.office_mapping_id = @eom
+   error - -Fatal error encountered during command execution.
+5/18/2017-4:58:50 PM->executeSelectQuery - Query: select et.state_id as state_id, em.base_department_id as base_department_id,em.district_id_ofc as district_id, em.office_id from emp_office_mapping em 
+inner join employee_table et on et.emp_id = em.emp_code
+where em.office_mapping_id = @eom
+   error - -Fatal error encountered during command execution.
+5/18/2017-5:08:12 PM->executeSelectQuery - Query: select et.state_id as state_id, em.base_department_id as base_department_id,em.district_id_ofc as district_id, em.office_id,em.officeid as NewOfficeCode of.OfficeName from emp_office_mapping em 
+inner join employee_table et on et.emp_id = em.emp_code
+inner join office of on of.NewOfficeCode=em.office_id
+where em.office_mapping_id = @eom
+   error - -You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'of.OfficeName from emp_office_mapping em 
+inner join employee_table et on et.em' at line 1
+5/18/2017-5:08:29 PM->executeSelectQuery - Query: select et.state_id as state_id, em.base_department_id as base_department_id,em.district_id_ofc as district_id, em.office_id,em.officeid as NewOfficeCode of.OfficeName from emp_office_mapping em 
+inner join employee_table et on et.emp_id = em.emp_code
+inner join office of on of.NewOfficeCode=em.office_id
+where em.office_mapping_id = @eom
+   error - -You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'of.OfficeName from emp_office_mapping em 
+inner join employee_table et on et.em' at line 1
+5/18/2017-5:09:12 PM->executeSelectQuery - Query: select et.state_id as state_id, em.base_department_id as base_department_id,em.district_id_ofc as district_id, em.office_id,em.officeid as NewOfficeCode ,of.OfficeName from emp_office_mapping em 
+inner join employee_table et on et.emp_id = em.emp_code
+inner join office of on of.NewOfficeCode=em.office_id
+where em.office_mapping_id = @eom
+   error - -Unknown column 'em.officeid' in 'field list'
+5/18/2017-5:10:17 PM->executeSelectQuery - Query: select et.state_id as state_id, em.base_department_id as base_department_id,em.district_id_ofc as district_id, em.office_id,em.officeid as NewOfficeCode ,of.OfficeName from emp_office_mapping em 
+inner join employee_table et on et.emp_id = em.emp_code
+inner join office of on of.NewOfficeCode=em.office_id
+where em.office_mapping_id = @eom
+   error - -Unknown column 'em.officeid' in 'field list'
+5/19/2017-12:29:58 PM->executeSelectQuery - Query: CALL `check_login`(@loginid, @password);
+   error - -Unable to connect to any of the specified MySQL hosts.
+5/19/2017-12:30:14 PM->executeInsertQuery - Query: insert into logintrial(UserID,Client_OS,ClientBrowser,UserAgent,SuccessFull_Login,UserIP)
+values (@userid,@clientos,@clientbrowser,@useragent,@succesful_login,@userip)
+   error - -Unable to connect to any of the specified MySQL hosts.
+5/19/2017-12:30:45 PM->executeSelectQuery - Query: CALL `check_login`(@loginid, @password);
+   error - -Unable to connect to any of the specified MySQL hosts.
+5/19/2017-12:31:00 PM->executeInsertQuery - Query: insert into logintrial(UserID,Client_OS,ClientBrowser,UserAgent,SuccessFull_Login,UserIP)
+values (@userid,@clientos,@clientbrowser,@useragent,@succesful_login,@userip)
+   error - -Unable to connect to any of the specified MySQL hosts.
+5/19/2017-12:51:33 PM->executeSelectQuery - Query: select em.office_mapping_id,em.emp_code, et.Name_en,o.OfficeName , d.District_Name_En from emp_office_mapping em 
+inner join employee_table et on et.emp_id = em.emp_code
+inner join office o on o.NewOfficeCode = em.office_id
+inner join districts d on d.District_ID = em.district_id_ofc    Where em.role_id = @roleid   and Active='Y'     and em.district_id_ofc =@district_id_ofc        and em.office_id = @office_id    
+   error - -Column 'Active' in where clause is ambiguous
+5/19/2017-12:53:19 PM->executeSelectQuery - Query: select em.office_mapping_id,em.emp_code, et.Name_en,o.OfficeName , d.District_Name_En from emp_office_mapping em 
+inner join employee_table et on et.emp_id = em.emp_code
+inner join office o on o.NewOfficeCode = em.office_id
+inner join districts d on d.District_ID = em.district_id_ofc    Where em.role_id = @roleid   and Active='Y'     and em.district_id_ofc =@district_id_ofc        and em.office_id = @office_id    
+   error - -Column 'Active' in where clause is ambiguous
+5/19/2017-12:55:09 PM->executeSelectQuery - Query: select em.office_mapping_id,em.emp_code, et.Name_en,o.OfficeName , d.District_Name_En from emp_office_mapping em 
+inner join employee_table et on et.emp_id = em.emp_code
+inner join office o on o.NewOfficeCode = em.office_id
+inner join districts d on d.District_ID = em.district_id_ofc    Where em.role_id = @roleid   and Active='Y'     and em.district_id_ofc =@district_id_ofc        and em.office_id = @office_id    
+   error - -Column 'Active' in where clause is ambiguous
+5/19/2017-1:11:05 PM->executeSelectQuery - Query: CALL `check_login`(@loginid, @password);
+   error - -Unable to connect to any of the specified MySQL hosts.
+5/22/2017-12:31:29 PM->executeSelectQuery - Query: select  emp_code, B.Name_en from  emp_office_mapping A 
+                       inner join employee_table as B on A.emp_code = B.emp_id      
+                       where A.base_department_id= @base_department_id and A.district_id_ofc=@district_id_ofc 
+                       and A.active='Y' order by Name_en asc
+   error - -Fatal error encountered during command execution.
+5/22/2017-12:50:36 PM->executeSelectQuery - Query:  select  office_category, office_level_id, office_id, designation_id from  emp_office_mapping A
+                      where A.base_department_id= @base_department_id and A.district_id_ofc=@district_id_ofc and A.emp_code=@empCode and active='Y' 
+   error - -Authentication to host '10.132.36.138' for user 'root' using method 'mysql_native_password' failed with message: Reading from the stream has failed.
+6/14/2017-2:43:54 PM->executeSelectQuery - Query: select fees_code,fees_details,Amount from society_fees_master where society_type_code=(select society_type_code from society where RTI_provisional_no=@RTI_provisional_no) 
+   error - -Table 'rti_nic_cg.society_fees_master' doesn't exist
+6/14/2017-2:47:44 PM->executeSelectQuery - Query: select fees_code,fees_details,Amount from society_fees_master where society_type_code=(select society_type_code from society where RTI_provisional_no=@RTI_provisional_no) 
+   error - -Table 'rti_nic_cg.society_fees_master' doesn't exist
+6/14/2017-2:48:05 PM->executeSelectQuery - Query: select fees_code,fees_details,Amount from society_fees_master where society_type_code=(select society_type_code from society where RTI_provisional_no=@RTI_provisional_no) 
+   error - -Table 'rti_nic_cg.society_fees_master' doesn't exist
+6/14/2017-2:48:08 PM->executeSelectQuery - Query: select fees_code,fees_details,Amount from society_fees_master where society_type_code=(select society_type_code from society where RTI_provisional_no=@RTI_provisional_no) 
+   error - -Table 'rti_nic_cg.society_fees_master' doesn't exist
+6/14/2017-2:49:02 PM->executeSelectQuery - Query: select fees_code,fees_details,Amount from society_fees_master where society_type_code=(select society_type_code from society where RTI_provisional_no=@RTI_provisional_no) 
+   error - -Table 'rti_nic_cg.society_fees_master' doesn't exist
+6/14/2017-2:50:45 PM->executeSelectQuery - Query: select fees_code,fees_details,Amount from society_fees_master where society_type_code=(select society_type_code from society where RTI_provisional_no=@RTI_provisional_no) 
+   error - -Table 'rti_nic_cg.society_fees_master' doesn't exist
+6/14/2017-2:50:56 PM->executeSelectQuery - Query: select fees_code,fees_details,Amount from society_fees_master where society_type_code=(select society_type_code from society where RTI_provisional_no=@RTI_provisional_no) 
+   error - -Table 'rti_nic_cg.society_fees_master' doesn't exist
+6/14/2017-4:01:06 PM->PayFees.aspx.cs-Button1_Click-An endpoint configuration section for contract 'ServiceReference1.echallanSoap' could not be loaded because more than one endpoint configuration for that contract was found. Please indicate the preferred endpoint configuration section by name.
+6/15/2017-10:45:15 AM->eChallan.aspx (save) :-DataBinding: 'System.Data.DataRowView' does not contain a property with the name 'society_provisional_no'.
+6/15/2017-10:59:23 AM->eChallan.aspx (save) :-DataBinding: 'System.Data.DataRowView' does not contain a property with the name 'society_provisional_no'.
+6/15/2017-2:17:48 PM->executeSelectQuery - Query: select * from echallan_detail where RTI_provisional_no=@RTI_provisional_no  order by serial_no
+   error - -Unable to connect to any of the specified MySQL hosts.
+6/15/2017-2:18:04 PM->executeSelectQuery - Query: select * from echallan_detail where RTI_provisional_no=@RTI_provisional_no  order by serial_no
+   error - -Unable to connect to any of the specified MySQL hosts.
+6/16/2017-10:48:09 AM->executeSelectQuery - Query: SELECT RegistrationID, IsValid,UserID,Name_en,EmailID,Address,PinCode,MobileNo,Gender,Registration_Year from user_registration where UserID=@UserID and IsValid='Y' and Payment_status='Y' 
+   error - -Unknown column 'Payment_status' in 'where clause'
+16/06/2017-14:42:08->executeSelectQuery - Query:  SELECT A.notice_id, Subject, DATE_FORMAT(startdate,'%d/%m/%Y') as publishdate,  ( CASE WHEN file_description is NULL THEN 'No File' ELSE file_description END ) as filename, content_type, file_data,  dist.District_Name_En as dist_name, dept.dept_name as dept_name, ofc.OfficeName as ofc_name  FROM  Notice A left join notice_file B on A.notice_id=B.notice_id  left join districts dist on A.district_id = dist.District_ID  left join basedepartment dept on A.base_dept_id = dept.dept_id  left join office ofc on A.office_id = ofc.NewOfficeCode and dept.dept_id= ofc.BaseDeptCode and dist.District_ID = ofc.DistrictCodeNew  where 1 and 1   and district_id=@District_ID  and base_dept_id=@Base_department_id  and office_id=@Office_id   ORDER BY startdate  DESC  
+   error - -Column 'district_id' in where clause is ambiguous
+16/06/2017-14:42:20->executeSelectQuery - Query:  SELECT A.notice_id, Subject, DATE_FORMAT(startdate,'%d/%m/%Y') as publishdate,  ( CASE WHEN file_description is NULL THEN 'No File' ELSE file_description END ) as filename, content_type, file_data,  dist.District_Name_En as dist_name, dept.dept_name as dept_name, ofc.OfficeName as ofc_name  FROM  Notice A left join notice_file B on A.notice_id=B.notice_id  left join districts dist on A.district_id = dist.District_ID  left join basedepartment dept on A.base_dept_id = dept.dept_id  left join office ofc on A.office_id = ofc.NewOfficeCode and dept.dept_id= ofc.BaseDeptCode and dist.District_ID = ofc.DistrictCodeNew  where 1 and 1   and district_id=@District_ID  and base_dept_id=@Base_department_id   ORDER BY startdate  DESC  
+   error - -Column 'district_id' in where clause is ambiguous
+16/06/2017-14:42:21->executeSelectQuery - Query:  SELECT A.notice_id, Subject, DATE_FORMAT(startdate,'%d/%m/%Y') as publishdate,  ( CASE WHEN file_description is NULL THEN 'No File' ELSE file_description END ) as filename, content_type, file_data,  dist.District_Name_En as dist_name, dept.dept_name as dept_name, ofc.OfficeName as ofc_name  FROM  Notice A left join notice_file B on A.notice_id=B.notice_id  left join districts dist on A.district_id = dist.District_ID  left join basedepartment dept on A.base_dept_id = dept.dept_id  left join office ofc on A.office_id = ofc.NewOfficeCode and dept.dept_id= ofc.BaseDeptCode and dist.District_ID = ofc.DistrictCodeNew  where 1 and 1   and district_id=@District_ID  and base_dept_id=@Base_department_id   ORDER BY startdate  DESC  
+   error - -Column 'district_id' in where clause is ambiguous
+16/06/2017-14:42:51->executeSelectQuery - Query:  SELECT A.notice_id, Subject, DATE_FORMAT(startdate,'%d/%m/%Y') as publishdate,  ( CASE WHEN file_description is NULL THEN 'No File' ELSE file_description END ) as filename, content_type, file_data,  dist.District_Name_En as dist_name, dept.dept_name as dept_name, ofc.OfficeName as ofc_name  FROM  Notice A left join notice_file B on A.notice_id=B.notice_id  left join districts dist on A.district_id = dist.District_ID  left join basedepartment dept on A.base_dept_id = dept.dept_id  left join office ofc on A.office_id = ofc.NewOfficeCode and dept.dept_id= ofc.BaseDeptCode and dist.District_ID = ofc.DistrictCodeNew  where 1 and 1   and district_id=@District_ID  and base_dept_id=@Base_department_id   ORDER BY startdate  DESC  
+   error - -Column 'district_id' in where clause is ambiguous
+16/06/2017-14:44:16->executeSelectQuery - Query:  SELECT A.notice_id, Subject, DATE_FORMAT(startdate,'%d/%m/%Y') as publishdate,  ( CASE WHEN file_description is NULL THEN 'No File' ELSE file_description END ) as filename, content_type, file_data,  dist.District_Name as dist_name, dept.dept_name as dept_name, ofc.OfficeName as ofc_name  FROM  Notice A left join notice_file B on A.notice_id=B.notice_id  left join districts dist on A.district_id = dist.District_ID  left join basedepartment dept on A.base_dept_id = dept.dept_id  left join office ofc on A.office_id = ofc.NewOfficeCode and dept.dept_id= ofc.BaseDeptCode and dist.District_ID = ofc.DistrictCodeNew  where 1 and 1   and district_id=@District_ID  and base_dept_id=@Base_department_id   ORDER BY startdate  DESC  
+   error - -Column 'district_id' in where clause is ambiguous
+16/06/2017-14:44:37->executeSelectQuery - Query:  SELECT A.notice_id, Subject, DATE_FORMAT(startdate,'%d/%m/%Y') as publishdate,  ( CASE WHEN file_description is NULL THEN 'No File' ELSE file_description END ) as filename, content_type, file_data,  dist.District_Name as dist_name, dept.dept_name as dept_name, ofc.OfficeName as ofc_name  FROM  Notice A left join notice_file B on A.notice_id=B.notice_id  left join districts dist on A.district_id = dist.District_ID  left join basedepartment dept on A.base_dept_id = dept.dept_id  left join office ofc on A.office_id = ofc.NewOfficeCode and dept.dept_id= ofc.BaseDeptCode and dist.District_ID = ofc.DistrictCodeNew  where 1 and 1   and district_id=@District_ID  and base_dept_id=@Base_department_id   ORDER BY startdate  DESC  
+   error - -Column 'district_id' in where clause is ambiguous
+16/06/2017-14:44:51->executeSelectQuery - Query:  SELECT A.notice_id, Subject, DATE_FORMAT(startdate,'%d/%m/%Y') as publishdate,  ( CASE WHEN file_description is NULL THEN 'No File' ELSE file_description END ) as filename, content_type, file_data,  dist.District_Name as dist_name, dept.dept_name as dept_name, ofc.OfficeName as ofc_name  FROM  Notice A left join notice_file B on A.notice_id=B.notice_id  left join districts dist on A.district_id = dist.District_ID  left join basedepartment dept on A.base_dept_id = dept.dept_id  left join office ofc on A.office_id = ofc.NewOfficeCode and dept.dept_id= ofc.BaseDeptCode and dist.District_ID = ofc.DistrictCodeNew  where 1 and 1   and district_id=@District_ID  and base_dept_id=@Base_department_id   ORDER BY startdate  DESC  
+   error - -Column 'district_id' in where clause is ambiguous
+16/06/2017-14:44:54->executeSelectQuery - Query:  SELECT A.notice_id, Subject, DATE_FORMAT(startdate,'%d/%m/%Y') as publishdate,  ( CASE WHEN file_description is NULL THEN 'No File' ELSE file_description END ) as filename, content_type, file_data,  dist.District_Name as dist_name, dept.dept_name as dept_name, ofc.OfficeName as ofc_name  FROM  Notice A left join notice_file B on A.notice_id=B.notice_id  left join districts dist on A.district_id = dist.District_ID  left join basedepartment dept on A.base_dept_id = dept.dept_id  left join office ofc on A.office_id = ofc.NewOfficeCode and dept.dept_id= ofc.BaseDeptCode and dist.District_ID = ofc.DistrictCodeNew  where 1 and 1   and district_id=@District_ID  and base_dept_id=@Base_department_id   ORDER BY startdate  DESC  
+   error - -Column 'district_id' in where clause is ambiguous
+16/06/2017-14:44:55->executeSelectQuery - Query:  SELECT A.notice_id, Subject, DATE_FORMAT(startdate,'%d/%m/%Y') as publishdate,  ( CASE WHEN file_description is NULL THEN 'No File' ELSE file_description END ) as filename, content_type, file_data,  dist.District_Name as dist_name, dept.dept_name as dept_name, ofc.OfficeName as ofc_name  FROM  Notice A left join notice_file B on A.notice_id=B.notice_id  left join districts dist on A.district_id = dist.District_ID  left join basedepartment dept on A.base_dept_id = dept.dept_id  left join office ofc on A.office_id = ofc.NewOfficeCode and dept.dept_id= ofc.BaseDeptCode and dist.District_ID = ofc.DistrictCodeNew  where 1 and 1   and district_id=@District_ID  and base_dept_id=@Base_department_id   ORDER BY startdate  DESC  
+   error - -Column 'district_id' in where clause is ambiguous
+16/06/2017-14:49:54->executeSelectQuery - Query:  SELECT A.notice_id, Subject, DATE_FORMAT(startdate,'%d/%m/%Y') as publishdate,  ( CASE WHEN file_description is NULL THEN 'No File' ELSE file_description END ) as filename, content_type, file_data,  dist.District_Name as dist_name, dept.dept_name as dept_name, ofc.OfficeName as ofc_name  FROM  Notice A left join notice_file B on A.notice_id=B.notice_id  left join districts dist on A.district_id = dist.District_ID  left join basedepartment dept on A.base_dept_id = dept.dept_id  left join office ofc on A.office_id = ofc.NewOfficeCode and dept.dept_id= ofc.BaseDeptCode and dist.District_ID = ofc.DistrictCodeNew  where 1 and 1   and district_id LIKE @District_ID  and base_dept_id LIKE @Base_department_id   ORDER BY startdate  DESC  
+   error - -Column 'district_id' in where clause is ambiguous
+16/06/2017-14:50:06->executeSelectQuery - Query:  SELECT A.notice_id, Subject, DATE_FORMAT(startdate,'%d/%m/%Y') as publishdate,  ( CASE WHEN file_description is NULL THEN 'No File' ELSE file_description END ) as filename, content_type, file_data,  dist.District_Name as dist_name, dept.dept_name as dept_name, ofc.OfficeName as ofc_name  FROM  Notice A left join notice_file B on A.notice_id=B.notice_id  left join districts dist on A.district_id = dist.District_ID  left join basedepartment dept on A.base_dept_id = dept.dept_id  left join office ofc on A.office_id = ofc.NewOfficeCode and dept.dept_id= ofc.BaseDeptCode and dist.District_ID = ofc.DistrictCodeNew  where 1 and 1   and district_id LIKE @District_ID  and base_dept_id LIKE @Base_department_id   ORDER BY startdate  DESC  
+   error - -Column 'district_id' in where clause is ambiguous
+16/06/2017-14:50:07->executeSelectQuery - Query:  SELECT A.notice_id, Subject, DATE_FORMAT(startdate,'%d/%m/%Y') as publishdate,  ( CASE WHEN file_description is NULL THEN 'No File' ELSE file_description END ) as filename, content_type, file_data,  dist.District_Name as dist_name, dept.dept_name as dept_name, ofc.OfficeName as ofc_name  FROM  Notice A left join notice_file B on A.notice_id=B.notice_id  left join districts dist on A.district_id = dist.District_ID  left join basedepartment dept on A.base_dept_id = dept.dept_id  left join office ofc on A.office_id = ofc.NewOfficeCode and dept.dept_id= ofc.BaseDeptCode and dist.District_ID = ofc.DistrictCodeNew  where 1 and 1   and district_id LIKE @District_ID  and base_dept_id LIKE @Base_department_id   ORDER BY startdate  DESC  
+   error - -Column 'district_id' in where clause is ambiguous
+16/06/2017-14:50:07->executeSelectQuery - Query:  SELECT A.notice_id, Subject, DATE_FORMAT(startdate,'%d/%m/%Y') as publishdate,  ( CASE WHEN file_description is NULL THEN 'No File' ELSE file_description END ) as filename, content_type, file_data,  dist.District_Name as dist_name, dept.dept_name as dept_name, ofc.OfficeName as ofc_name  FROM  Notice A left join notice_file B on A.notice_id=B.notice_id  left join districts dist on A.district_id = dist.District_ID  left join basedepartment dept on A.base_dept_id = dept.dept_id  left join office ofc on A.office_id = ofc.NewOfficeCode and dept.dept_id= ofc.BaseDeptCode and dist.District_ID = ofc.DistrictCodeNew  where 1 and 1   and district_id LIKE @District_ID  and base_dept_id LIKE @Base_department_id   ORDER BY startdate  DESC  
+   error - -Column 'district_id' in where clause is ambiguous
+16/06/2017-14:52:53->executeSelectQuery - Query:  SELECT A.notice_id, Subject, DATE_FORMAT(startdate,'%d/%m/%Y') as publishdate,  ( CASE WHEN file_description is NULL THEN 'No File' ELSE file_description END ) as filename, content_type, file_data,  dist.District_Name as dist_name, dept.dept_name as dept_name, ofc.OfficeName as ofc_name  FROM  Notice A left join notice_file B on A.notice_id=B.notice_id  left join districts dist on A.district_id = dist.District_ID  left join basedepartment dept on A.base_dept_id = dept.dept_id  left join office ofc on A.office_id = ofc.NewOfficeCode and dept.dept_id= ofc.BaseDeptCode and dist.District_ID = ofc.DistrictCodeNew  where 1 and 1   and district_id = @District_ID  and base_dept_id = @Base_department_id   ORDER BY startdate  DESC  
+   error - -Column 'district_id' in where clause is ambiguous
+11/07/2017-13:04:55->Notice_Entry.aspx_btnSubmit_Click-Object reference not set to an instance of an object.
+11/07/2017-13:13:47->Notice_Entry.aspx_btnSubmit_Click-Object reference not set to an instance of an object.
+11/07/2017-13:16:36->Notice_Entry.aspx_btnSubmit_Click-Object reference not set to an instance of an object.
+11/07/2017-13:17:41->Notice_Entry.aspx_btnSubmit_Click-Object reference not set to an instance of an object.
+11/07/2017-13:21:17->Notice_Entry.aspx_btnSubmit_Click-Object reference not set to an instance of an object.
+11/07/2017-13:27:28->Notice_Entry.aspx_btnSubmit_Click-Object reference not set to an instance of an object.
+12/07/2017-12:50:50->executeInsertQuery - Query: insert into file_details(File_Header,mime_type,file_data,client_ip,user_code,upload_date)  values(@Header,@file_ext,@file_data,@Client_Ip,@User_Id,@Date_Time);
+   error - -Table 'rti_nic_cg.file_details' doesn't exist
+7/12/2017-1:12:35 PM->executeSelectQuery - Query: select nb.notice_id,nb.file_id,nb.Header,nb.Hyperlink,nb.File_Type,nb.active,nb.status,nb.bold,nb.blink,nb.priority,nb.image,nb.permanent,NOW(),
+
+(CASE WHEN Validity_From IS NOT NULL OR Validity_From !='' THEN DATE_FORMAT(Validity_From,'%d/%m/%Y') ELSE 'Not Available' END)Validity_From,  
+(CASE WHEN Validity_To IS NOT NULL OR Validity_To!='' THEN DATE_FORMAT(Validity_To,'%d/%m/%Y') ELSE 'Not Available' END)Validity_To, 
+(CASE WHEN DATE_FORMAT(Publish_Date,'%d/%m/%Y') IS NULL OR DATE_FORMAT(Publish_Date,'%d/%m/%Y')='' THEN DATE_FORMAT(validity_from,'%d/%m/%Y') ELSE DATE_FORMAT(Publish_Date,'%d/%m/%Y') END)Publish_Date, 
+(case when Permanent='Y' then 'Yes' when Permanent='N' then 'No' end)permanent,
+ (case when color is null or color='' then '#000000' else color end)color,
+ (case when url is null or url='' then '../user/notice_download.aspx' else url end)url
+ 
+ from notice_board nb
+ left outer join file_details fd on nb.file_id=fd.file_id  
+ where active='A' and status='A'
+ and  case when 
+ permanent = 'N' then NOW() between validity_from AND Validity_To  else  NOW() >= Publish_Date end limit 10
+   error - -Table 'rti_nic_cg.file_details' doesn't exist
+7/12/2017-1:14:38 PM->executeSelectQuery - Query: select nb.notice_id,nb.file_id,nb.Header,nb.Hyperlink,nb.File_Type,nb.active,nb.status,nb.bold,nb.blink,nb.priority,nb.image,nb.permanent,NOW(),
+
+(CASE WHEN Validity_From IS NOT NULL OR Validity_From !='' THEN DATE_FORMAT(Validity_From,'%d/%m/%Y') ELSE 'Not Available' END)Validity_From,  
+(CASE WHEN Validity_To IS NOT NULL OR Validity_To!='' THEN DATE_FORMAT(Validity_To,'%d/%m/%Y') ELSE 'Not Available' END)Validity_To, 
+(CASE WHEN DATE_FORMAT(Publish_Date,'%d/%m/%Y') IS NULL OR DATE_FORMAT(Publish_Date,'%d/%m/%Y')='' THEN DATE_FORMAT(validity_from,'%d/%m/%Y') ELSE DATE_FORMAT(Publish_Date,'%d/%m/%Y') END)Publish_Date, 
+(case when Permanent='Y' then 'Yes' when Permanent='N' then 'No' end)permanent,
+ (case when color is null or color='' then '#000000' else color end)color,
+ (case when url is null or url='' then '../user/notice_download.aspx' else url end)url
+ 
+ from notice_board nb
+ left outer join file_details fd on nb.file_id=fd.file_id  
+ where active='A' and status='A'
+ and  case when 
+ permanent = 'N' then NOW() between validity_from AND Validity_To  else  NOW() >= Publish_Date end limit 10
+   error - -Table 'rti_nic_cg.file_details' doesn't exist
+7/12/2017-1:15:46 PM->executeSelectQuery - Query: select nb.notice_id,nb.file_id,nb.Header,nb.Hyperlink,nb.File_Type,nb.active,nb.status,nb.bold,nb.blink,nb.priority,nb.image,nb.permanent,NOW(),
+
+(CASE WHEN Validity_From IS NOT NULL OR Validity_From !='' THEN DATE_FORMAT(Validity_From,'%d/%m/%Y') ELSE 'Not Available' END)Validity_From,  
+(CASE WHEN Validity_To IS NOT NULL OR Validity_To!='' THEN DATE_FORMAT(Validity_To,'%d/%m/%Y') ELSE 'Not Available' END)Validity_To, 
+(CASE WHEN DATE_FORMAT(Publish_Date,'%d/%m/%Y') IS NULL OR DATE_FORMAT(Publish_Date,'%d/%m/%Y')='' THEN DATE_FORMAT(validity_from,'%d/%m/%Y') ELSE DATE_FORMAT(Publish_Date,'%d/%m/%Y') END)Publish_Date, 
+(case when Permanent='Y' then 'Yes' when Permanent='N' then 'No' end)permanent,
+ (case when color is null or color='' then '#000000' else color end)color,
+ (case when url is null or url='' then '../user/notice_download.aspx' else url end)url
+ 
+ from notice_board nb
+ left outer join file_details fd on nb.file_id=fd.file_id  
+ where active='A' and status='A'
+ and  case when 
+ permanent = 'N' then NOW() between validity_from AND Validity_To  else  NOW() >= Publish_Date end limit 10
+   error - -Table 'rti_nic_cg.file_details' doesn't exist
+7/12/2017-1:15:54 PM->executeSelectQuery - Query: select nb.notice_id,nb.file_id,nb.Header,nb.Hyperlink,nb.File_Type,nb.active,nb.status,nb.bold,nb.blink,nb.priority,nb.image,nb.permanent,NOW(),
+
+(CASE WHEN Validity_From IS NOT NULL OR Validity_From !='' THEN DATE_FORMAT(Validity_From,'%d/%m/%Y') ELSE 'Not Available' END)Validity_From,  
+(CASE WHEN Validity_To IS NOT NULL OR Validity_To!='' THEN DATE_FORMAT(Validity_To,'%d/%m/%Y') ELSE 'Not Available' END)Validity_To, 
+(CASE WHEN DATE_FORMAT(Publish_Date,'%d/%m/%Y') IS NULL OR DATE_FORMAT(Publish_Date,'%d/%m/%Y')='' THEN DATE_FORMAT(validity_from,'%d/%m/%Y') ELSE DATE_FORMAT(Publish_Date,'%d/%m/%Y') END)Publish_Date, 
+(case when Permanent='Y' then 'Yes' when Permanent='N' then 'No' end)permanent,
+ (case when color is null or color='' then '#000000' else color end)color,
+ (case when url is null or url='' then '../user/notice_download.aspx' else url end)url
+ 
+ from notice_board nb
+ left outer join file_details fd on nb.file_id=fd.file_id  
+ where active='A' and status='A'
+ and  case when 
+ permanent = 'N' then NOW() between validity_from AND Validity_To  else  NOW() >= Publish_Date end limit 10
+   error - -Table 'rti_nic_cg.file_details' doesn't exist
+7/12/2017-1:16:44 PM->executeSelectQuery - Query: select nb.notice_id,nb.file_id,nb.Header,nb.Hyperlink,nb.File_Type,nb.active,nb.status,nb.bold,nb.blink,nb.priority,nb.image,nb.permanent,NOW(),
+
+(CASE WHEN Validity_From IS NOT NULL OR Validity_From !='' THEN DATE_FORMAT(Validity_From,'%d/%m/%Y') ELSE 'Not Available' END)Validity_From,  
+(CASE WHEN Validity_To IS NOT NULL OR Validity_To!='' THEN DATE_FORMAT(Validity_To,'%d/%m/%Y') ELSE 'Not Available' END)Validity_To, 
+(CASE WHEN DATE_FORMAT(Publish_Date,'%d/%m/%Y') IS NULL OR DATE_FORMAT(Publish_Date,'%d/%m/%Y')='' THEN DATE_FORMAT(validity_from,'%d/%m/%Y') ELSE DATE_FORMAT(Publish_Date,'%d/%m/%Y') END)Publish_Date, 
+(case when Permanent='Y' then 'Yes' when Permanent='N' then 'No' end)permanent,
+ (case when color is null or color='' then '#000000' else color end)color,
+ (case when url is null or url='' then '../user/notice_download.aspx' else url end)url
+ 
+ from notice_board nb
+ left outer join file_details fd on nb.file_id=fd.file_id  
+ where active='A' and status='A'
+ and  case when 
+ permanent = 'N' then NOW() between validity_from AND Validity_To  else  NOW() >= Publish_Date end limit 10
+   error - -Table 'rti_nic_cg.file_details' doesn't exist
+7/12/2017-1:18:05 PM->executeSelectQuery - Query: select nb.notice_id,nb.file_id,nb.Header,nb.Hyperlink,nb.File_Type,nb.active,nb.status,nb.bold,nb.blink,nb.priority,nb.image,nb.permanent,NOW(),
+
+(CASE WHEN Validity_From IS NOT NULL OR Validity_From !='' THEN DATE_FORMAT(Validity_From,'%d/%m/%Y') ELSE 'Not Available' END)Validity_From,  
+(CASE WHEN Validity_To IS NOT NULL OR Validity_To!='' THEN DATE_FORMAT(Validity_To,'%d/%m/%Y') ELSE 'Not Available' END)Validity_To, 
+(CASE WHEN DATE_FORMAT(Publish_Date,'%d/%m/%Y') IS NULL OR DATE_FORMAT(Publish_Date,'%d/%m/%Y')='' THEN DATE_FORMAT(validity_from,'%d/%m/%Y') ELSE DATE_FORMAT(Publish_Date,'%d/%m/%Y') END)Publish_Date, 
+(case when Permanent='Y' then 'Yes' when Permanent='N' then 'No' end)permanent,
+ (case when color is null or color='' then '#000000' else color end)color,
+ (case when url is null or url='' then '../user/notice_download.aspx' else url end)url
+ 
+ from notice_board nb
+ left outer join file_details fd on nb.file_id=fd.file_id  
+ where active='A' and status='A'
+ and  case when 
+ permanent = 'N' then NOW() between validity_from AND Validity_To  else  NOW() >= Publish_Date end limit 10
+   error - -Table 'rti_nic_cg.file_details' doesn't exist
+12/07/2017-13:34:48->executeInsertQuery - Query: insert into file_details(File_Header,mime_type,file_data,client_ip,user_code,upload_date)  values(@Header,@file_ext,@file_data,@Client_Ip,@User_Id,@Date_Time);
+   error - -Table 'rti_nic_cg.file_details' doesn't exist
+12/07/2017-14:33:30->executeSelectQuery - Query: select MAX(file_id) from file_details
+   error - -Table 'rti_nic_cg.file_details' doesn't exist
+12/07/2017-14:34:53->Notice_Entry.aspx_btnSubmit_Click-There is no row at position 0.
+7/12/2017-3:50:06 PM->admin_NewsEdit_List_bind_grid()-Object reference not set to an instance of an object.
+19/07/2017-12:17:07->executeInsertQuery - Query: insert into Notice_Board(Header,Permanent,Publish_Date,Validity_From,Validity_To,Active,Hyperlink,File_Type,File_Id,Url,Client_Ip,User_Id,Date_Time,
+                        bold,blink,priority,color,image,status,district_id, base_dept_id, office_id) 
+                        values(@Header,@Pernament,@Publish_Date,@Validity_From,@Validity_To,@Active,@Hyperlink,@File_Type,@File_Id,@Url,@Client_Ip,@User_Id,@Date_Time,
+                         @Bold,@Blink,@Priority,@Color,@Image,@status,@district_id,@office_id,@base_dept_id)
+   error - -Data too long for column 'base_dept_id' at row 1
+19/07/2017-12:21:47->executeInsertQuery - Query: insert into Notice_Board(Header,Permanent,Publish_Date,Validity_From,Validity_To,Active,Hyperlink,File_Type,File_Id,Url,Client_Ip,User_Id,Date_Time,
+                        bold,blink,priority,color,image,status,district_id, base_dept_id, office_id) 
+                        values(@Header,@Pernament,@Publish_Date,@Validity_From,@Validity_To,@Active,@Hyperlink,@File_Type,@File_Id,@Url,@Client_Ip,@User_Id,@Date_Time,
+                         @Bold,@Blink,@Priority,@Color,@Image,@status,@district_id,@office_id,@base_dept_id)
+   error - -Data too long for column 'base_dept_id' at row 1
+19/07/2017-13:29:25->executeSelectQuery - Query:  SELECT A.Notice_Id,Header,A.File_Id,  DATE_FORMAT(Validity_From,'%d/%m/%Y') as publishdate, 
+                       ( CASE WHEN File_Header is NULL THEN 'No File' ELSE File_Header END ) as filename, mime_type, file_data, 
+                       dist.District_Name as dist_name, dept.dept_name as dept_name, ofc.OfficeName as ofc_name 
+                       FROM  notice_board A left join notice_file_details B on A.File_Id=B.file_id 
+                       left join districts dist on A.district_id = dist.District_ID 
+                       left join basedepartment dept on A.base_dept_id = dept.dept_id 
+                       left join office ofc on A.office_id = ofc.NewOfficeCode and dept.dept_id= ofc.BaseDeptCode and dist.District_ID = ofc.DistrictCodeNew 
+                       where 1 and 1   ORDER BY startdate  DESC  
+   error - -Unknown column 'startdate' in 'order clause'
+19/07/2017-13:29:57->executeSelectQuery - Query:  SELECT A.Notice_Id,Header,A.File_Id,  DATE_FORMAT(Validity_From,'%d/%m/%Y') as publishdate, 
+                       ( CASE WHEN File_Header is NULL THEN 'No File' ELSE File_Header END ) as filename, mime_type, file_data, 
+                       dist.District_Name as dist_name, dept.dept_name as dept_name, ofc.OfficeName as ofc_name 
+                       FROM  notice_board A left join notice_file_details B on A.File_Id=B.file_id 
+                       left join districts dist on A.district_id = dist.District_ID 
+                       left join basedepartment dept on A.base_dept_id = dept.dept_id 
+                       left join office ofc on A.office_id = ofc.NewOfficeCode and dept.dept_id= ofc.BaseDeptCode and dist.District_ID = ofc.DistrictCodeNew 
+                       where 1 and 1   ORDER BY startdate  DESC  
+   error - -Unknown column 'startdate' in 'order clause'
+19/07/2017-13:35:28->executeSelectQuery - Query:  SELECT A.Notice_Id,Header,A.File_Id,  DATE_FORMAT(Validity_From,'%d/%m/%Y') as publishdate, 
+                       ( CASE WHEN File_Header is NULL THEN 'No File' ELSE File_Header END ) as filename, mime_type, file_data, 
+                       dist.District_Name as dist_name, dept.dept_name as dept_name, ofc.OfficeName as ofc_name 
+                       FROM  notice_board A left join notice_file_details B on A.File_Id=B.file_id 
+                       left join districts dist on A.district_id = dist.District_ID 
+                       left join basedepartment dept on A.base_dept_id = dept.dept_id 
+                       left join office ofc on A.office_id = ofc.NewOfficeCode and dept.dept_id= ofc.BaseDeptCode and dist.District_ID = ofc.DistrictCodeNew 
+                       where 1 and 1   ORDER BY startdate  DESC  
+   error - -Unknown column 'startdate' in 'order clause'
+19/07/2017-13:35:35->executeSelectQuery - Query:  SELECT A.Notice_Id,Header,A.File_Id,  DATE_FORMAT(Validity_From,'%d/%m/%Y') as publishdate, 
+                       ( CASE WHEN File_Header is NULL THEN 'No File' ELSE File_Header END ) as filename, mime_type, file_data, 
+                       dist.District_Name as dist_name, dept.dept_name as dept_name, ofc.OfficeName as ofc_name 
+                       FROM  notice_board A left join notice_file_details B on A.File_Id=B.file_id 
+                       left join districts dist on A.district_id = dist.District_ID 
+                       left join basedepartment dept on A.base_dept_id = dept.dept_id 
+                       left join office ofc on A.office_id = ofc.NewOfficeCode and dept.dept_id= ofc.BaseDeptCode and dist.District_ID = ofc.DistrictCodeNew 
+                       where 1 and 1   ORDER BY startdate  DESC  
+   error - -Unknown column 'startdate' in 'order clause'
+19/07/2017-13:38:09->executeSelectQuery - Query:  SELECT A.Notice_Id,Header,A.File_Id,  DATE_FORMAT(Validity_From,'%d/%m/%Y') as publishdate, 
+                       ( CASE WHEN File_Header is NULL THEN 'No File' ELSE File_Header END ) as filename, mime_type, file_data, 
+                       dist.District_Name as dist_name, dept.dept_name as dept_name, ofc.OfficeName as ofc_name 
+                       FROM  notice_board A left join notice_file_details B on A.File_Id=B.file_id 
+                       left join districts dist on A.district_id = dist.District_ID 
+                       left join basedepartment dept on A.base_dept_id = dept.dept_id 
+                       left join office ofc on A.office_id = ofc.NewOfficeCode and dept.dept_id= ofc.BaseDeptCode and dist.District_ID = ofc.DistrictCodeNew 
+                       where 1 and 1   ORDER BY startdate  DESC  
+   error - -Unknown column 'startdate' in 'order clause'
+20/07/2017-11:34:21->admin_News_Edit_lknBtnEdit_Click-Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+20/07/2017-11:34:35->admin_News_Edit_lknBtnEdit_Click-Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+20/07/2017-11:35:05->admin_News_Edit_lknBtnEdit_Click-Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+20/07/2017-11:37:15->admin_News_Edit_lknBtnEdit_Click-Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+7/21/2017-10:29:27 AM->admin_NewsEdit_Form.aspx_btnUpdate_Click-String was not recognized as a valid DateTime.
+7/21/2017-10:32:08 AM->admin_NewsEdit_Form.aspx_btnUpdate_Click-String was not recognized as a valid DateTime.
+7/21/2017-10:38:34 AM->admin_NewsEdit_Form.aspx_btnUpdate_Click-String was not recognized as a valid DateTime.
+7/21/2017-10:39:02 AM->executeInsertQuery - Query: insert into notice_file_fetails_log select * from notice_file_fetails where file_id=@f_id
+   error - -Table 'rti_nic_cg.notice_file_fetails_log' doesn't exist
+7/21/2017-10:39:14 AM->Notice Edit Form - Update Method() :- The transaction has aborted.
+7/21/2017-10:41:56 AM->executeInsertQuery - Query: insert into notice_file_fetails_log select * from notice_file_fetails where file_id=@f_id
+   error - -Table 'rti_nic_cg.notice_file_fetails_log' doesn't exist
+7/21/2017-10:41:56 AM->Notice Edit Form - Update Method() :- The transaction has aborted.
+7/21/2017-10:43:08 AM->executeInsertQuery - Query: insert into notice_file_fetails_log select * from notice_file_fetails where file_id=@f_id
+   error - -Table 'rti_nic_cg.notice_file_fetails_log' doesn't exist
+7/21/2017-10:44:50 AM->Notice Edit Form - Update Method() :- The transaction has aborted.
+7/21/2017-10:44:50 AM->Notice Edit Form - Update Method() :- The transaction has aborted.
+7/21/2017-10:45:37 AM->executeInsertQuery - Query: insert into notice_file_fetails_log select * from notice_file_fetails where file_id=@f_id
+   error - -Table 'rti_nic_cg.notice_file_fetails_log' doesn't exist
+7/21/2017-10:45:37 AM->Notice Edit Form - Update Method() :- The transaction has aborted.
+7/21/2017-10:46:44 AM->executeInsertQuery - Query: insert into notice_file_fetails_log select * from notice_file_fetails where file_id=@f_id
+   error - -Table 'rti_nic_cg.notice_file_fetails_log' doesn't exist
+7/21/2017-10:48:17 AM->executeInsertQuery - Query: insert into notice_file_fetails_log select * from notice_file_fetails where file_id=@f_id
+   error - -Table 'rti_nic_cg.notice_file_fetails_log' doesn't exist
+7/21/2017-10:48:17 AM->Notice Edit Form - Update Method() :- The transaction has aborted.
+7/21/2017-10:48:30 AM->admin_NewsEdit_Form.aspx_btnUpdate_Click-Object reference not set to an instance of an object.
+7/21/2017-10:51:56 AM->executeUpdateQuery - Query: update notice_board set Header=@Header,Permanent=@Pernament,Publish_Date=@Publish_Date,Validity_From=@Validity_From,  Validity_To=@Validity_To,Active=@Active,Hyperlink=@Hyperlink,File_Type=@File_Type,  Url=@Url,Client_Ip=@Client_Ip,User_Id=@User_Id,Date_Time=@Date_Time,bold=@bold,blink=@blink,priority=@priority,color=@color,image=@image,File_Id=@File_Id district_id=@district_id, base_dept_id=@dept_id, office_id=@ofc_id  where Notice_Id=@Notice_Id 
+   error - -You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'district_id='11', base_dept_id='B001', office_id='2211000006'  where Notice_Id='' at line 1
+7/21/2017-10:52:09 AM->admin_NewsEdit_Form.aspx_btnUpdate_Click-Object reference not set to an instance of an object.
+21/07/2017-12:33:38->admin_NewsEdit_Form.aspx_show()-Object reference not set to an instance of an object.
+21/07/2017-15:11:33->admin_NewsEdit_Form.aspx_btnUpdate_Click-The transaction has aborted.
+29-08-2017-16:08:59->Notice_Entry.aspx_btnSubmit_Click-String was not recognized as a valid DateTime.
+30-08-2017-10:34:03->Notice_Entry.aspx_btnSubmit_Click-String was not recognized as a valid DateTime.
+30-08-2017-10:34:32->Notice_Entry.aspx_btnSubmit_Click-String was not recognized as a valid DateTime.
+30-08-2017-10:39:20->Notice_Entry.aspx_btnSubmit_Click-String was not recognized as a valid DateTime.
+30-08-2017-10:49:14->Notice_Entry.aspx_btnSubmit_Click-String was not recognized as a valid DateTime.
+30-08-2017-10:51:48->Notice_Entry.aspx_btnSubmit_Click-String was not recognized as a valid DateTime.
+30-08-2017-10:56:46->Notice_Entry.aspx_btnSubmit_Click-String was not recognized as a valid DateTime.
+30-08-2017-10:58:18->Notice_Entry.aspx_btnSubmit_Click-String was not recognized as a valid DateTime.
+30-08-2017-10:59:25->Notice_Entry.aspx_btnSubmit_Click-String was not recognized as a valid DateTime.
+31-08-2017-16:15:33->executeSelectQuery - Query: select  office_mapping_id,concat( A.Name_en,'/', dg.Designation_Name ,'/',ofc.OfficeName  ) as Name_en from  employee_table as A 
+                       inner join  emp_office_mapping  as B on A.emp_id=B.emp_code
+                       inner join  designation as dg on  dg.Designation_ID = B.designation_id  
+                       inner join  office as ofc on  ofc.NewOfficeCode = eom.office_id  
+                       where B.base_department_id= @base_department_id and B.office_level_id= @office_level_id 
+                             and B.district_id_ofc=@district_id_ofc and B.office_category= @office_category and B.office_id=@office_id  and B.Active='Y' order by Name_en asc
+   error - -Unknown column 'eom.office_id' in 'on clause'
+31-08-2017-16:17:00->executeSelectQuery - Query: select  office_mapping_id,concat( A.Name_en,'/', dg.Designation_Name ,'/',ofc.OfficeName  ) as Name_en from  employee_table as A 
+                       inner join  emp_office_mapping  as B on A.emp_id=B.emp_code
+                       inner join  designation as dg on  dg.Designation_ID = B.designation_id  
+                       inner join  office as ofc on  ofc.NewOfficeCode = eom.office_id  
+                       where B.base_department_id= @base_department_id and B.office_level_id= @office_level_id 
+                             and B.district_id_ofc=@district_id_ofc and B.office_category= @office_category and B.office_id=@office_id  and B.Active='Y' order by Name_en asc
+   error - -Unknown column 'eom.office_id' in 'on clause'
+14/09/2017-10:32:46->executeSelectQuery - Query: select nb.notice_id,nb.file_id,nb.Header,nb.Hyperlink,nb.File_Type,nb.active,nb.status,nb.bold,nb.blink,nb.priority,nb.image,nb.permanent,NOW(),
+
+(CASE WHEN Validity_From IS NOT NULL OR Validity_From !='' THEN DATE_FORMAT(Validity_From,'%d/%m/%Y') ELSE 'Not Available' END)Validity_From,  
+(CASE WHEN Validity_To IS NOT NULL OR Validity_To!='' THEN DATE_FORMAT(Validity_To,'%d/%m/%Y') ELSE 'Not Available' END)Validity_To, 
+(CASE WHEN DATE_FORMAT(Publish_Date,'%d/%m/%Y') IS NULL OR DATE_FORMAT(Publish_Date,'%d/%m/%Y')='' THEN DATE_FORMAT(validity_from,'%d/%m/%Y') ELSE DATE_FORMAT(Publish_Date,'%d/%m/%Y') END)Publish_Date, 
+(case when Permanent='Y' then 'Yes' when Permanent='N' then 'No' end)permanent,
+ (case when color is null or color='' then '#000000' else color end)color,
+ (case when url is null or url='' then 'admin/notice_download.aspx' else url end)url
+ 
+ from notice_board nb
+ left outer join notice_file_details fd on nb.file_id=fd.file_id  
+ where active='A' and status='A'
+ and  case when 
+ permanent = 'N' then NOW() between validity_from AND Validity_To  else  NOW() >= Publish_Date end order by Publish_Date DESC limit 4
+   error - -Unable to connect to any of the specified MySQL hosts.
+14/09/2017-10:32:47->executeSelectQuery - Query:   select count(*) as count_rti_dept_ofc_emp from rti_detail A inner join rti_status B on A.rti_id=B.rti_id where B.IsValid='Y' and B.Payment_status='Y'
+                        union all
+                        select count(dept_name) as count_dept from basedepartment 
+                        union all
+                        select count(*) as office_count from office ofc
+                        inner join districts dic on  dic.StateCode=ofc.StateCode and dic.district_id = ofc.DistrictCodeNew 
+                        inner join basedepartment bd on bd.dept_id = ofc.BaseDeptCode
+                        inner join officelevel ol on ol.OfficeLevelCode = ofc.OfficeLevel  and ol.StateCode= ofc.StateCode  and ol.BaseDeptCode=ofc.BaseDeptCode 
+                        union all
+                        select count(*) as officer_count from employee_table emp inner join emp_office_mapping eom on eom.emp_code=emp.emp_id where eom.designation_id='2'
+   error - -Unable to connect to any of the specified MySQL hosts.
+23/10/2017-12:05:19->executeInsertQuery - Query: INSERT INTO emp_office_mapping
+                          (office_mapping_id,emp_code,office_id,designation_id,base_department_id,office_level_id,district_id_ofc,office_category,user_id,charge_type,Active,client_ip, FromActive, ToActive,role_id)
+                           VALUES(@office_mapping_id,@emp_code,@office_id,@designation_id,@base_department_id,@office_level_id,@district_id_ofc,@office_category,@user_id,@charge_type,@Active,@client_ip, @fromActive, @toActive,@roleid)
+   error - -Duplicate entry '201700049-2211000006-1' for key 'emp_code_office_id_designation_id'
+23/10/2017-12:05:41->executeInsertQuery - Query: INSERT INTO emp_office_mapping
+                          (office_mapping_id,emp_code,office_id,designation_id,base_department_id,office_level_id,district_id_ofc,office_category,user_id,charge_type,Active,client_ip, FromActive, ToActive,role_id)
+                           VALUES(@office_mapping_id,@emp_code,@office_id,@designation_id,@base_department_id,@office_level_id,@district_id_ofc,@office_category,@user_id,@charge_type,@Active,@client_ip, @fromActive, @toActive,@roleid)
+   error - -Duplicate entry '201700049-2211000006-1' for key 'emp_code_office_id_designation_id'
+24/10/2017-16:10:58->executeInsertQuery - Query: insert into rti_action
+                       (action_id,rti_id,officer_mapping_id,action_detail,action_date,IsUpload,IsMeeting,meeting_date,ipaddress,
+                        dept_status,client_OS,client_browser,userAgent, RejectReason) values
+                        (@action_id,@rti_id,@officer_mapping_id,@action_detail,@action_date,@Isupload,@IsMeeting,@meeting_date,
+                        @ipaddress,@status,@client_os,@client_browser,@useragent, @RejectReason)
+   error - -Incorrect date value: '18/10/2017 00:00:00' for column 'action_date' at row 1
+24/10/2017-16:31:03->executeInsertQuery - Query: insert into rti_action
+                       (action_id,rti_id,officer_mapping_id,action_detail,action_date,IsUpload,IsMeeting,meeting_date,ipaddress,
+                        dept_status,client_OS,client_browser,userAgent, RejectReason) values
+                        (@action_id,@rti_id,@officer_mapping_id,@action_detail,@action_date,@Isupload,@IsMeeting,@meeting_date,
+                        @ipaddress,@status,@client_os,@client_browser,@useragent, @RejectReason)
+   error - -Incorrect date value: '18/10/2017 00:00:00' for column 'action_date' at row 1
+25/10/2017-11:56:52->executeUpdateQuery - Query: update rti_status set status=@status, DeptStatus=@DeptStatus , action_id=@actionid,
+                    officer_maping_id=@ofcmapid,IPAddress=@ipaddress,action_date=@actiondate,client_browser=@clientbr, 
+                    client_OS=@clintos,useragent=@useragent,IsNew=@isnew, user_id=@userid
+                    where rti_id=@rtiid
+   error - -Data too long for column 'status' at row 1
+25/10/2017-11:57:30->executeUpdateQuery - Query: update rti_status set status=@status, DeptStatus=@DeptStatus , action_id=@actionid,
+                    officer_maping_id=@ofcmapid,IPAddress=@ipaddress,action_date=@actiondate,client_browser=@clientbr, 
+                    client_OS=@clintos,useragent=@useragent,IsNew=@isnew, user_id=@userid
+                    where rti_id=@rtiid
+   error - -Data too long for column 'status' at row 1
+25/10/2017-12:00:07->executeUpdateQuery - Query: update rti_status set status=@status, DeptStatus=@DeptStatus , action_id=@actionid,
+                    officer_maping_id=@ofcmapid,IPAddress=@ipaddress,action_date=@actiondate,client_browser=@clientbr, 
+                    client_OS=@clintos,useragent=@useragent,IsNew=@isnew, user_id=@userid
+                    where rti_id=@rtiid
+   error - -Data too long for column 'status' at row 1
+25/10/2017-12:01:08->executeUpdateQuery - Query: update rti_status set status=@status, DeptStatus=@DeptStatus , action_id=@actionid,
+                    officer_maping_id=@ofcmapid,IPAddress=@ipaddress,action_date=@actiondate,client_browser=@clientbr, 
+                    client_OS=@clintos,useragent=@useragent,IsNew=@isnew, user_id=@userid
+                    where rti_id=@rtiid
+   error - -Data too long for column 'status' at row 1
+23/11/2017-14:35:48->executeSelectQuery - Query:  SELECT A.Dept_User_Manual_ID, A.User_ID, file_name, content_type as mime_type, file_data, file_description ,Year_Issue,
+                       dist.District_Name as dist_name, dept.dept_name as dept_name, ofc.OfficeName as ofc_name 
+                       FROM  dept_user_manual_file A 
+                       left join districts dist on A.district_id_ofc = dist.District_ID 
+                       left join basedepartment dept on A.base_department_id = dept.dept_id 
+                       left join office ofc on A.office_id = ofc.NewOfficeCode and dept.dept_id= ofc.BaseDeptCode and dist.District_ID = ofc.DistrictCodeNew 
+                       where 1 and 1  and A.district_id = @District_ID  and base_dept_id = @Base_department_id  and office_id = @Office_id   ORDER BY Year_Issue  DESC  
+   error - -Unknown column 'A.district_id' in 'where clause'
+23/11/2017-14:36:00->executeSelectQuery - Query:  SELECT A.Dept_User_Manual_ID, A.User_ID, file_name, content_type as mime_type, file_data, file_description ,Year_Issue,
+                       dist.District_Name as dist_name, dept.dept_name as dept_name, ofc.OfficeName as ofc_name 
+                       FROM  dept_user_manual_file A 
+                       left join districts dist on A.district_id_ofc = dist.District_ID 
+                       left join basedepartment dept on A.base_department_id = dept.dept_id 
+                       left join office ofc on A.office_id = ofc.NewOfficeCode and dept.dept_id= ofc.BaseDeptCode and dist.District_ID = ofc.DistrictCodeNew 
+                       where 1 and 1  and A.district_id = @District_ID  and base_dept_id = @Base_department_id  and office_id = @Office_id   ORDER BY Year_Issue  DESC  
+   error - -Unknown column 'A.district_id' in 'where clause'
+30/11/2017-12:52:05->executeInsertQuery - Query: insert into office 
+(NewOfficeCode,DistrictCodeNew,officelevel,OfficeName,BaseDeptCode,countrycode,
+Statecode,Officeaddress,contactno,email,fax,Officeurl,OfficeCategory)
+values
+(@NewOfficeCode,@DistrictCodeNew,@officelevel,@OfficeName,@BaseDeptCode,@countrycode,
+@Statecode,@Officeaddress,@contactno,@email,@fax,@Officeurl,@OfficeCategory)
+   error - -Duplicate entry '2208010015' for key 'PRIMARY'
+30/11/2017-12:53:48->executeInsertQuery - Query: insert into office 
+(NewOfficeCode,DistrictCodeNew,officelevel,OfficeName,BaseDeptCode,countrycode,
+Statecode,Officeaddress,contactno,email,fax,Officeurl,OfficeCategory)
+values
+(@NewOfficeCode,@DistrictCodeNew,@officelevel,@OfficeName,@BaseDeptCode,@countrycode,
+@Statecode,@Officeaddress,@contactno,@email,@fax,@Officeurl,@OfficeCategory)
+   error - -Duplicate entry '2208010015' for key 'PRIMARY'
+30/11/2017-12:57:26->executeInsertQuery - Query: insert into office 
+(NewOfficeCode,DistrictCodeNew,officelevel,OfficeName,BaseDeptCode,countrycode,
+Statecode,Officeaddress,contactno,email,fax,Officeurl,OfficeCategory)
+values
+(@NewOfficeCode,@DistrictCodeNew,@officelevel,@OfficeName,@BaseDeptCode,@countrycode,
+@Statecode,@Officeaddress,@contactno,@email,@fax,@Officeurl,@OfficeCategory)
+   error - -Duplicate entry '2208010015' for key 'PRIMARY'
+30/11/2017-13:13:23->executeInsertQuery - Query: insert into office 
+(NewOfficeCode,DistrictCodeNew,officelevel,OfficeName,BaseDeptCode,countrycode,
+Statecode,Officeaddress,contactno,email,fax,Officeurl,OfficeCategory)
+values
+(@NewOfficeCode,@DistrictCodeNew,@officelevel,@OfficeName,@BaseDeptCode,@countrycode,
+@Statecode,@Officeaddress,@contactno,@email,@fax,@Officeurl,@OfficeCategory)
+   error - -Duplicate entry '2208010015' for key 'PRIMARY'

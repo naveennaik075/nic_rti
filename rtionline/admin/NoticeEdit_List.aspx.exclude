@@ -1,0 +1,209 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="NoticeEdit_List.aspx.cs" Inherits="admin_test" MasterPageFile="~/admin_master.master" %>
+
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="CPH_MasterLogin" runat="Server">
+    <style type="text/css">
+        .Grid tr td {
+            padding-right: 5px;
+        }
+
+        .form_error {
+            color: red;
+        }
+
+        .table tbody tr:first-child td {
+            background-color: #F2F5A9;
+        }
+    </style>
+
+    <script type="text/javascript">
+        $(function check() {
+            var txtFrom = $('#<%=txtDateFrom.ClientID%>').val();
+            var txtTo = $('#<%=txtDateTo.ClientID%>').val();
+            if (txtFrom != "") {
+                if (txtTo == "") {
+                    alert('Please Enter Display To');
+                    return false;
+                }
+            }
+            else if (txtTo != "") {
+                if (txtFrom == "") {
+                    alert('Please Enter Display From');
+                    return false;
+                }
+            }
+            else {
+                return true;
+            }
+
+        });
+
+        //---------------------------------------------------------function to count letters in a text box----------------------------------------------------
+        var count = "100";   //Example: var count = "175";
+
+        $(document).ready(function () {
+            document.getElementById("ContentPlaceHolder1_limit1").innerHTML = count;
+        });
+        function limiter() {
+            document.getElementById("ContentPlaceHolder1_limit1").innerHTML = count;
+            var tex = document.getElementById("ContentPlaceHolder1_txtHeader").value;
+            var len = tex.length;
+            if (len > count) {
+                tex = tex.substring(0, count);
+                document.getElementById("ContentPlaceHolder1_txtHeader").value = tex;
+                return false;
+            }
+            document.getElementById("ContentPlaceHolder1_limit1").innerHTML = count - len;
+        }
+    </script>
+
+
+
+    <div style="width: 100%; text-align: center;">
+        <div style="margin: 0px auto; width: 86%">
+            <div class="col-sm-6" style="padding: 10px 0px; text-align: left;">
+                <div class="col-sm-3">Validity :</div>
+                <div class="col-sm-6">
+                    <asp:DropDownList ID="ddlValidity" runat="server" AppendDataBoundItems="true" class="input" Height="30px" Width="93%"
+                        CssClass="text_box">
+                        <asp:ListItem Text="All" Value="All"></asp:ListItem>
+                        <asp:ListItem Text="Active" Value="A" Selected="True"></asp:ListItem>
+                        <asp:ListItem Text="Expired" Value="E"></asp:ListItem>
+                    </asp:DropDownList>
+                </div>
+            </div>
+
+            <div class="col-sm-6" style="padding: 15px 0px; text-align: left;">
+                <div class="col-sm-3">Subject :</div>
+                <div class="col-sm-6">
+                    <div>
+                        <asp:TextBox ID="txtSubject" runat="server" class="input" placeholder="Search by subject" TextMode="MultiLine"
+                            OnKeyUp="limiter()" Width="85%" Height="60px"></asp:TextBox>
+                    </div>
+                    <asp:Label ID="lblChar" runat="server" ForeColor="Maroon">Characters left.</asp:Label>
+                    <asp:Label ID="limit1" runat="server" ForeColor="Maroon" Text=""></asp:Label>
+                </div>
+            </div>
+
+            <div id="divFrom" runat="server" class="col-sm-6" style="padding: 0px 0px 0px; text-align: left; z-index: 1;">
+                <div class="col-sm-3" style="padding-bottom: 10px;">Display From :</div>
+                <div class="col-sm-6">
+                    <asp:TextBox ID="txtDateFrom" runat="server" MaxLength="10" placeholder="Enter display from" class="input" Width="74%" CssClass="text_box"></asp:TextBox>
+                    &nbsp;
+              <asp:ImageButton ID="btn_calander" runat="server" CausesValidation="False" ImageUrl="../images/cal.png" Style="margin: -6px" />
+                    <asp:CalendarExtender ID="CalendarExtender1" runat="server" Format="dd/MM/yyyy" PopupButtonID="btn_calander" TargetControlID="txtDateFrom">
+                    </asp:CalendarExtender>
+
+                    <asp:RegularExpressionValidator ID="RegularExpressionValidator10" runat="server" ControlToValidate="txtDateFrom" SetFocusOnError="True"
+                        ErrorMessage="Invaild Date" ForeColor="#FF3300" ValidationExpression="^(((((0[1-9])|(1\d)|(2[0-8]))\/((0[1-9])|(1[0-2])))|((31\/((0[13578])|(1[02])))|((29|30)\/((0[1,3-9])|(1[0-2])))))\/((20[0-9][0-9])|(19[0-9][0-9])))|((29\/02\/(19|20)(([02468][048])|([13579][26]))))$ ">
+                    </asp:RegularExpressionValidator>
+                </div>
+            </div>
+
+            <div id="divTo" runat="server" class="col-sm-6" style="text-align: left; padding: 0px 0px; z-index: 1;">
+                <div class="col-sm-3" style="padding-bottom: 10px;">Display To :</div>
+                <div class="col-sm-6">
+                    <asp:TextBox ID="txtDateTo" runat="server" MaxLength="10" placeholder="Enter display to" class="input" Width="73%" CssClass="text_box"></asp:TextBox>
+                    &nbsp;
+            <asp:ImageButton ID="btn_calander1" runat="server" CausesValidation="False" ImageUrl="../images/cal.png" Style="margin: -6px" />
+                    <asp:CalendarExtender ID="CalendarExtender2" runat="server" Format="dd/MM/yyyy" PopupButtonID="btn_calander1" TargetControlID="txtDateTo">
+                    </asp:CalendarExtender>
+
+                    <asp:RegularExpressionValidator ID="RegularExpressionValidator17" runat="server" ControlToValidate="txtDateTo" SetFocusOnError="True"
+                        ErrorMessage="Invaild Date" ForeColor="#FF3300" ValidationExpression="^(((((0[1-9])|(1\d)|(2[0-8]))\/((0[1-9])|(1[0-2])))|((31\/((0[13578])|(1[02])))|((29|30)\/((0[1,3-9])|(1[0-2])))))\/((20[0-9][0-9])|(19[0-9][0-9])))|((29\/02\/(19|20)(([02468][048])|([13579][26]))))$ ">
+                    </asp:RegularExpressionValidator>
+                    <asp:CompareValidator ID="cfvtxtDate" runat="server" ControlToValidate="txtDateTo" ControlToCompare="txtDateFrom" Type="Date"
+                        Operator="GreaterThanEqual" ForeColor="Red" ErrorMessage="Invalid" SetFocusOnError="true">
+                    </asp:CompareValidator>
+                </div>
+            </div>
+
+            <div style="clear: both;"></div>
+            <div>
+                <div style="padding-top: 10px; padding-bottom: 18px; text-align: center">
+                    <asp:Button ID="btnSearch" runat="server" Text="Search" OnClick="btnSearch_Click" CssClass="butt" OnClientClick="return check()" />
+                </div>
+            </div>
+        </div>
+
+        <div style="margin: 0px auto; width: 100%; padding-top: 5px;">
+
+              <div style="text-align:left; padding-left:10px;">
+                     <asp:Label ID="lblTotalBoilers" runat="server" Font-Bold="true" style="color:blue; text-align:left;" ></asp:Label >
+          </div>
+            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CssClass="Grid" AlternatingRowStyle-CssClass="alt" EmptyDataText="No Record Found." Width="100%" DataKeyNames="Notice_Id,file_id,file_type"
+                AllowPaging="True" PageSize="10" GridLines="Horizontal" OnPageIndexChanging="GridView1_PageIndexChanging" OnRowDataBound="GridView1_RowDataBound">
+                <Columns>
+                    <asp:TemplateField HeaderText="S No ">
+                        <ItemTemplate>
+                            <%#Container.DataItemIndex+1%>
+                        </ItemTemplate>
+                        <ItemStyle HorizontalAlign="left" Width="3%" />
+                        <HeaderStyle HorizontalAlign="Left" Width="3%" />
+                    </asp:TemplateField>
+                    <asp:HyperLinkField DataNavigateUrlFields="file_id" DataTextField="Header" HeaderText='Subject'>
+                        <HeaderStyle HorizontalAlign="Left" Width="30%" />
+                        <ItemStyle HorizontalAlign="Left" Width="30%" />
+                    </asp:HyperLinkField>
+
+                    <%--<asp:BoundField DataField="mime_type" HeaderText="File Extension" ReadOnly="True" SortExpression="mime_type" >
+                    <HeaderStyle HorizontalAlign="Left" />
+                    <ItemStyle HorizontalAlign="Left" />
+                </asp:BoundField>--%>
+
+                    <asp:BoundField DataField="Permanent" HeaderText="Permanent" ReadOnly="True" SortExpression="Permanent">
+                        <HeaderStyle HorizontalAlign="Left" />
+                        <ItemStyle HorizontalAlign="Left" />
+                    </asp:BoundField>
+
+                    <asp:BoundField DataField="Publish_Date" HeaderText="Publish Date" ReadOnly="True" SortExpression="Publish_Date">
+                        <HeaderStyle HorizontalAlign="Left" />
+                        <ItemStyle HorizontalAlign="Left" />
+                    </asp:BoundField>
+
+                    <asp:BoundField DataField="Validity_From" HeaderText="From" ReadOnly="True" SortExpression="Validity_From">
+                        <HeaderStyle HorizontalAlign="Left" />
+                        <ItemStyle HorizontalAlign="Left" />
+                    </asp:BoundField>
+
+                    <asp:BoundField DataField="Validity_To" HeaderText="To" ReadOnly="True" SortExpression="Validity_To">
+                        <HeaderStyle HorizontalAlign="Left" />
+                        <ItemStyle HorizontalAlign="Left" />
+                    </asp:BoundField>
+
+                    <asp:BoundField DataField="Active" HeaderText="Active" ReadOnly="True" SortExpression="Active">
+                        <HeaderStyle HorizontalAlign="Left" />
+                        <ItemStyle HorizontalAlign="Left" />
+                    </asp:BoundField>
+
+                    <asp:BoundField DataField="Hyperlink" HeaderText="Hyperlink" ReadOnly="True" SortExpression="Hyperlink">
+                        <HeaderStyle HorizontalAlign="Left" />
+                        <ItemStyle HorizontalAlign="Left" />
+                    </asp:BoundField>
+
+                    <asp:BoundField DataField="File_Type" HeaderText="Hyperlink Type" ReadOnly="True" SortExpression="File_Type">
+                        <HeaderStyle HorizontalAlign="Left" />
+                        <ItemStyle HorizontalAlign="Left" />
+                    </asp:BoundField>
+
+                    <asp:BoundField DataField="Url" HeaderText="URL" ReadOnly="True" SortExpression="Url">
+
+                        <HeaderStyle HorizontalAlign="Left" />
+                        <ItemStyle HorizontalAlign="Left" />
+                    </asp:BoundField>
+
+                    <asp:TemplateField HeaderText="Edit">
+                        <ItemTemplate>
+                            <asp:LinkButton ID="lknBtnEdit" runat="server" OnClick="lknBtnEdit_Click" CssClass="HyperLink">Edit</asp:LinkButton>
+                        </ItemTemplate>
+                        <HeaderStyle HorizontalAlign="Left" />
+                        <ItemStyle HorizontalAlign="Left" />
+                    </asp:TemplateField>
+                </Columns>
+            </asp:GridView>
+        </div>
+    </div>
+</asp:Content>

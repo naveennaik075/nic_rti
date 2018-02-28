@@ -1,0 +1,322 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using MySql.Data.MySqlClient;
+using System.Transactions;
+/// <summary>
+/// Summary description for dl_Notice
+/// </summary>
+public class dl_Notice
+{
+    public dl_Notice()
+    {
+        //
+        // TODO: Add constructor logic here
+        //
+    }
+
+    public ReturnClass.ReturnDataTable Get_NoticeRecords(bl_Notice bl) {
+
+        ReturnClass.ReturnDataTable rd = new ReturnClass.ReturnDataTable();
+        db_maria_connection db = new db_maria_connection();
+        string str = " SELECT A.notice_id, Subject, DATE_FORMAT(startdate,'%d/%m/%Y') as publishdate, " +
+                      " ( CASE WHEN file_description is NULL THEN 'No File' ELSE file_description END ) as filename, content_type, file_data, " +
+                      " dist.District_Name as dist_name, dept.dept_name as dept_name, ofc.OfficeName as ofc_name " +
+                      " FROM  Notice A left join notice_file B on A.notice_id=B.notice_id "+
+                      " left join districts dist on A.district_id = dist.District_ID " +
+                      " left join basedepartment dept on A.base_dept_id = dept.dept_id " +
+                      " left join office ofc on A.office_id = ofc.NewOfficeCode and dept.dept_id= ofc.BaseDeptCode and dist.District_ID = ofc.DistrictCodeNew " + 
+                      " where 1 and 1  ";
+        string end_where = "  ORDER BY startdate  DESC  ";
+        string and_where = "";
+        try
+        {
+            List<MySqlParameter> pm = new List<MySqlParameter>();
+
+            if (bl.Notice_id != null && bl.Notice_id != "")
+            {
+                MySqlParameter fa = new MySqlParameter("notice_id", "%" +bl.Notice_id+"%");
+                pm.Add(fa);
+                and_where += " and A.notice_id LIKE @notice_id ";
+                //  and_where += " and circular_order_no LIKE N'%2016%' ";
+            }
+            if (bl.Subject != null && bl.Subject != "")
+            {
+                MySqlParameter fa = new MySqlParameter("Subject","%" + bl.Subject+ "%");
+                pm.Add(fa);
+                and_where += " and Subject LIKE  @Subject  ";
+            }
+            if (bl.Start_date != null && bl.Start_date != "" && bl.End_date != null & bl.End_date != "")
+            {
+                MySqlParameter fa = new MySqlParameter("Start_Date", bl.Start_date);
+                pm.Add(fa);
+                fa = new MySqlParameter("End_Date", bl.End_date);
+                pm.Add(fa);
+                and_where += " and ( startdate >=  @Start_Date  and enddate <=  @End_Date ) ";
+            }
+            else if (bl.Start_date != null && bl.Start_date != "" && (bl.End_date == null || bl.End_date == ""))
+            {
+                MySqlParameter fa = new MySqlParameter("Start_Date", bl.Start_date);
+                pm.Add(fa);
+                fa = new MySqlParameter("NextDate", bl.NextDate);
+                pm.Add(fa);
+                and_where += " and startdate >= @Start_Date and  startdate < @NextDate ";
+            }
+
+            if (bl.KeywordSearch != null && bl.KeywordSearch != "")
+            {
+                MySqlParameter fa = new MySqlParameter("KeywordSearch","%" + bl.KeywordSearch+ "%");
+                pm.Add(fa);
+                and_where += " and Notice_keyword LIKE  @KeywordSearch ";
+            }
+            if(bl.District_id !="0") {
+                MySqlParameter fa = new MySqlParameter("District_ID",  bl.District_id );
+                pm.Add(fa);
+                and_where += " and A.district_id = @District_ID ";
+            
+            }
+            if (bl.Base_department_id != "0")
+            {
+                MySqlParameter fa = new MySqlParameter("Base_department_id",  bl.Base_department_id);
+                pm.Add(fa);
+                and_where += " and base_dept_id = @Base_department_id ";
+
+            }
+            if (bl.Office_id != "0")
+            {
+                MySqlParameter fa = new MySqlParameter("Office_id", bl.Office_id );
+                pm.Add(fa);
+                and_where += " and office_id = @Office_id ";
+
+            }
+            str = str + and_where + end_where;
+            rd = db.executeSelectQuery(str, pm.ToArray());
+        }
+        catch (Exception ex)
+        {
+            Gen_Error_Rpt.Write_Error("../dio/dl_Dio/Bind_Grid log.txt");
+        }
+        return rd;
+
+    
+    }
+
+    public ReturnClass.ReturnDataTable GetDataForHandler(string Notice_ID)
+    {
+        ReturnClass.ReturnDataTable dt = null;// = new ReturnClass.ReturnDataTable();
+        db_maria_connection db = new db_maria_connection();
+        string str = @"select file_data, content_type  from notice_file where notice_id=@NoticeID";
+        MySqlParameter[] pm = new MySqlParameter[]{
+            new MySqlParameter("NoticeID",Notice_ID)
+        };
+        dt = db.executeSelectQuery(str, pm);
+        return dt;
+
+    }
+
+
+    //------------------------- district dmf home page-------24 april-2017----------------------------------------------------//
+    public ReturnClass.ReturnDataTable Get_Notice_Data1()
+    {
+        db_maria_connection db = new db_maria_connection();
+        ReturnClass.ReturnDataTable dt = new ReturnClass.ReturnDataTable();
+       
+        string qr = @"select nb.notice_id,nb.file_id,nb.Header,nb.Hyperlink,nb.File_Type,nb.active,nb.status,nb.bold,nb.blink,nb.priority,nb.image,nb.permanent,NOW(),
+
+(CASE WHEN Validity_From IS NOT NULL OR Validity_From !='' THEN DATE_FORMAT(Validity_From,'%d/%m/%Y') ELSE 'Not Available' END)Validity_From,  
+(CASE WHEN Validity_To IS NOT NULL OR Validity_To!='' THEN DATE_FORMAT(Validity_To,'%d/%m/%Y') ELSE 'Not Available' END)Validity_To, 
+(CASE WHEN DATE_FORMAT(Publish_Date,'%d/%m/%Y') IS NULL OR DATE_FORMAT(Publish_Date,'%d/%m/%Y')='' THEN DATE_FORMAT(validity_from,'%d/%m/%Y') ELSE DATE_FORMAT(Publish_Date,'%d/%m/%Y') END)Publish_Date, 
+(case when Permanent='Y' then 'Yes' when Permanent='N' then 'No' end)permanent,
+ (case when color is null or color='' then '#000000' else color end)color,
+ (case when url is null or url='' then '../admin/notice_download.aspx' else url end)url
+ 
+ from notice_board nb
+ left outer join notice_file_details fd on nb.file_id=fd.file_id  
+ where active='A' and status='A'
+ and  case when 
+ permanent = 'N' then NOW() between validity_from AND Validity_To  else  NOW() >= Publish_Date end limit 10";
+
+        dt = db.executeSelectQuery(qr);
+        return dt;
+    }
+
+    public ReturnClass.ReturnDataTable Get_Notice_Data(bl_Notice ur)
+    {
+        db_maria_connection db = new db_maria_connection();
+        ReturnClass.ReturnDataTable dt = new ReturnClass.ReturnDataTable();
+        //MySqlParameter[] pm = new MySqlParameter[]
+        //{
+        //   new MySqlParameter("District_id",ur.District_id)
+        //};
+        string qr = @"  select A.notice_id, Subject, priority, DATE_FORMAT(NOW(),'%d/%m/%Y') today, (CASE WHEN B.notice_file_id IS NULL then  'NOT_AVL' ELSE B.notice_file_id END) notice_file_id ,
+                    (CASE WHEN startdate IS NOT NULL OR startdate != ' ' THEN DATE_FORMAT(startdate,'%d/%m/%Y') ELSE 'Not Available' END) Validity_From,   
+                    (CASE WHEN enddate IS NOT NULL OR enddate!='' THEN DATE_FORMAT(enddate,'%d/%m/%Y') ELSE 'Not vailable' END) Validity_To from notice A left join notice_file B on A.notice_id=B.notice_id  
+						  where	Publish_status='Y' and case when enddate IS NOT NULL OR enddate !='' then NOW() between startdate AND enddate  else  NOW() >=  startdate END ";
+//        string qr = @"select notice_id,file_id,Header,Hyperlink,File_Type,active,status,bold,blink,priority,image,permanent,NOW(),
+//
+//(CASE WHEN Validity_From IS NOT NULL OR Validity_From !='' THEN DATE_FORMAT(Validity_From,'%d/%m/%Y') ELSE 'Not Available' END)Validity_From,  
+//(CASE WHEN Validity_To IS NOT NULL OR Validity_To!='' THEN DATE_FORMAT(Validity_To,'%d/%m/%Y') ELSE 'Not Available' END)Validity_To, 
+//(CASE WHEN DATE_FORMAT(Publish_Date,'%d/%m/%Y') IS NULL OR DATE_FORMAT(Publish_Date,'%d/%m/%Y')='' THEN DATE_FORMAT(validity_from,'%d/%m/%Y') ELSE DATE_FORMAT(Publish_Date,'%d/%m/%Y') END)Publish_Date, 
+//(case when Permanent='Y' then 'Yes' when Permanent='N' then 'No' end)permanent,
+// (case when color is null or color='' then '#000000' else color end)color,
+// (case when url is null or url='' then '../user/notice_download.aspx' else url end)url
+// 
+// from notice_board where active='A' and status='A' and district_id=@District_id
+// and  case when 
+// permanent = 'N' then NOW() between validity_from AND Validity_To  else  NOW() >= Publish_Date end";
+
+        //dt = db.executeSelectQuery(qr, pm);
+        dt = db.executeSelectQuery(qr);
+        return dt;
+    }
+   
+
+
+    public ReturnClass.ReturnDataTable Get_Office_For_Notice(bl_Notice bl)
+    {
+        string strquery = @"SELECT NewOfficeCode, OfficeName FROM office WHERE  
+                           office.BaseDeptCode=@dept AND office.DistrictCodeNew=@district
+                           order by OfficeName ";
+        MySqlParameter[] pm = new MySqlParameter[]{
+            new MySqlParameter("dept",bl.Base_department_id),
+            new MySqlParameter("district",bl.District_id)
+            
+        };
+        ReturnClass.ReturnDataTable rd = new ReturnClass.ReturnDataTable();
+        db_maria_connection db = new db_maria_connection();
+        rd = db.executeSelectQuery(strquery, pm);
+        return rd;
+    }
+
+    public ReturnClass.ReturnBool Insert_Notice(bl_Notice bl)
+    {
+
+
+        ReturnClass.ReturnBool rb = new ReturnClass.ReturnBool();
+        db_maria_connection db = new db_maria_connection();
+        using (TransactionScope ts = new TransactionScope())
+        {
+
+            string str1 = @"INSERT INTO notice (notice_id, Subject, Publish_status, startdate, enddate, base_dept_id, district_id, office_id,
+                                priority, user_id, notice_year, ipaddress, useragent, browser, UserSystem ) values (@Notice_id, @Subject,
+                                @Publish_status, @StartDate, @EndDate, @Base_dept_id, @District_id, @Office_id, @Priority, @User_id, @Notice_year,
+                                @Ipaddress, @Useragent, @Browser, @Usersystem ) ";
+
+            MySqlParameter[] pm1 = new MySqlParameter[]
+                {
+                new MySqlParameter("Notice_id",bl.Notice_id),
+                new MySqlParameter("Subject",bl.Subject),
+                new MySqlParameter("Publish_status",bl.Publish_status),
+                new MySqlParameter("StartDate",bl.Start_date),
+                new MySqlParameter("EndDate",bl.End_date),
+                new MySqlParameter("Base_dept_id",bl.Base_department_id),
+                new MySqlParameter("District_id",bl.District_id),
+                new MySqlParameter("Office_id",bl.Office_id),
+                new MySqlParameter("Priority",bl.Priority),
+                new MySqlParameter("User_id",bl.User_id),
+                new MySqlParameter("Notice_year",bl.Notice_year),
+                new MySqlParameter("Ipaddress",bl.Ip_address),
+                new MySqlParameter("Useragent",bl.Useragent),
+                new MySqlParameter("Browser",bl.Browser),
+                new MySqlParameter("Usersystem",bl.UserSystem)
+
+            };
+            rb = db.executeInsertQuery(str1, pm1);
+
+            if (bl.Is_file_upload == "Y" && rb.status == true)
+            {
+                //string str = @"insert into rti_status_log select * from rti_status WHERE rti_status.rti_id = @regid1";
+                string str = @"INSERT INTO notice_file (notice_file_id, notice_id, file_Name, content_type, file_data, ipaddress,
+                               operating_System, useragent, browser, enable_status, file_description ) VALUES (@Notice_file_id, @Notice_id, @FileName,
+                               @Content_type, @File_data, @Ipaddress, @Operating_system, @Useragent, @Browser, @Enable_status, @File_description ) ";
+                MySqlParameter[] pm = new MySqlParameter[]
+                {
+                 new MySqlParameter("Notice_file_id",bl.Notice_file_id),
+                 new MySqlParameter("Notice_id",bl.Notice_id),
+                 new MySqlParameter("FileName",bl.File_name),
+                 new MySqlParameter("Content_type",bl.Content_type),
+                 new MySqlParameter("File_data",bl.FileData),
+                 new MySqlParameter("Ipaddress",bl.Ip_address),
+                 new MySqlParameter("Operating_system",bl.Operating_system),
+                 new MySqlParameter("Useragent",bl.Useragent),
+                 new MySqlParameter("Browser",bl.Browser),
+                 new MySqlParameter("Enable_status",bl.Enable_status),
+                  new MySqlParameter("File_description",bl.File_description)
+                };
+                rb = db.executeInsertQuery(str, pm);
+            }
+
+
+
+            if (rb.status == true)
+            {
+                ts.Complete();
+            }
+
+        }
+        return rb;
+
+    }
+
+    public string max_file_id(string Notice_id)
+    {
+        ReturnClass.ReturnDataTable rd = new ReturnClass.ReturnDataTable();
+        db_maria_connection db = new db_maria_connection();
+        string fileid;
+        string str = @"select IFNULL(Max(notice_file_id),0) as fileid from notice_file where notice_id=@Notice_id ";
+        MySqlParameter[] pm = new MySqlParameter[]
+        {
+            new MySqlParameter("Notice_id",Notice_id)
+        };
+        rd = db.executeSelectQuery(str, pm);
+        if (rd.table.Rows.Count > 0)
+        {
+            int count = Convert.ToInt32(rd.table.Rows[0]["fileid"]);
+            count = count + 1;
+            fileid = count.ToString();
+            fileid = fileid.PadLeft(4, '0');
+        }
+        else
+        {
+            fileid = "0001";
+        }
+        return fileid;
+    }
+    public string Get_unique_notice_id(string office_id)
+    {
+        //string reg_year = DateTime.Now.Year.ToString();
+        //string sg = (reg_year + "00000000000001");
+        string sg = (office_id + "00000001");
+        ReturnClass.ReturnDataTable rd = new ReturnClass.ReturnDataTable();
+        db_maria_connection db = new db_maria_connection();
+        string str = "select MAX(SUBSTRING(notice_id,11,18)) as ID from notice Where office_id=@Office_id  ";
+        MySqlParameter[] pm = new MySqlParameter[]
+        {
+            new MySqlParameter("Office_id",office_id)
+        };
+        rd = db.executeSelectQuery(str, pm);
+
+        if (rd.table.Rows.Count > 0)
+        {
+            if (rd.table.Rows[0]["ID"].ToString() != "")
+            {
+                int nextId = Convert.ToInt32(rd.table.Rows[0]["ID"].ToString());
+                nextId++;
+                string lid = Convert.ToString(nextId);
+                sg = (office_id + lid.PadLeft(8, '0'));
+                return sg;
+            }
+        }
+        else
+        {
+            sg = (office_id + "00000001");
+
+        }
+
+        return sg;
+    }
+
+
+
+}// Class End 

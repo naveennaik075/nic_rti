@@ -1,0 +1,730 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.IO;
+using System.Drawing;
+using System.Globalization;
+using System.Configuration;
+public partial class RTIRequest : BasePage // System.Web.UI.Page
+{
+    public string userID = null;
+    public string loginMobNo;
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        if (Session["username"] == null)
+        {
+            Response.Redirect("../logout.aspx");
+        }
+        else
+        {
+            userID = Session["username"].ToString();
+            // captchaStatus = false;
+            if (!Page.IsPostBack)
+            {
+                Session["CheckRefresh"] = Server.UrlDecode(System.DateTime.Now.ToString());
+                bind_state();
+                bind_district();        // User District
+                GenderBind();
+                UserTypeBind();
+                DistrictBind();
+                BaseDepartmentBind();
+                OfficeCategoryBind();
+                OfficeLevelBind();
+                OfficeBind();
+                BindOfficer();
+                // DDL_BPL.SelectedValue = "0";
+                DDL_BPL.SelectedIndex = DDL_BPL.Items.IndexOf(DDL_BPL.Items.FindByValue("0"));
+                BPL_Yes.Attributes.Add("style", "display:none;"); //block
+                BPL_No.Attributes.Add("style", "display:none;");
+                //BPL_Yes.Visible = false;
+                //BPL_No.Visible = false;
+                RFV_BPL_CardNo.Enabled = false;
+                RFV_Year_Of_Issue.Enabled = false;
+                RFV_IssuingAuth.Enabled = false;
+                HiddenTodayDate.Text = DateTime.Today.Year.ToString(); // for comparing issue of year for BPL
+                hiddenn.Value = DateTime.Today.Year.ToString();
+                if (userID != null)
+                {
+                    ShowUserData();
+
+                }
+                else
+                {
+                    Response.Redirect("../Logout.aspx");
+
+                }
+
+            }
+
+        }
+    }
+    protected void Page_PreRender(object sender, EventArgs e)
+    {
+        ViewState["CheckRefresh"] = Session["CheckRefresh"];
+    }
+    public void BindOfficer()
+    {
+        bl_RTI_Request objblData = new bl_RTI_Request();
+        dl_RTI_Request objData = new dl_RTI_Request();
+        ReturnClass.ReturnDataTable rd = new ReturnClass.ReturnDataTable();
+        //DDL_RTI_Officer.Items.Clear();
+        objblData.Base_department_id = DDL_BaseDepartment.SelectedValue;
+        objblData.District_id_ofc = RTI_DDL_District.SelectedValue;
+        objblData.Office_category = DDL_OfficeCategory.SelectedValue;
+        objblData.Office_level_id = DDL_OfficeLevel.SelectedValue;
+        objblData.Office_id = DDL_Office.SelectedValue;
+
+        rd = objData.BindOfficerDL(objblData);
+        DDL_RTI_Officer.DataSource = rd.table;
+        DDL_RTI_Officer.DataTextField = "Name_en";
+        DDL_RTI_Officer.DataValueField = "office_mapping_id";
+        DDL_RTI_Officer.DataBind();
+        // DDL_RTI_Officer.Items.Add(new ListItem(" select officer", "0"));
+        DDL_RTI_Officer.Items.Insert(0, new ListItem("--Select Officer--", "0"));
+
+    }
+
+    public void bind_state()
+    {
+        bl_RTI_Request objblData = new bl_RTI_Request();
+        dl_RTI_Request objData = new dl_RTI_Request();
+        ReturnClass.ReturnDataTable rd = new ReturnClass.ReturnDataTable();
+        DDL_State.Items.Clear();
+        objblData.Country = ddl_country.SelectedValue;
+        rd = objData.BindState(objblData);
+        DDL_State.DataSource = rd.table;
+        DDL_State.DataTextField = "state_name_e";
+        DDL_State.DataValueField = "state_id";
+        DDL_State.DataBind();
+        DDL_State.Items.Add(new ListItem(" Choose State", "0"));
+
+    }
+    public void bind_district()        // user district
+    {
+        bl_RTI_Request bl = new bl_RTI_Request();
+        dl_RTI_Request dl = new dl_RTI_Request();
+        ReturnClass.ReturnDataTable rd = new ReturnClass.ReturnDataTable();
+        ddl_district.Items.Clear();
+        bl.State = DDL_State.SelectedValue;
+        rd = dl.BindDistrict(bl);
+        ddl_district.DataSource = rd.table;
+        ddl_district.DataTextField = "District_Name";
+        ddl_district.DataValueField = "District_ID";
+        ddl_district.DataBind();
+        ddl_district.Items.Add(new ListItem("Choose District", "0"));
+
+
+    }
+
+    public void ShowUserData()
+    {
+
+        bl_RTI_Request objblData = new bl_RTI_Request();
+        objblData.RTI_login_userName = userID;
+        dl_RTI_Request objData = new dl_RTI_Request();
+        ReturnClass.ReturnDataTable dt = objData.GetUserData(objblData);
+        if (dt.status)
+        {
+            ddl_country.SelectedValue = objblData.Country;
+            bind_state();
+            DDL_State.SelectedValue = objblData.State;
+            bind_district();
+            txtName.Text = objblData.NameEnglish;
+            txtEmailID.Text = objblData.Email;
+            txtAddress.Text = objblData.Address;
+            txtPinCode.Text = objblData.Pincode;
+            ddl_usertype.SelectedIndex = ddl_usertype.Items.IndexOf(ddl_usertype.Items.FindByValue(objblData.UserType));
+            txtMobile.Text = objblData.Mobile;
+            H_LoginMobileNo.Value = objblData.Mobile;        // Keep user login mobile no.
+            DDL_Gender.SelectedIndex = DDL_Gender.Items.IndexOf(DDL_Gender.Items.FindByValue(objblData.Gender));
+            ddl_country.SelectedIndex = ddl_country.Items.IndexOf(ddl_country.Items.FindByValue(objblData.Country));
+            if (objblData.Country == "999")
+            {
+
+                txtOther.Visible = true;
+                lbl_state.Text = "Country Name";
+                //rfv_state.Enabled = true;
+                RFV_State.Enabled = false;
+                rfv_district.Enabled = false;
+                REV_PinCode.Enabled = false;
+                //lbl_district.Visible = false;
+                ctc.Visible = false;
+                ddl_district.Visible = false;
+                DDL_State.Visible = false;
+                ddlState.Visible = false;
+                // txtState_Other.Text = "";
+                txtState_Other.Text = objblData.CountryName;
+            }
+            else
+            {
+                DDL_State.SelectedIndex = DDL_State.Items.IndexOf(DDL_State.Items.FindByValue(objblData.State));
+                ddl_district.SelectedIndex = ddl_district.Items.IndexOf(ddl_district.Items.FindByValue(objblData.District));
+            }
+
+
+
+
+        } // End of If
+    }
+
+
+    public void DistrictBind()
+    {
+        dl_RTI_Request objDL = new dl_RTI_Request();
+        //string dept = DDL_Department.SelectedItem.Value;
+        ReturnClass.ReturnDataTable dt = objDL.Get_RTI_DDL_Data("SELECT District_ID, District_Name FROM districts WHERE StateCode='22' order by District_Name ");
+        RTI_DDL_District.DataSource = dt.table;
+        RTI_DDL_District.DataTextField = "District_Name";
+        RTI_DDL_District.DataValueField = "District_ID";
+        RTI_DDL_District.DataBind();
+        RTI_DDL_District.Items.Insert(0, new ListItem("--Select District--", "0"));
+    }
+
+
+
+    public void BaseDepartmentBind()
+    {
+        dl_RTI_Request objDL = new dl_RTI_Request();
+        //string dept = DDL_Department.SelectedItem.Value;
+        ReturnClass.ReturnDataTable dt = objDL.Get_RTI_DDL_Data("SELECT dept_id, dept_name FROM basedepartment order by dept_name ");
+        DDL_BaseDepartment.DataSource = dt.table;
+        DDL_BaseDepartment.DataTextField = "dept_name";
+        DDL_BaseDepartment.DataValueField = "dept_id";
+        DDL_BaseDepartment.DataBind();
+        DDL_BaseDepartment.Items.Insert(0, new ListItem("--Select Department--", "0"));
+    }
+
+    public void OfficeCategoryBind()
+    {
+        dl_RTI_Request objDL = new dl_RTI_Request();
+        //string dept = DDL_Department.SelectedItem.Value;
+        ReturnClass.ReturnDataTable dt = objDL.Get_RTI_DDL_Data("SELECT OfficeCategoryCode, OfficeCategoryName FROM officeCategory order by OfficeCategoryName ");
+        DDL_OfficeCategory.DataSource = dt.table;
+        DDL_OfficeCategory.DataTextField = "OfficeCategoryName";
+        DDL_OfficeCategory.DataValueField = "OfficeCategoryCode";
+        DDL_OfficeCategory.DataBind();
+        DDL_OfficeCategory.Items.Insert(0, new ListItem("--Select Office Category--", "0"));
+    }
+
+    public void OfficeLevelBind()
+    {
+        dl_RTI_Request objDL = new dl_RTI_Request();
+        string dept = DDL_BaseDepartment.SelectedItem.Value;
+        string strquery = "SELECT OfficeLevelCode, OfficeLevelName FROM officelevel WHERE  " +
+                          " officelevel.BaseDeptCode='" + dept + "' order by OfficeLevelName ";
+        ReturnClass.ReturnDataTable dt = objDL.Get_RTI_DDL_Data(strquery);
+        DDL_OfficeLevel.DataSource = dt.table;
+        DDL_OfficeLevel.DataTextField = "OfficeLevelName";
+        DDL_OfficeLevel.DataValueField = "OfficeLevelCode";
+        DDL_OfficeLevel.DataBind();
+        DDL_OfficeLevel.Items.Insert(0, new ListItem("--Select Office Level--", "0"));
+    }
+
+    public void OfficeBind()
+    {
+        dl_RTI_Request objDL = new dl_RTI_Request();
+        string dept = DDL_BaseDepartment.SelectedItem.Value;
+        string district = RTI_DDL_District.SelectedItem.Value;
+        string officeCategory = DDL_OfficeCategory.SelectedItem.Value;
+        string officeLevel = DDL_OfficeLevel.SelectedItem.Value;
+        string strquery = "SELECT NewOfficeCode, OfficeName FROM office WHERE  " +
+                          " office.BaseDeptCode='" + dept + "' AND office.DistrictCodeNew='" + district + "'" +
+                          " AND office.OfficeCategory='" + officeCategory + "' AND office.OfficeLevel='" + officeLevel + "' order by OfficeName ";
+        ReturnClass.ReturnDataTable dt = objDL.Get_RTI_DDL_Data(strquery);
+        DDL_Office.DataSource = dt.table;
+        DDL_Office.DataTextField = "OfficeName";
+        DDL_Office.DataValueField = "NewOfficeCode";
+        DDL_Office.DataBind();
+        DDL_Office.Items.Insert(0, new ListItem("--Select Office--", "0"));
+    }
+    public void GenderBind()
+    {
+
+        dl_RTI_Request objDL = new dl_RTI_Request();
+        ReturnClass.ReturnDataTable dt = objDL.GetDDL_data("Gender");
+        DDL_Gender.DataSource = dt.table;
+        DDL_Gender.DataTextField = "DisplayName_en";
+        DDL_Gender.DataValueField = "DDL_Name_Value";
+        DDL_Gender.DataBind();
+
+
+
+    }
+
+    public void UserTypeBind()
+    {
+
+        dl_RTI_Request objDL = new dl_RTI_Request();
+        ReturnClass.ReturnDataTable dt = objDL.GetDDL_data("UserType");
+        ddl_usertype.DataSource = dt.table;
+        ddl_usertype.DataTextField = "DisplayName_en";
+        ddl_usertype.DataValueField = "DDL_Name_Value";
+        ddl_usertype.DataBind();
+        ddl_usertype.Items.Insert(0, new ListItem("--Select User Type--", "0"));
+    }
+
+
+
+    protected void btn_reset_click1(object sender, EventArgs e)
+    {
+        //   captchaStatus = false;
+        GenderBind();
+
+        //AuthorityBind();   
+        if (Session["username"] != null)
+        {
+            ShowUserData();
+
+        }
+        else
+        {
+            Response.Redirect("../Logout.aspx");
+
+        }
+
+    }
+
+    protected void btn_Submit_Click1(object sender, EventArgs e)
+    {
+        if (Page.IsValid)
+        {
+
+            if (Session["CheckRefresh"].ToString() == ViewState["CheckRefresh"].ToString())
+            {
+                Session["CheckRefresh"] = Server.UrlDecode(System.DateTime.Now.ToString());
+                bool cptch_expired = false;
+                try
+                {
+                    Captcha1.ValidateCaptcha(txtCaptcha.Text.Trim());
+                }
+                catch { cptch_expired = true; }
+                txtCaptcha.Text = "";
+                if (!cptch_expired)
+                {
+                    if (Captcha1.UserValidated)
+                    {
+                        Captcha1.DataBind();
+                        dl_RTI_Registration dl = new dl_RTI_Registration();
+                        bl_RTI_Request objBL = new bl_RTI_Request();
+                        dl_RTI_Request objDl = new dl_RTI_Request();
+                        // set data for rti_request
+                        objBL.RTI_Request_id = objDl.Get_unique_RtiRequest_code(); //"<NTC>RTI Request ID from DL";//objDl.GetMaxValue("SELECT IFNULL(MAX(rti_request_id),0) as NO FROM rti_detail ");
+                        objBL.UserType = ddl_usertype.SelectedItem.Value;
+                        objBL.NameEnglish = txtName.Text;
+                        objBL.Gender = DDL_Gender.SelectedItem.Value;
+                        objBL.Email = txtEmailID.Text;
+                        objBL.Address = txtAddress.Text;
+                        objBL.Country = ddl_country.SelectedItem.Value;
+                        objBL.Securitycode = dl.GenOTPString(4);
+                        HttpBrowserCapabilities browse = Request.Browser;
+                        objBL.UserAgent = Request.UserAgent.ToString();
+                        objBL.Client_os = Utilities.System_Info(this.Page);
+                        objBL.ClientBrowser = browse.Browser;
+                        objBL.IsRTIFileUpload = "N";
+                        objBL.IsNew = "Y";
+                        if (objBL.Country == "091")
+                        {
+                            objBL.State = DDL_State.SelectedItem.Value;
+                            objBL.District = ddl_district.SelectedItem.Value;
+                            objBL.CountryName = null;
+                        }
+                        else
+                        {
+                            objBL.CountryName = txtState_Other.Text;
+
+                        }
+                        objBL.Pincode = txtPinCode.Text;
+                        objBL.Mobile = txtMobile.Text;
+                        objBL.Rti_Subject = txt_subject.Text;
+                        objBL.RTI_Text = txt_RequestApplicationText.Text;
+                        objBL.RTI_login_userName = userID;
+                        //objBL.RTI_request_date = DateTime.Now.ToString("yyyy-MM-dd");
+                        Utilities util = new Utilities();
+                        objBL.RTI_ipaddress = util.GetClientIpAddress(this.Page);//GetIPAddress();
+                        objBL.RTI_Is_bpl = DDL_BPL.SelectedItem.Value;
+                        # region check for BPL
+                        if (objBL.RTI_Is_bpl == "Y")
+                        {
+                            if (FU_BPL.PostedFile == null || FU_BPL.PostedFile.ContentLength < 1)
+                            {
+                                Utilities.MessageBox_UpdatePanel(update1, "Attach one BPL Supporting Document ");
+                                return;
+
+                            }
+                            objBL.BPL_Card_No = txtBPLNo.Text;
+                            int Current_year = Convert.ToInt32(DateTime.Now.Year);
+                            int find_year = Convert.ToInt32(txtYearOfIssue.Text);
+
+                            if (find_year > Current_year)
+                            {
+                                // Utilities.MessageBoxShow("Year should not be greater then current year");
+                                Utilities.MessageBox_UpdatePanel(update1, "Year should not be greater then current year ");
+                                return;
+                            }
+                            else
+                            {
+                                objBL.BPL_Issue_Year = txtYearOfIssue.Text;
+                            }
+                            objBL.BPL_Issuing_Authority = txtIssuingAuthority.Text;
+                            //objBL.RTI_Fees = "0";
+                        }
+
+                        else
+                        {
+                            //objBL.RTI_Fees = "10";
+                        }
+                        #endregion BPL
+                        // set data for rti_filed_user
+                        // objBL.RTI_filed_user_id = objDl.GetMaxValueRtiFiledUser();//"<NTC>RTI Filed user ID from DL"; //objDl.GetMaxValue("SELECT IFNULL(MAX(rti_FiledUserID),0) as NO FROM rti_filed_user ");
+                        # region file submit problem is generating here
+                        objBL.RTI_filed_user_id = objBL.RTI_Request_id;
+                        objBL.Rti_Status = "REG";  //Initial status of RTI Filed
+                        objBL.Action_id = "";
+                        objBL.IsValid = "N";
+                        objBL.Office_mapping_id = DDL_RTI_Officer.SelectedValue;
+                        objBL.Action_date = DateTime.Now.ToString("yyyy-MM-dd"); // Need to ask
+                        //objBL.Rti_Status = "registered"; // initial status
+                        //set data for rti_file
+                        string RTI_fileID = objDl.GetMaxValueRtiFiles();// "<NTC> file iD";//objDl.GetMaxValue("SELECT IFNULL(MAX(rti_fileID),0) as NO FROM rti_files ");
+
+                        List<bl_RTI_RequestFiles> objList = new List<bl_RTI_RequestFiles>();
+
+                        int maxCountFileID = Convert.ToInt32(RTI_fileID);
+                        if (FU_BPL.PostedFile != null && FU_BPL.PostedFile.FileName != "")
+                        {
+                            if (FU_BPL.PostedFile.ContentLength > 0)
+                            {
+                                bl_RTI_RequestFiles objBLFile = new bl_RTI_RequestFiles();
+                                HttpPostedFile postedFile = FU_BPL.PostedFile;
+
+                                objBLFile.FileDescription = txt_FU_BPL_Disc.Text;
+                                objBLFile.RTI_fileID = maxCountFileID.ToString();
+                                objBLFile.RTI_fileName = Path.GetFileName(postedFile.FileName);
+                                objBLFile.RTI_fileType = postedFile.ContentType;
+                                objBLFile.BPL_RTI_FileType = "BPL_DOC";  // it is a BPL Supporting Document
+                                objBLFile.RTI_Request_id = objBL.RTI_Request_id;
+                                Stream fs = postedFile.InputStream;
+
+                                if ((objBLFile.RTI_fileType == "application/pdf" || objBLFile.RTI_fileType == "application/x-pdf" || objBLFile.RTI_fileType == "application/x-unknown") && fs.Length < 2097152)
+                                {
+
+                                    BinaryReader br = new BinaryReader(fs);
+                                    byte[] bytes = br.ReadBytes((Int32)fs.Length);
+                                    objBLFile.RTI_fileData = bytes;
+                                    maxCountFileID = maxCountFileID + 1;
+                                    objList.Add(objBLFile);   // Add into the list 
+                                }
+                                else
+                                {
+
+                                    //statusCount = 1;
+                                    // Utilities.MessageBoxShow("Only Image File and less then 1000 KB is accepted");
+                                    //lbl_status.Text = " Only Image File and less then 1000 KB is accepted ";
+                                    Utilities.MessageBox_UpdatePanel(update1, " Only PDF File and less then 2000 KB is accepted for BPL File");
+                                    return;
+                                }
+
+
+                            }
+                            else
+                            {
+                                Utilities.MessageBox_UpdatePanel(update1, " BPL File Size Must be great then Zero");
+                                return;
+                            }
+                        }
+                        // RTI File Insert in data base
+                        if (FU_RTI.PostedFile != null && FU_RTI.PostedFile.FileName != "")
+                        {
+                            if (FU_RTI.PostedFile.ContentLength > 0)
+                            {
+                                bl_RTI_RequestFiles objBLFile = new bl_RTI_RequestFiles();
+                                HttpPostedFile postedFile = FU_RTI.PostedFile;
+
+                                objBLFile.FileDescription = txt_FU_RTI_Disc.Text;
+                                objBLFile.RTI_fileID = maxCountFileID.ToString();
+                                objBLFile.RTI_fileName = Path.GetFileName(postedFile.FileName);
+                                objBLFile.RTI_fileType = postedFile.ContentType;
+                                objBLFile.BPL_RTI_FileType = "RTI_DOC";    // it is RTI Document
+                                objBLFile.RTI_Request_id = objBL.RTI_Request_id;
+                                Stream fs = postedFile.InputStream;
+
+                                if ((objBLFile.RTI_fileType == "application/pdf" || objBLFile.RTI_fileType == "application/x-pdf" || objBLFile.RTI_fileType == "application/x-unknown") && fs.Length < 2097152)
+                                {
+
+                                    BinaryReader br = new BinaryReader(fs);
+                                    byte[] bytes = br.ReadBytes((Int32)fs.Length);
+                                    objBLFile.RTI_fileData = bytes;
+                                    maxCountFileID = maxCountFileID + 1;
+                                    objList.Add(objBLFile);   // Add into the list 
+                                }
+                                else
+                                {
+
+                                    //statusCount = 1;
+                                    // Utilities.MessageBoxShow("Only Image File and less then 1000 KB is accepted");
+                                    //lbl_status.Text = " Only Image File and less then 1000 KB is accepted ";
+                                    Utilities.MessageBox_UpdatePanel(update1, " Only PDF File and less then 2000 KB is accepted for RTI File");
+                                    return;
+                                }
+
+
+                            }
+
+                            else
+                            {
+                                Utilities.MessageBox_UpdatePanel(update1, "RTI File Size Must be greater then Zero");
+                                return;
+                            }
+                            objBL.IsRTIFileUpload = "Y";
+                        }
+                        #endregion
+                        if (objBL.RTI_Is_bpl == "Y")
+                        {
+                            objBL.IsPaymentMade = "Y"; 
+                        }
+                        else {
+                            objBL.IsPaymentMade = "N"; 
+                        }
+                        if (objBL.Mobile == H_LoginMobileNo.Value)
+                        {
+                            objBL.IsValid = "Y";
+                            Session["OTP_SC"] = objBL.Securitycode;      // send welcome page
+                        }
+                        else {
+                            Session["OTP_SC"] = null;     // send user mobile verification page     
+                        }
+
+                        ReturnClass.ReturnBool dt = objDl.Insert_RTI_Info(objBL, objList);
+                        if (dt.status == true)
+                        {
+                            if (objBL.RTI_Is_bpl == "Y") // If BPL Then there is no fees
+                            {
+                                if (objBL.Mobile == H_LoginMobileNo.Value)
+                                {      // Directly go to success page No Need OTP
+                                    string rti_message = "";
+                                    if (Session["language"].ToString() == "en-GB")
+                                    {
+                                        rti_message = "RTI Submission successfull your Registration no. is: " + objBL.RTI_Request_id + "  And  Your Security Code is:  " + objBL.Securitycode + "   please save  details for further Information.";
+                                    }
+                                    else {
+                                        rti_message = "आपका आर. टी. आई. सफलता पूर्वक सबमिट हो गया, आपका रजिस्ट्रेशन न. है "+ objBL.RTI_Request_id +" और सुरक्षा कोड है " + objBL.Securitycode +"कृपया विवरण को उपयोग के लिए सुरक्षित रखें|"  ;
+                                    }
+
+                                    Utilities.MessageBox_UpdatePanel_Redirect(update1, rti_message, "./UserWelcome.aspx");
+                                }
+                                else
+                                {
+                                    Session["RTI_ID"] = objBL.RTI_Request_id;
+                                    Session["VERIFICATION_TYPE"] = "Rti";
+                                    string str_msg = "";
+                                    if (Session["language"].ToString() == "en-GB")
+                                    {
+                                        str_msg = "Your RTI Request has been submited Need Mobile Verification for Registeration";
+                                    }
+                                    else
+                                    {
+                                        str_msg = "आपका आर. टी. आई. सबमिट हो गया, आपको रजिस्ट्रेशन के लिए मोबाईल वेरिफिकेसन की जरुरत है| ";
+                                    }
+                                    Utilities.MessageBox_UpdatePanel_Redirect(update1, str_msg, "./User_Mobile_Varification.aspx");
+                                }
+                            }
+                            else {
+                                Session["RTI_ID"] = objBL.RTI_Request_id;
+                                Session["VERIFICATION_TYPE"] = "Rti";
+
+                               // Utilities.MessageBox_UpdatePanel_Redirect(update1, "Redirecting to the eChallan Page for paying RTI Fees", "../user/PayFees.aspx");
+                                Response.Redirect("../user/PayFees.aspx");
+                            }
+                        }
+                        else
+                        {
+                            string str_msg = "";
+                            if (Session["language"].ToString() == "en-GB")
+                            {
+                                str_msg = "RTI Submission Failed";
+                            }
+                            else
+                            {
+                                str_msg = "आपका आर. टी. आई. सबमिसन असफल हो गया है| ";
+                            }
+                            Utilities.MessageBox_UpdatePanel(update1,str_msg);
+                        }
+                    }//end of captcha1 validated
+                    else
+                    {
+                        string str_msg = "";
+                        if (Session["language"].ToString() == "en-GB")
+                        {
+                            str_msg = "Incorrect Security Code";
+                        }
+                        else
+                        {
+                            str_msg = " गलत सुरक्षा कोड ";
+                        }
+
+                        Utilities.MessageBox_UpdatePanel(update1, str_msg);
+                    }
+                } // If ! captch expired
+            }  // End of If checkRefresh
+        } // End of isvalid
+
+
+    } // End of btn_Submit_Click1
+
+
+
+    private RadioButton GetSelectedRadioButton(params RadioButton[] radioButtonGroup)
+    {
+        // Go through all the RadioButton controls that you passed to the method
+        for (int i = 0; i < radioButtonGroup.Length; i++)
+        {
+            // If the current RadioButton control is checked,
+            if (radioButtonGroup[i].Checked)
+            {
+                // return it
+                return radioButtonGroup[i];
+            }
+        }
+
+        // If none of the RadioButton controls is checked, return NULL
+        return null;
+    }
+
+    // The below code can be removed by using utilities class
+    protected string GetIPAddress()
+    {
+        System.Web.HttpContext context = System.Web.HttpContext.Current;
+        string ipAddress = context.Request.ServerVariables["HTTP_X_FORWARDED_FOR"];
+
+        if (!string.IsNullOrEmpty(ipAddress))
+        {
+            string[] addresses = ipAddress.Split(',');
+            if (addresses.Length != 0)
+            {
+                return addresses[0];
+            }
+        }
+
+        return context.Request.ServerVariables["REMOTE_ADDR"];
+    }
+    protected void DDL_Category_SelectedIndexChanged(object sender, EventArgs e)  // Office Category
+    {
+        OfficeLevelBind();
+        OfficeBind();
+        BindOfficer();
+    }
+
+    protected void DDL_BPL_Load(object sender, EventArgs e)
+    {
+
+    }
+    protected void DDL_BaseDepartment_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        OfficeLevelBind();
+        OfficeBind();
+        BindOfficer();
+    }
+    protected void DDL_OfficeLevel_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        OfficeBind();
+        BindOfficer();
+    }
+    protected void DDL_District_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        // OfficeBind();
+        OfficeLevelBind();
+        OfficeBind();
+        BindOfficer();
+    }
+    protected void ddl_country_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        if (ddl_country.SelectedValue == "091")
+        {
+            //rfv_state.Enabled = false;
+            RFV_State.Enabled = true;
+            rfv_district.Enabled = true;
+            REV_PinCode.Enabled = true;
+            lbl_state.Text = "State";
+            //lbl_district.Visible = true;
+            ctc.Visible = true;
+            ddl_district.Visible = true;
+            DDL_State.Visible = true;
+            txtOther.Visible = false;
+            ddlState.Visible = true;
+            bind_state();
+            txtPinCode.MaxLength = 6;
+            REV_PinCode.ValidationGroup = "vg";
+        }
+        else
+        {
+            txtOther.Visible = true;
+            lbl_state.Text = "Country Name";
+            //rfv_state.Enabled = true;
+            RFV_State.Enabled = false;
+            rfv_district.Enabled = false;
+            REV_PinCode.Enabled = false;
+            REV_PinCode.ValidationGroup = "a";
+            //lbl_district.Visible = false;
+            ctc.Visible = false;
+            ddl_district.Visible = false;
+            DDL_State.Visible = false;
+            ddlState.Visible = false;
+            txtState_Other.Text = "";
+            txtPinCode.MaxLength = 10;
+        }
+
+    }
+    protected void ddl_state_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        bind_district();
+        ddl_district.SelectedValue = "0";
+    }
+    protected void ddl_district_SelectedIndexChanged(object sender, EventArgs e)
+    {
+
+    }
+    protected void DDL_Office_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        BindOfficer();
+    }
+    protected void DDL_BPL_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        if (DDL_BPL.SelectedValue == "Y")//(SelectedValue == "091")
+        {
+            BPL_Yes.Attributes.Add("style", "display:block;"); //block
+
+            BPL_No.Attributes.Add("style", "display:none;");
+            // BPL_No.Visible = false;
+            RFV_BPL_CardNo.Enabled = true;
+            RFV_Year_Of_Issue.Enabled = true;
+            REV_Year_Of_Issue.Enabled = true;
+            RFV_IssuingAuth.Enabled = true;
+        }
+        else if (DDL_BPL.SelectedValue == "N")
+        {
+            BPL_Yes.Attributes.Add("style", "display:none;"); //block
+            BPL_No.Attributes.Add("style", "display:block;");
+            //BPL_Yes.Visible = false;
+            //BPL_No.Visible = true;
+            RFV_BPL_CardNo.Enabled = false;
+            RFV_Year_Of_Issue.Enabled = false;
+            RFV_IssuingAuth.Enabled = false;
+            REV_Year_Of_Issue.Enabled = false;
+        }
+        else
+        {
+            BPL_Yes.Attributes.Add("style", "display:none;"); //block
+            BPL_No.Attributes.Add("style", "display:none;");
+            //BPL_Yes.Visible = false;
+            //BPL_No.Visible = false;
+            RFV_BPL_CardNo.Enabled = false;
+            RFV_Year_Of_Issue.Enabled = false;
+            RFV_IssuingAuth.Enabled = false;
+            REV_Year_Of_Issue.Enabled = false;
+
+        }
+    } // DDL_BPL End
+}

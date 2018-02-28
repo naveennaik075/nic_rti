@@ -1,0 +1,153 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+
+/// <summary>
+/// Summary description for bl_dmf_designation
+/// ekta
+/// 1-oct-2016
+/// </summary>
+public class bl_dmf_designation
+{
+	public bl_dmf_designation()
+	{
+		//
+		// TODO: Add constructor logic here
+		//
+	}
+
+    public string designation_id;
+    public string desg_category;
+    public string desg_name_hindi;
+    public string desg_name_eng;
+    public string desg_status;
+    public int order_by;
+    public string user_id;
+    public string client_ip;
+    public string datetime;
+
+    public string form_id;
+    public string form_name;
+    public string form_url;
+    public string role_id;
+    public string role_name;
+    public string active;
+    public string permission;
+    public string mapping_id;
+
+    public int desg_id, i, Office_Map_Id, emp_id;
+
+    public string employee_id, category, name_hindi,name_eng, status, district_id, cat_id, designation, type, type1, datefrom, dateto, session, file_Extn, document_Name, upload_Date, section_Id,mime_type;
+    public string contact_no, email_id, file_id, main_category, gender,state_code, phone_no;
+    byte[] file_data, file_data_New;
+
+    public string Action_Id, Office_Mapping_Id, Action_Date, Remark;
+
+    //transaction/status table
+    public string action_Id { get { return Action_Id; } set { Action_Id = value; } }
+    public string office_Mapping_Id { get { return Office_Mapping_Id; } set { Office_Mapping_Id = value; } }
+    public string action_Date { get { return Action_Date; } set { Action_Date = value; } }
+    public string remark { get { return Remark; } set { Remark = value; } }
+    //
+   
+    public string Gender { get { return gender; } set { gender = value; } }
+    public string Main_category { get { return main_category; } set { main_category = value; } }
+    public string File_id { get { return file_id; } set { file_id = value; } }
+    public string Designation_id { get { return designation_id; } set { designation_id = value; } }
+    public string Desg_category { get { return desg_category; } set { desg_category = value; } }
+    public string Desg_name_hindi { get { return desg_name_hindi; } set { desg_name_hindi = value; } }
+    public string Desg_name_eng { get { return desg_name_eng; } set { desg_name_eng = value; } }
+    public string Desg_status { get { return desg_status; } set { desg_status = value; } }
+    public int Order_by { get { return order_by; } set { order_by = value; } }
+    public string User_id { get { return user_id; } set { user_id = value; } }
+    public string Client_ip { get { return client_ip; } set { client_ip = value; } }
+    public string Datetime { get { return datetime; } set { datetime = value; } }
+
+   
+
+    public string Form_id { get { return form_id; } set { form_id = value; } }
+    public string Form_name { get { return form_name; } set { form_name = value; } }
+    public string Form_url { get { return form_url; } set { form_url = value; } }
+    public string Role_id { get { return role_id; } set { role_id = value; } }
+    public string Role_name { get { return role_name; } set { role_name = value; } }
+    public string Active { get { return active; } set { active = value; } }
+    public string Permission { get { return permission; } set { permission = value; } }
+    public string Mapping_id { get { return mapping_id; } set { mapping_id = value; } }
+
+    public int Desg_id { get { return desg_id; } set { desg_id = value; } }
+    public int I { get { return i; } set { i = value; } }
+
+    public int Emp_id { get { return emp_id; } set { emp_id = value; } }
+    public string Category { get { return category; } set { category = value; } }
+    public string Name_hindi { get { return name_hindi; } set { name_hindi = value; } }
+    public string Name_eng { get { return name_eng; } set { name_eng = value; } }
+    public string Status { get { return status; } set { status = value; } }
+    public string Employee_id { get { return employee_id; } set { employee_id = value; } }
+    public string District_id { get { return district_id; } set { district_id = value; } }
+    public string Cat_id { get { return cat_id; } set { cat_id = value; } }
+    public string Designation { get { return designation; } set { designation = value; } }
+    public string Type { get { return type; } set { type = value; } }
+    public string Type1 { get { return type1; } set { type1 = value; } }
+    public string Datefrom { get { return datefrom; } set { datefrom = value; } }
+    public string Dateto { get { return dateto; } set { dateto = value; } }
+    public string Contact_no { get { return contact_no; } set { contact_no = value; } }
+       public string Email_id { get { return email_id; } set { email_id = value; } }
+
+    public string Session { get { return session; } set { session = value; } }
+    public string File_Extn { get { return file_Extn; } set { file_Extn = value; } }
+    public string Document_Name { get { return document_Name; } set { document_Name = value; } }
+    public string Upload_Date { get { return upload_Date; } set { upload_Date = value; } }
+    public string Section_Id { get { return section_Id; } set { section_Id = value; } }
+    public byte[] File_Data { get { return file_data; } set { file_data = value; } }
+    public byte[] File_Data_New { get { return file_data_New; } set { file_data_New = value; } }
+
+    public string Mime_type { get { return mime_type; } set { mime_type = value; } }
+
+
+
+
+
+    //6-decimal-2016
+
+    public string yojna_id, yojna_name, yojna_name_hi, abbriviation, yojna_cat, year, no_of_task, accepted_task, spend_mony, complete, incomplete, prioporty;
+    public int yid;
+    decimal accepted_money;
+    public int Yid { get { return yid; } set { yid = value; } }
+    public string Yojna_id { get { return yojna_id; } set { yojna_id = value; } }
+    public string Yojna_name { get { return yojna_name; } set { yojna_name = value; } }
+    public string Yojna_name_hi { get { return yojna_name_hi; } set { yojna_name_hi = value; } }
+    public string Abbriviation { get { return abbriviation; } set { abbriviation = value; } }
+    public string Yojna_cat { get { return yojna_cat; } set { yojna_cat = value; } }
+    public string Year { get { return year; } set { year = value; } }
+
+
+    public string No_of_task { get { return no_of_task; } set { no_of_task = value; } }
+    public string Accepted_task { get { return accepted_task; } set { accepted_task = value; } }
+    public string Spend_mony { get { return spend_mony; } set { spend_mony = value; } }
+    public string Complete { get { return complete; } set { complete = value; } }
+    public string Incomplete { get { return incomplete; } set { incomplete = value; } }
+
+    //------------------------------------------------ affect area ---------------------------------------------------
+
+    public string block_code, gram_panchayat_code, are_id, village_code, name, father_mother_name, age, aadhar_no, bank_name, ac_no, ifsc_code;
+    public string Block_code { get { return block_code; } set { block_code = value; } }
+    public string Gram_panchayat_code { get { return gram_panchayat_code; } set { gram_panchayat_code = value; } }
+    public string Village_code { get { return village_code; } set { village_code = value; } }
+    public string Are_id { get { return are_id; } set { are_id = value; } }
+
+    public string Name { get { return name; } set { name = value; } }
+    public string Father_mother_name { get { return father_mother_name; } set { father_mother_name = value; } }
+    public string Age { get { return age; } set { age = value; } }
+
+
+    public string Aadhar_no { get { return aadhar_no; } set { aadhar_no = value; } }
+    public string Bank_name { get { return bank_name; } set { bank_name = value; } }
+    public string Ac_no { get { return ac_no; } set { ac_no = value; } }
+    public string Ifsc_code { get { return ifsc_code; } set { ifsc_code = value; } }
+    public string Prioporty { get { return prioporty; } set { prioporty = value; } }
+
+    public decimal Accepted_money { get { return accepted_money; } set { accepted_money = value; } }
+    public string State_Code { get { return state_code; } set { state_code = value; } }
+    public string Phone_no { get { return phone_no; } set { phone_no = value; } }
+}

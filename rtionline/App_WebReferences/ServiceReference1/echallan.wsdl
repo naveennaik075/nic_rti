@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="eChallan_srv">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="tr_refno" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="dpt" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="eChallan_srvResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="eChallan_srvResult" type="tns:Echallan_DS" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Echallan_DS">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="PAYEE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DEPT" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TIN_CIN" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ADDRESS1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ADDRESS2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PURPOSE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FROM_PERIOD" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TO_PERIOD" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BANK" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TR_REFNO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TR_REFNO_OLD" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AMOUNT" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ENTRYDATE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SC_SLNO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="USERID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DATE_AC" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MAJORHEAD" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SUBMAJORHEAD" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MINORHEAD" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SUBHEAD" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="R_BANKREFNO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="R_AMOUNT" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="dept_tr_refno" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="eChallanex_srv">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="tr_refno" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="dpt" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="eChallanex_srvResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="eChallanex_srvResult" type="tns:Echallan_DS" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="eChallandept_srv">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="tr_refno" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="dpt" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="eChallandept_srvResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="eChallandept_srvResult" type="tns:Echallan_DS" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Echallan_DS" nillable="true" type="tns:Echallan_DS" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="eChallan_srvSoapIn">
+    <wsdl:part name="parameters" element="tns:eChallan_srv" />
+  </wsdl:message>
+  <wsdl:message name="eChallan_srvSoapOut">
+    <wsdl:part name="parameters" element="tns:eChallan_srvResponse" />
+  </wsdl:message>
+  <wsdl:message name="eChallanex_srvSoapIn">
+    <wsdl:part name="parameters" element="tns:eChallanex_srv" />
+  </wsdl:message>
+  <wsdl:message name="eChallanex_srvSoapOut">
+    <wsdl:part name="parameters" element="tns:eChallanex_srvResponse" />
+  </wsdl:message>
+  <wsdl:message name="eChallandept_srvSoapIn">
+    <wsdl:part name="parameters" element="tns:eChallandept_srv" />
+  </wsdl:message>
+  <wsdl:message name="eChallandept_srvSoapOut">
+    <wsdl:part name="parameters" element="tns:eChallandept_srvResponse" />
+  </wsdl:message>
+  <wsdl:message name="eChallan_srvHttpGetIn">
+    <wsdl:part name="tr_refno" type="s:string" />
+    <wsdl:part name="dpt" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="eChallan_srvHttpGetOut">
+    <wsdl:part name="Body" element="tns:Echallan_DS" />
+  </wsdl:message>
+  <wsdl:message name="eChallanex_srvHttpGetIn">
+    <wsdl:part name="tr_refno" type="s:string" />
+    <wsdl:part name="dpt" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="eChallanex_srvHttpGetOut">
+    <wsdl:part name="Body" element="tns:Echallan_DS" />
+  </wsdl:message>
+  <wsdl:message name="eChallandept_srvHttpGetIn">
+    <wsdl:part name="tr_refno" type="s:string" />
+    <wsdl:part name="dpt" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="eChallandept_srvHttpGetOut">
+    <wsdl:part name="Body" element="tns:Echallan_DS" />
+  </wsdl:message>
+  <wsdl:message name="eChallan_srvHttpPostIn">
+    <wsdl:part name="tr_refno" type="s:string" />
+    <wsdl:part name="dpt" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="eChallan_srvHttpPostOut">
+    <wsdl:part name="Body" element="tns:Echallan_DS" />
+  </wsdl:message>
+  <wsdl:message name="eChallanex_srvHttpPostIn">
+    <wsdl:part name="tr_refno" type="s:string" />
+    <wsdl:part name="dpt" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="eChallanex_srvHttpPostOut">
+    <wsdl:part name="Body" element="tns:Echallan_DS" />
+  </wsdl:message>
+  <wsdl:message name="eChallandept_srvHttpPostIn">
+    <wsdl:part name="tr_refno" type="s:string" />
+    <wsdl:part name="dpt" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="eChallandept_srvHttpPostOut">
+    <wsdl:part name="Body" element="tns:Echallan_DS" />
+  </wsdl:message>
+  <wsdl:portType name="echallanSoap">
+    <wsdl:operation name="eChallan_srv">
+      <wsdl:input message="tns:eChallan_srvSoapIn" />
+      <wsdl:output message="tns:eChallan_srvSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="eChallanex_srv">
+      <wsdl:input message="tns:eChallanex_srvSoapIn" />
+      <wsdl:output message="tns:eChallanex_srvSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="eChallandept_srv">
+      <wsdl:input message="tns:eChallandept_srvSoapIn" />
+      <wsdl:output message="tns:eChallandept_srvSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="echallanHttpGet">
+    <wsdl:operation name="eChallan_srv">
+      <wsdl:input message="tns:eChallan_srvHttpGetIn" />
+      <wsdl:output message="tns:eChallan_srvHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="eChallanex_srv">
+      <wsdl:input message="tns:eChallanex_srvHttpGetIn" />
+      <wsdl:output message="tns:eChallanex_srvHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="eChallandept_srv">
+      <wsdl:input message="tns:eChallandept_srvHttpGetIn" />
+      <wsdl:output message="tns:eChallandept_srvHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="echallanHttpPost">
+    <wsdl:operation name="eChallan_srv">
+      <wsdl:input message="tns:eChallan_srvHttpPostIn" />
+      <wsdl:output message="tns:eChallan_srvHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="eChallanex_srv">
+      <wsdl:input message="tns:eChallanex_srvHttpPostIn" />
+      <wsdl:output message="tns:eChallanex_srvHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="eChallandept_srv">
+      <wsdl:input message="tns:eChallandept_srvHttpPostIn" />
+      <wsdl:output message="tns:eChallandept_srvHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="echallanSoap" type="tns:echallanSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="eChallan_srv">
+      <soap:operation soapAction="http://tempuri.org/eChallan_srv" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eChallanex_srv">
+      <soap:operation soapAction="http://tempuri.org/eChallanex_srv" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eChallandept_srv">
+      <soap:operation soapAction="http://tempuri.org/eChallandept_srv" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="echallanSoap12" type="tns:echallanSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="eChallan_srv">
+      <soap12:operation soapAction="http://tempuri.org/eChallan_srv" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eChallanex_srv">
+      <soap12:operation soapAction="http://tempuri.org/eChallanex_srv" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eChallandept_srv">
+      <soap12:operation soapAction="http://tempuri.org/eChallandept_srv" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="echallanHttpGet" type="tns:echallanHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="eChallan_srv">
+      <http:operation location="/eChallan_srv" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eChallanex_srv">
+      <http:operation location="/eChallanex_srv" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eChallandept_srv">
+      <http:operation location="/eChallandept_srv" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="echallanHttpPost" type="tns:echallanHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="eChallan_srv">
+      <http:operation location="/eChallan_srv" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eChallanex_srv">
+      <http:operation location="/eChallanex_srv" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eChallandept_srv">
+      <http:operation location="/eChallandept_srv" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="echallan">
+    <wsdl:port name="echallanSoap" binding="tns:echallanSoap">
+      <soap:address location="https://ekoshonline.cg.nic.in/echws/echallan.asmx" />
+    </wsdl:port>
+    <wsdl:port name="echallanSoap12" binding="tns:echallanSoap12">
+      <soap12:address location="https://ekoshonline.cg.nic.in/echws/echallan.asmx" />
+    </wsdl:port>
+    <wsdl:port name="echallanHttpGet" binding="tns:echallanHttpGet">
+      <http:address location="https://ekoshonline.cg.nic.in/echws/echallan.asmx" />
+    </wsdl:port>
+    <wsdl:port name="echallanHttpPost" binding="tns:echallanHttpPost">
+      <http:address location="https://ekoshonline.cg.nic.in/echws/echallan.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

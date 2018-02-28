@@ -1,0 +1,51 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+
+/// <summary>
+/// Summary description for bl_Notice
+/// </summary>
+public class bl_Notice
+{
+	public bl_Notice()
+	{
+		//
+		// TODO: Add constructor logic here
+		//
+	}
+    string  office_id, base_department_id,district_id;
+    string notice_id, subject, publish_status, start_date, end_date, priority, user_id, notice_year, ip_address, useragent, browser, userSystem;
+    string notice_file_id, file_name, content_type, operating_system, enable_status;
+    Byte[] fileData;
+    string is_file_upload, file_description;
+    string nextDate, keywordSearch;
+
+    public string KeywordSearch { get { return keywordSearch; } set { keywordSearch = value; } }
+    public string NextDate { get { return nextDate; } set { nextDate = value; } }
+    public string File_description { get { return file_description; } set { file_description = value; } }
+    public string Is_file_upload { get { return is_file_upload; } set { is_file_upload = value; } }
+    public Byte[] FileData { get { return fileData; } set { fileData = value; } }
+    public string Office_id { get { return office_id; } set { office_id = value; } }
+    public string Base_department_id { get { return base_department_id; } set { base_department_id = value; } }
+    public string District_id { get { return district_id; } set { district_id = value; } }
+
+    public string Notice_id { get { return notice_id; } set { notice_id = value; } }
+    public string Subject { get { return subject; } set { subject = value; } }
+    public string Publish_status { get { return publish_status; } set { publish_status = value; } }
+    public string Start_date { get { return start_date; } set { start_date = value; } }
+    public string End_date { get { return end_date; } set { end_date = value; } }
+    public string Priority { get { return priority; } set { priority = value; } }
+    public string User_id { get { return user_id; } set { user_id = value; } }
+    public string Notice_year { get { return notice_year; } set { notice_year = value; } }
+    public string Ip_address { get { return ip_address; } set { ip_address = value; } }
+    public string Useragent { get { return useragent; } set { useragent = value; } }
+    public string Browser { get { return browser; } set { browser = value; } }
+    public string UserSystem { get { return userSystem; } set { userSystem = value; } }
+
+    public string Notice_file_id { get { return notice_file_id; } set { notice_file_id = value; } }
+    public string File_name { get { return file_name; } set { file_name = value; } }
+    public string Content_type { get { return content_type; } set { content_type = value; } }
+    public string Operating_system { get { return operating_system; } set { operating_system = value; } }
+    public string Enable_status { get { return enable_status; } set { enable_status = value; } }
+}

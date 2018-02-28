@@ -1,0 +1,179 @@
+﻿//ekta kushwah
+//nov-2016
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Data;
+using System.Data.SqlClient;
+using System.Configuration;
+using System.IO;
+using MySql.Data.MySqlClient;
+public partial class admin_test : System.Web.UI.Page
+{
+    Utilities util = new Utilities();
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        try
+        {
+            // Label lblheader = (Label)Master.FindControl("lbl_header");
+            //lblheader.Text = "Edit Notice Board";
+
+            if (!Page.IsPostBack)
+            {
+                bind_grid();
+                Session["CheckRefresh"] = Server.UrlDecode(System.DateTime.Now.ToString());
+            }
+        }
+        catch { }
+    }
+    protected void Page_PreRender(object sender, EventArgs e)
+    {
+        ViewState["CheckRefresh"] = Session["CheckRefresh"];
+    }
+    public void bind_grid()
+    {
+        ReturnClass.ReturnDataTable dt = new ReturnClass.ReturnDataTable();
+        dl_rti_notice dl = new dl_rti_notice();
+        Notice_Entry ne = new Notice_Entry();
+
+        try
+        {
+            if (ddlValidity.SelectedValue == "A")
+            {
+                ne.Validity_status = "A";
+            }
+            else if (ddlValidity.SelectedValue == "E")
+            {
+                ne.Validity_status = "E";
+            }
+            else
+            {
+
+            }
+            if (txtSubject.Text.Trim() != "")
+            {
+                ne.Subject_status = "Y";
+                ne.Header = txtSubject.Text.Trim();
+            }
+
+            if (txtDateFrom.Text != "" && txtDateTo.Text != "")
+            {
+                ne.Fromto_status = "Y";
+                string datefrom = Convert.ToDateTime(txtDateFrom.Text.Trim()).ToString("yyyy/MM/dd");
+                string dateto = Convert.ToDateTime(txtDateTo.Text.Trim()).ToString("yyyy/MM/dd");
+                ne.Datefrom = datefrom;
+                ne.Dateto = dateto;
+            }
+            dt = dl.load_FilterData(ne);
+
+
+            if (dt.table.Rows.Count > 0)
+            {
+                GridView1.DataSource = dt.table;
+                GridView1.DataBind();
+                double c = Convert.ToInt32(dt.table.Rows.Count.ToString());
+                double cal = Math.Ceiling(c / 30);
+                if (cal == 0)
+                {
+                    cal = 1;
+
+                }
+
+                lblTotalBoilers.Text = "Total Records : " + dt.table.Rows.Count.ToString() + " (Page : 1 to " + cal + ")";
+
+            }
+            else
+            {
+                GridView1.DataSource = dt.table;
+                GridView1.DataBind();
+                lblTotalBoilers.Text = "Total Records : " + dt.table.Rows.Count.ToString();
+            }
+
+
+
+
+            //GridView1.DataSource = dt.table;
+            //GridView1.DataBind();
+        }
+        catch (Exception ex)
+        {
+            Gen_Error_Rpt.Write_Error("admin_NewsEdit_List_bind_grid()", ex);
+            Utilities.MessageBoxShow(ex.Message);
+        }
+    }
+    protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
+    {
+        GridView1.PageIndex = e.NewPageIndex;
+        bind_grid();
+    }
+    protected void lknBtnEdit_Click(object sender, EventArgs e)
+    {
+        try
+        {
+            LinkButton lnkbtn = sender as LinkButton;
+            GridViewRow gvrow = lnkbtn.NamingContainer as GridViewRow;
+            string fid = GridView1.DataKeys[gvrow.RowIndex].Values["file_id"].ToString();
+            string nid = GridView1.DataKeys[gvrow.RowIndex].Values["Notice_Id"].ToString();
+            Response.Redirect("../user/NoticeEdit_Form.aspx?nid=" + nid + "&fid=" + fid, false);
+        }
+            
+        catch (Exception ex)
+        {
+            Gen_Error_Rpt.Write_Error("admin_News_Edit_lknBtnEdit_Click", ex);
+        }
+    }
+    protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
+    {
+        if (e.Row.RowType == DataControlRowType.DataRow)
+        {
+            HyperLink hypl = (HyperLink)e.Row.Cells[1].Controls[0];
+            //string chkhyperlink = GridView1.DataKeys[e.Row.RowIndex].Values["hyperlink"].ToString();
+            //string fileType = GridView1.DataKeys[e.Row.RowIndex].Values["file_type"].ToString();
+            string fid = GridView1.DataKeys[e.Row.RowIndex].Values["file_id"].ToString();
+            string url = e.Row.Cells[9].Text;
+            string chkhyperlink = e.Row.Cells[7].Text;
+            string fileType = e.Row.Cells[8].Text;
+            if (chkhyperlink.ToString() == "Yes")
+            {
+                if (fileType.ToString() == "Internal")
+                {
+                    hypl.NavigateUrl = "../Reports/viewPDF.aspx?fn=" + fid;
+                    hypl.Target = "_blank";
+                }
+                else if (fileType.ToString() == "External")
+                {
+                    hypl.NavigateUrl = url;
+                    hypl.Target = "_blank";
+                }
+            }
+            else
+            {
+                hypl.Enabled = false;
+                hypl.ForeColor = System.Drawing.ColorTranslator.FromHtml("#000000");
+            }
+        }
+    }
+
+    protected void btnSearch_Click(object sender, EventArgs e)
+    {
+        bind_grid();
+        txtSubject.Text = "";
+        txtDateFrom.Text = "";
+        txtDateTo.Text = "";
+    }
+
+    protected void Page_PreInit(object sender, EventArgs e)
+    {
+        try
+        {
+            // if (Session["Role_ID"].ToString() == "01")
+            // this.MasterPageFile = "../MasterPage_Admin.master";
+        }
+        catch { }
+    }
+   
+  
+}
